@@ -5,26 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waxoyl Polska - Profesjonalna ochrona</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
-        .hero { text-align: center; padding: 50px 20px; background: #f9f9f9; }
-        .hero img { max-width: 100%; height: auto; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .contact { padding: 50px 20px; text-align: center; }
-        h1 { color: #ce1628; }
+        :root { --primary: #D60000; --dark: #111; --gray: #f5f5f5; --light: #fff; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .split-section { display: flex; align-items: center; gap: 40px; margin-bottom: 60px; }
+        .hero-img { width: 100%; border-radius: 10px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .bg-gray { background: var(--gray); }
+        .bg-dark { background: var(--dark); color: var(--light); }
+        .btn { padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+        .btn-primary { background: var(--primary); color: white; }
+        h1, h2 { color: var(--primary); }
+        @media (max-width: 768px) { .split-section { flex-direction: column; } }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>Kompleksowa ochrona Twojego samochodu</h1>
-        <p>Szwajcarska technologia Waxoyl. Profesjonalna ochrona na najwyższym poziomie.</p>
-        <img src="img/strona.png" alt="Ochrona Waxoyl">
-    </div>
+    <section class="hero" id="home">
+        <div class="container split-section">
+            <div>
+                <h1>Kompleksowa ochrona samochodu</h1>
+                <p>Szwajcarskie technologie od ponad 85 lat. Profesjonalna ochrona lakieru, tapicerki i podwozia.</p>
+                <a href="#kontakt" class="btn btn-primary">Umów konsultację</a>
+            </div>
+            <div>
+                <!-- Твоя картинка здесь -->
+                <img src="img/strona.png" alt="Ochrona Waxoyl" class="hero-img">
+            </div>
+        </div>
+    </section>
 
-    <div class="contact">
-        <h2>Kontakt</h2>
-        <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
-        <p>📞 58 343 26 66</p>
-    </div>
+    <section id="o-nas" class="bg-gray">
+        <div class="container split-section">
+            <div>
+                <img src="img/strona.png" alt="Waxoyl" class="hero-img">
+            </div>
+            <div>
+                <h2>Szwajcarska Precyzja</h2>
+                <p>Waxoyl to synonim najwyższej jakości. Nasze zaawansowane systemy chronią Twój pojazd przed warunkami atmosferycznymi i codzienną eksploatacją.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="bg-dark">
+        <div class="container">
+            <h2 style="color: white;">Kontakt</h2>
+            <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
+            <p>📞 58 343 26 66</p>
+        </div>
+    </section>
 
 </body>
 </html>
