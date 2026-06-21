@@ -3,57 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompleksowa Ochrona Samochodu | Waxoyl Polska</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <title>Waxoyl Polska - Profesjonalna ochrona</title>
     <style>
-        :root { --primary: #D60000; --dark: #111111; --light: #ffffff; --gray: #f5f5f5; --text: #333333; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--text); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; }
-        header { padding: 20px 0; background: #fff; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .logo { font-weight: 800; color: var(--primary); text-decoration: none; font-size: 1.5rem; }
-        .btn { display: inline-block; padding: 15px 30px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; background: var(--primary); color: white; }
-        .hero { display: flex; align-items: center; gap: 40px; padding-top: 50px; }
-        .hero-img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .bg-gray { background: var(--gray); }
-        .contact-info { margin-top: 20px; }
-        @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        .hero { text-align: center; padding: 50px 20px; background: #f9f9f9; }
+        .hero img { max-width: 100%; height: auto; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .contact { padding: 50px 20px; text-align: center; }
+        h1 { color: #ce1628; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">WAXOYL POLSKA</a>
-            <a href="#kontakt" class="btn">Kontakt</a>
-        </div>
-    </header>
+    <div class="hero">
+        <h1>Kompleksowa ochrona Twojego samochodu</h1>
+        <p>Szwajcarska technologia Waxoyl. Profesjonalna ochrona na najwyższym poziomie.</p>
+        <img src="img/strona.png" alt="Ochrona Waxoyl">
+    </div>
 
-    <section>
-        <div class="container hero">
-            <div>
-                <h1>Kompleksowa ochrona Twojego samochodu</h1>
-                <p style="margin: 20px 0;">Szwajcarska technologia Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne i pielęgnacja na najwyższym poziomie.</p>
-                <a href="#kontakt" class="btn">Umów się teraz</a>
-            </div>
-            <div>
-                <img src="img/strona.png" alt="Ochrona Waxoyl" class="hero-img">
-            </div>
-        </div>
-    </section>
-
-    <section id="kontakt" class="bg-gray">
-        <div class="container">
-            <h2>Kontakt</h2>
-            <div class="contact-info">
-                <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
-                <p>📞 58 343 26 66</p>
-                <p>✉️ waxoyl@waxoyl.pl</p>
-            </div>
-        </div>
-    </section>
+    <div class="contact">
+        <h2>Kontakt</h2>
+        <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
+        <p>📞 58 343 26 66</p>
+    </div>
 
 </body>
 </html>
