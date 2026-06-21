@@ -3,102 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl Polska</title>
-    <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
+    <title>Kompleksowa Ochrona Samochodu | Waxoyl Polska</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #D60000;
-            --primary-hover: #b30000;
-            --dark: #111111;
-            --darker: #0a0a0a;
-            --light: #ffffff;
-            --gray: #f5f5f5;
-            --text: #333333;
-            --text-light: #777777;
-            --font: 'Montserrat', sans-serif;
-            --transition: all 0.3s ease;
-        }
-
+        :root { --primary: #D60000; --dark: #111111; --light: #ffffff; --gray: #f5f5f5; --text: #333333; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { font-family: var(--font); color: var(--text); background-color: var(--light); line-height: 1.6; }
-        
-        /* Typography */
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
-        h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; color: var(--dark); }
-        h3.red-subtitle { color: var(--primary); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-light); }
-        
-        /* Layout & Containers */
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 100px 0; }
-        .split-section { display: flex; align-items: center; gap: 60px; }
-        .split-section > div { flex: 1; }
-        
-        /* Backgrounds */
-        .bg-gray { background-color: var(--gray); }
-        .bg-dark { background-color: var(--dark); color: var(--light); }
-        .bg-dark h2, .bg-dark p { color: var(--light); }
-        
-        /* Buttons */
-        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
-        .btn-primary { background-color: var(--primary); color: var(--light); }
-        .btn-primary:hover { background-color: var(--primary-hover); }
-        .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
-        .btn-outline:hover { background-color: var(--dark); color: var(--light); }
-        .btn-outline-light { background-color: transparent; border-color: var(--light); color: var(--light); }
-        .btn-outline-light:hover { background-color: var(--light); color: var(--dark); }
-        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-
-        /* Navigation */
-        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); }
-        nav a:hover { color: var(--primary); }
-        
-        /* Hero */
-        .hero { padding-top: 180px; padding-bottom: 100px; min-height: 100vh; display: flex; align-items: center; }
-        .hero-img { width: 100%; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-        .icon-box { display: flex; align-items: center; gap: 15px; font-weight: 700; color: var(--dark); }
-
-        /* Features List */
-        .features-list { list-style: none; margin-bottom: 30px; }
-        .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
-        .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
-
-        /* Video Placeholder */
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: url('https://via.placeholder.com/800x450/111/333?text=Video+Placeholder') center/cover; }
-        .play-btn { width: 80px; height: 60px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
-        .play-btn:hover { transform: scale(1.05); }
-        .play-btn::before { content: ''; border-style: solid; border-width: 15px 0 15px 25px; border-color: transparent transparent transparent white; }
-
-        /* CTA Banner */
-        .cta-banner { border-radius: 16px; padding: 80px; text-align: center; background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%); }
-
-        /* Contact & Footer */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .contact-info p { font-size: 1.2rem; margin-bottom: 15px; color: var(--dark); font-weight: 500; }
-        .form-group { margin-bottom: 20px; }
-        .form-control { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font); font-size: 1rem; }
-        footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .split-section { flex-direction: column; }
-            h1 { font-size: 2.5rem; }
-            .hero { padding-top: 120px; text-align: center; }
-            .icon-grid { justify-content: center; text-align: left; }
-            .btn-group { justify-content: center; }
-            nav { display: none; /* Add mobile menu JS in production */ }
-            .contact-grid { grid-template-columns: 1fr; }
-            .cta-banner { padding: 40px 20px; }
-        }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        header { padding: 20px 0; background: #fff; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-weight: 800; color: var(--primary); text-decoration: none; font-size: 1.5rem; }
+        .btn { display: inline-block; padding: 15px 30px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; background: var(--primary); color: white; }
+        .hero { display: flex; align-items: center; gap: 40px; padding-top: 50px; }
+        .hero-img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .bg-gray { background: var(--gray); }
+        .contact-info { margin-top: 20px; }
+        @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
@@ -106,128 +27,19 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo">WAXOYL POLSKA</a>
-            <nav>
-                <ul>
-                    <li><a href="#o-nas">O Waxoyl</a></li>
-                    <li><a href="#ceramika">Ceramika</a></li>
-                    <li><a href="#antykorozja">Antykorozja</a></li>
-                    <li><a href="#silnik">Silnik</a></li>
-                    <li><a href="#tapicerka">Tapicerka</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </nav>
-            <a href="#kontakt" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">KUP TERAZ</a>
+            <a href="#kontakt" class="btn">Kontakt</a>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container split-section">
-            <div>
-                <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
-                <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
-                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
-                <div class="btn-group">
-                    <a href="#kontakt" class="btn btn-primary">Umów konsultację</a>
-                    <a href="#ceramika" class="btn btn-outline">Poznaj rozwiązania</a>
-                </div>
-                <div class="icon-grid">
-                    <div class="icon-box">🇨🇭 Swiss Technology</div>
-                    <div class="icon-box">🏆 85+ lat doświadczenia</div>
-                    <div class="icon-box">🛡️ Ochrona 360°</div>
-                    <div class="icon-box">📍 Autoryzowane Punkty</div>
-                </div>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x600/f5f5f5/333?text=Premium+Car+Image" alt="Auto Premium" class="hero-img">
-            </div>
-        </div>
-    </section>
-
-    <section id="o-nas" class="bg-gray">
-        <div class="container split-section">
-            <div>
-                <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
-                <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
-                <ul class="features-list">
-                    <li>Trwałość w ekstremalnych warunkach</li>
-                    <li>Globalne zaufanie ekspertów detailingowych</li>
-                    <li>Certyfikowane technologie i preparaty</li>
-                    <li>Zabezpieczenie wartości rynkowej pojazdu</li>
-                </ul>
-                <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/600x600/ddd/333?text=Detailing+Process" alt="Waxoyl Ochrona" class="hero-img">
-            </div>
-        </div>
-    </section>
-
-    <section id="ceramika">
-        <div class="container split-section">
-            <div>
-                <img src="https://via.placeholder.com/600x800/111/fff?text=Ceramic+Coating+Shine" alt="Ceramiczna Ochrona Lakieru" class="hero-img">
-            </div>
-            <div>
-                <h2>Ceramiczna Ochrona Lakieru</h2>
-                <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
-                <ul class="features-list">
-                    <li>Głęboki, lustrzany połysk i podbicie koloru</li>
-                    <li>Efekt samooczyszczania i łatwiejsze mycie</li>
-                    <li>Odporność na ptasie odchody i soki z drzew</li>
-                    <li>Silny efekt hydrofobowy (odpychanie wody)</li>
-                </ul>
-                
-                <div class="video-wrapper">
-                    <div class="video-placeholder">
-                        <div class="play-btn"></div>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="antykorozja" class="bg-dark">
-        <div class="container split-section">
-            <div>
-                <h2>Profesjonalna Antykorozja</h2>
-                <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
-                <ul class="features-list" style="color: var(--light);">
-                    <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
-                    <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
-                    <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
-                </ul>
-                
-                <div class="video-wrapper">
-                    <div class="video-placeholder">
-                        <div class="play-btn"></div>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <a href="#kontakt" class="btn btn-primary">Zabezpiecz podwozie</a>
-                </div>
-            </div>
-            <div>
-                 <img src="https://via.placeholder.com/600x800/222/fff?text=Underbody+Protection" alt="Antykorozja Podwozia" class="hero-img">
-            </div>
-        </div>
-    </section>
-
     <section>
-        <div class="container">
-            <div class="cta-banner">
-                <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
-                <div class="btn-group" style="justify-content: center;">
-                    <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
-                    <a href="#" class="btn btn-outline-light">Autoryzowane Punkty</a>
-                </div>
+        <div class="container hero">
+            <div>
+                <h1>Kompleksowa ochrona Twojego samochodu</h1>
+                <p style="margin: 20px 0;">Szwajcarska technologia Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne i pielęgnacja na najwyższym poziomie.</p>
+                <a href="#kontakt" class="btn">Umów się teraz</a>
+            </div>
+            <div>
+                <img src="img/strona.png" alt="Ochrona Waxoyl" class="hero-img">
             </div>
         </div>
     </section>
@@ -235,58 +47,13 @@
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>Kontakt</h2>
-            <h3 class="red-subtitle">Umów wizytę w naszym centrum</h3>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
-                    <p>📞 58 343 26 66</p>
-                    <p>✉️ waxoyl@waxoyl.pl</p>
-                    <div style="margin-top: 40px;">
-                        <img src="https://via.placeholder.com/600x300/ddd/333?text=Google+Maps+Sopot" alt="Mapa Sopot" class="hero-img">
-                    </div>
-                </div>
-                <div>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Twoje Imię i Nazwisko" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Numer Telefonu" required>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Ceramiczna Ochrona Lakieru</option>
-                                <option>Antykorozja Podwozia</option>
-                                <option>Zabezpieczenie Komory Silnika</option>
-                                <option>Impregnacja Tapicerki</option>
-                                <option>Inne / Doradztwo</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Twoja Wiadomość (opcjonalnie)"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij zapytanie</button>
-                    </form>
-                </div>
+            <div class="contact-info">
+                <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
+                <p>📞 58 343 26 66</p>
+                <p>✉️ waxoyl@waxoyl.pl</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Waxoyl Polska. Wszelkie prawa zastrzeżone. | Projekt: Premium Web Design</p>
-        </div>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
