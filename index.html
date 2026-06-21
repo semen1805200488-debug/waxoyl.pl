@@ -42,7 +42,7 @@
         .bg-dark h2, .bg-dark p { color: var(--light); }
         
         /* Buttons */
-        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; }
         .btn-primary { background-color: var(--primary); color: var(--light); }
         .btn-primary:hover { background-color: var(--primary-hover); }
         .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
@@ -60,7 +60,7 @@
         nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); }
         nav a:hover { color: var(--primary); }
         
-        /* Стили для Hero на всю правую сторону секции */
+        /* Hero Desktop Split */
         .hero { padding-top: 110px; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
         .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; }
         .hero-left { flex: 1; max-width: 700px; padding-left: 40px; padding-right: 20px; padding-bottom: 50px; }
@@ -75,7 +75,7 @@
         .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
-        /* Video Placeholder */
+        /* Video Wrapper */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: url('https://via.placeholder.com/800x450/111/333?text=Video+Placeholder') center/cover; }
@@ -93,19 +93,41 @@
         .form-control { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font); font-size: 1rem; }
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
 
-        /* Responsive */
+        /* --- АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ (МЕДИА-ЗАПРОСЫ) --- */
         @media (max-width: 992px) {
-            .hero-split { flex-direction: column; }
-            .hero-left { padding: 40px 20px; text-align: center; max-width: 100%; }
-            .hero-right { width: 100%; height: auto; }
-            .hero-img-full { height: auto; max-height: 50vh; }
-            .split-section { flex-direction: column; }
-            h1 { font-size: 2.5rem; }
-            .icon-grid { justify-content: center; text-align: left; }
-            .btn-group { justify-content: center; }
-            nav { display: none; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+            
+            /* Навигация */
+            .nav-container { padding: 0 20px; }
+            nav { display: none; } /* Скрываем десктопное меню */
+
+            /* Первая секция (Hero) на телефонах */
+            .hero { padding-top: 90px; height: auto; min-height: auto; }
+            .hero-split { flex-direction: column; text-align: center; }
+            .hero-left { padding: 20px; max-width: 100%; }
+            h1 { font-size: 2.2rem; }
+            
+            .btn-group { flex-direction: column; gap: 12px; }
+            .btn { width: 100%; }
+            
+            .icon-grid { grid-template-columns: 1fr; gap: 15px; justify-items: center; }
+            
+            .hero-right { width: 100%; height: auto; margin-top: 30px; justify-content: center; }
+            .hero-img-full { max-height: 40vh; object-position: center; }
+
+            /* Все остальные секции */
+            .split-section { flex-direction: column; gap: 40px; text-align: center; }
+            .split-section > div { width: 100%; }
+            
+            /* Меняем порядок блоков в "Керамике", чтобы картинка шла сверху текста на мобилке */
+            #ceramika .split-section { flex-direction: column-reverse; }
+            
+            h2 { font-size: 1.8rem; }
+            .features-list li { text-align: left; }
+            
             .cta-banner { padding: 40px 20px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
@@ -158,7 +180,7 @@
         <div class="container split-section">
             <div>
                 <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
-                <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
+                <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
                 <ul class="features-list">
                     <li>Trwałość w ekstremalnych warunkach</li>
                     <li>Globalne zaufanie expertsów detailingowych</li>
@@ -168,7 +190,7 @@
                 <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
             </div>
             <div>
-                <img src="https://via.placeholder.com/600x600/ddd/333?text=Detailing+Process" alt="Waxoyl Ochrona" class="hero-img">
+                <img src="https://via.placeholder.com/600x600/ddd/333?text=Detailing+Process" alt="Waxoyl Ochrona" style="width: 100%; border-radius: 8px;">
             </div>
         </div>
     </section>
@@ -176,12 +198,12 @@
     <section id="ceramika">
         <div class="container split-section">
             <div>
-                <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" class="hero-img" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%;">
+                <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%; height: auto; display: block;">
             </div>
             <div>
                 <h2>Ceramiczna Ochrona Lakieru</h2>
                 <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на лаке Вашего автомобиля. Хранит от УФ-лучей, химии и микроцарапин.</p>
+                <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
                 <ul class="features-list">
                     <li>Głęboki, lustrzany połysk i podbicie koloru</li>
                     <li>Efekt samooczyszczania i łatwiejsze mycie</li>
@@ -207,7 +229,7 @@
             <div>
                 <h2>Profesjonalna Antykorozja</h2>
                 <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>.</p>
+                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę.</p>
                 <ul class="features-list" style="color: var(--light);">
                     <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                     <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
@@ -217,7 +239,7 @@
                 </div>
             </div>
             <div>
-                 <img src="https://via.placeholder.com/600x800/222/fff?text=Underbody+Protection" alt="Antykorozja Podwozia" class="hero-img">
+                 <img src="https://via.placeholder.com/600x800/222/fff?text=Underbody+Protection" alt="Antykorozja Podwozia" style="width: 100%; border-radius: 8px;">
             </div>
         </div>
     </section>
