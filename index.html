@@ -75,13 +75,9 @@
         .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
-        /* Video */
+        /* Video Wrapper */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: url('https://via.placeholder.com/800x450/111/333?text=Video+Placeholder') center/cover; }
-        .play-btn { width: 80px; height: 60px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
-        .play-btn:hover { transform: scale(1.05); }
-        .play-btn::before { content: ''; border-style: solid; border-width: 15px 0 15px 25px; border-color: transparent transparent transparent white; }
 
         /* CTA Banner */
         .cta-banner { border-radius: 16px; padding: 80px; text-align: center; background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%); }
@@ -102,7 +98,7 @@
             
             /* Шапка и кнопка Купить на мобильном */
             .nav-container { padding: 0 15px !important; }
-            nav { display: none !important; } /* Прячем ссылки на мобилках */
+            nav { display: none !important; } 
             .logo { font-size: 1rem !important; }
             .logo img { height: 28px !important; }
             header .btn { padding: 8px 14px !important; font-size: 0.75rem !important; }
@@ -128,7 +124,7 @@
             .split-section { flex-direction: column !important; gap: 30px !important; text-align: center !important; }
             .split-section > div { width: 100% !important; }
             
-            /* В керамике картинка будет идти ПЕРЕД текстом, так красивее */
+            /* В керамике картинка будет идти ПЕРЕД текстом */
             #ceramika .split-section { flex-direction: column-reverse !important; }
             
             .features-list li { text-align: left !important; font-size: 0.95rem !important; }
@@ -159,6 +155,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -182,6 +179,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" class="bg-gray">
         <div class="container split-section">
             <div>
@@ -201,6 +199,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container split-section">
             <div>
@@ -216,12 +215,6 @@
                     <li>Odporność na ptasie odchody i soki z drzew</li>
                     <li>Silny efekt hydrofobowy (odpychanie wody)</li>
                 </ul>
-                
-                <div class="video-wrapper">
-                    <div class="video-placeholder">
-                        <div class="play-btn"></div>
-                    </div>
-                </div>
 
                 <div class="btn-group">
                     <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
@@ -230,6 +223,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container split-section">
             <div>
@@ -242,10 +236,14 @@
                     <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
                 </ul>
                 
+                <!-- НАСТОЯЩИЙ ПЛЕЕР YOUTUBE С КОРРЕКТНЫМ СТАРТОМ -->
                 <div class="video-wrapper">
-                    <div class="video-placeholder">
-                        <div class="play-btn"></div>
-                    </div>
+                    <iframe 
+                        src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" 
+                        title="Waxoyl Antykorozja" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
                 <div class="btn-group">
@@ -253,11 +251,12 @@
                 </div>
             </div>
             <div>
-                 <img src="https://via.placeholder.com/600x800/222/fff?text=Underbody+Protection" alt="Antykorozja Podwozia" style="width: 100%; border-radius: 8px;">
+                 <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" alt="Antykorozja Podwozia" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
             </div>
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
@@ -271,6 +270,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 6: KONTAKT -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>Kontakt</h2>
