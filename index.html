@@ -169,4 +169,128 @@
     <section id="ceramika">
         <div class="container split-section">
             <div>
-                <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" class="hero-img
+                <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" class="hero-img">
+            </div>
+            <div>
+                <h2>Ceramiczna Ochrona Lakieru</h2>
+                <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
+                <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                <ul class="features-list">
+                    <li>Głęboki, lustrzany połysk i podbicie koloru</li>
+                    <li>Efekt samooczyszczania i łatwiejsze mycie</li>
+                    <li>Odporność na ptasie odchody i soki z drzew</li>
+                    <li>Silny efekt hydrofobowy (odpychanie wody)</li>
+                </ul>
+                
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="antykorozja" class="bg-dark">
+        <div class="container split-section">
+            <div>
+                <h2>Profesjonalna Antykorozja</h2>
+                <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
+                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
+                <ul class="features-list" style="color: var(--light);">
+                    <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
+                    <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
+                    <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
+                </ul>
+                
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        <div class="play-btn"></div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="#kontakt" class="btn btn-primary">Zabezpiecz podwozie</a>
+                </div>
+            </div>
+            <div>
+                 <img src="https://via.placeholder.com/600x800/222/fff?text=Underbody+Protection" alt="Antykorozja Podwozia" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="cta-banner">
+                <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
+                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
+                    <a href="#" class="btn btn-outline-light">Autoryzowane Punkty</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="bg-gray">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <h3 class="red-subtitle">Umów wizytę w naszym centrum</h3>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
+                    <p>📞 58 343 26 66</p>
+                    <p>✉️ waxoyl@waxoyl.pl</p>
+                    <div style="margin-top: 40px;">
+                        <img src="https://via.placeholder.com/600x300/ddd/333?text=Google+Maps+Sopot" alt="Mapa Sopot" class="hero-img">
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Twoje Imię i Nazwisko" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Numer Telefonu" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Ceramiczna Ochrona Lakieru</option>
+                                <option>Antykorozja Podwozia</option>
+                                <option>Zabezpieczenie Komory Silnika</option>
+                                <option>Impregnacja Tapicerki</option>
+                                <option>Inne / Doradztwo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Twoja Wiadomość (opcjonalnie)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij zapytanie</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Waxoyl Polska. Wszelkie prawa zastrzeżone. | Projekt: Premium Web Design</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
