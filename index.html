@@ -127,6 +127,22 @@
         .form-control { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font); font-size: 1rem; }
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
 
+        /* Специфические классы для Секции O NAS */
+        .o-nas-section {
+            position: relative; 
+            background-image: url('img/2strona.png'); 
+            background-size: cover; 
+            background-position: center right; 
+            background-repeat: no-repeat; 
+            padding: 120px 0; 
+            min-height: 80vh; 
+            display: flex; 
+            align-items: center;
+        }
+        .o-nas-mobile-img {
+            display: none; /* Скрыта на десктопе */
+        }
+
         /* ========================================================
            ЖЕСТКАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ЭКРАНЫ МЕНЬШЕ 992px)
         ======================================================== */
@@ -157,6 +173,21 @@
             /* Картинка с машиной встает снизу текста */
             .hero-right { width: 100% !important; height: auto !important; margin-top: 25px !important; }
             .hero-img-full { height: auto !important; max-height: 35vh !important; width: 100% !important; }
+
+            /* Перестройка секции O NAS под телефоны */
+            .o-nas-section {
+                background-image: none !important; /* Убираем тяжелый фон */
+                padding: 40px 0 !important;
+                min-height: auto !important;
+                display: block !important;
+            }
+            .o-nas-mobile-img {
+                display: block !important; /* Показываем картинку снизу */
+                width: 100%;
+                height: auto;
+                margin-top: 30px;
+                border-radius: 8px;
+            }
 
             /* Все остальные разделы сайта */
             .split-section { flex-direction: column !important; gap: 30px !important; text-align: center !important; }
@@ -231,9 +262,8 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS (УБРАНО ПРИТЕМНЕНИЕ, КАРТИНКА 2strona.png В ОРИГИНАЛЬНОМ КОНТРАСТЕ) -->
-    <section id="o-nas" style="position: relative; background-image: url('img/2strona.png'); background-size: cover; background-position: center right; background-repeat: no-repeat; padding: 120px 0; min-height: 80vh; display: flex; align-items: center;">
-        
+    <!-- СЕКЦИЯ 2: O NAS (АДАПТИРОВАНА ПОД ТЕЛЕФОНЫ) -->
+    <section id="o-nas" class="o-nas-section">
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
             <div style="max-width: 650px;">
                 <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
@@ -246,6 +276,9 @@
                 </ul>
                 <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
             </div>
+            
+            <!-- Эта картинка включится автоматически только на экранах телефонов -->
+            <img src="img/2strona.png" alt="Waxoyl Ochrona" class="o-nas-mobile-img">
         </div>
     </section>
 
@@ -327,7 +360,7 @@
     <section>
         <div class="container">
             <div class="cta-banner">
-                <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
+                <h2 style="color: white;">Zadbaj o pełną ochronę своего auta już dziś</h2>
                 <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
