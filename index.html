@@ -36,6 +36,35 @@
         .split-section { display: flex; align-items: center; gap: 60px; }
         .split-section > div { flex: 1; }
         
+        /* Специальные асимметричные пропорции для секции Керамики */
+        .ceramika-split {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .ceramika-media {
+            flex: 0 0 55%; /* Картинка теперь забирает 55% ширины вместо 50% */
+        }
+        .ceramika-content {
+            flex: 0 0 45%; /* Текст аккуратно занимает оставшиеся 45% */
+        }
+        .ceramika-img-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+            transition: var(--transition);
+        }
+        .ceramika-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        /* Эффект интерактивности при наведении на блок с картинкой */
+        .ceramika-img-wrapper:hover img {
+            transform: scale(1.02);
+        }
+        
         /* Backgrounds */
         .bg-gray { background-color: var(--gray); }
         .bg-dark { background-color: var(--dark); color: var(--light); }
@@ -101,7 +130,7 @@
         /* Адаптивный контейнер для интерактивной карты Google */
         .map-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Пропорции 16:9 */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             border-radius: 8px;
@@ -162,13 +191,14 @@
             .split-section { flex-direction: column !important; gap: 30px !important; text-align: center !important; }
             .split-section > div { width: 100% !important; }
             
-            /* В керамике картинка будет идти ПЕРЕД текстом */
-            #ceramika .split-section { flex-direction: column-reverse !important; }
+            /* В керамике пропорции сбрасываются в 100% на мобильных */
+            .ceramika-split { flex-direction: column-reverse !important; gap: 30px !important; text-align: center !important; }
+            .ceramika-media, .ceramika-content { flex: 0 0 100% !important; width: 100% !important; }
             
             .features-list li { text-align: left !important; font-size: 0.95rem !important; }
             .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
             .cta-banner { padding: 40px 20px !important; }
-            .map-wrapper { padding-bottom: 75% !important; /* Чуть выше карту на мобильных */ }
+            .map-wrapper { padding-bottom: 75% !important; }
         }
     </style>
 </head>
@@ -254,25 +284,29 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA -->
+    <!-- СЕКЦИЯ 3: CERAMIKA (ОБНОВЛЕННЫЕ ПРОПОРЦИИ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНКИ) -->
     <section id="ceramika">
-        <div class="container split-section">
-            <div>
-                <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%; height: auto; display: block;">
-            </div>
-            <div>
-                <h2>Ceramiczna Ochrona Lakieru</h2>
-                <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
-                <ul class="features-list">
-                    <li>Głęboki, lustrzany połysk i podbicie koloru</li>
-                    <li>Efekt samooczyszczania i łatwiejsze mycie</li>
-                    <li>Odporność na ptasie odchody i soki z drzew</li>
-                    <li>Silny efekt hydrofobowy (odpychanie wody)</li>
-                </ul>
+        <div class="container">
+            <div class="ceramika-split">
+                <div class="ceramika-media">
+                    <div class="ceramika-img-wrapper">
+                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
+                    </div>
+                </div>
+                <div class="ceramika-content">
+                    <h2>Ceramiczna Ochrona Lakieru</h2>
+                    <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <ul class="features-list">
+                        <li>Głęboki, lustrzany połysk i podbicie koloru</li>
+                        <li>Efekt samooczyszczania i łatwiejsze mycie</li>
+                        <li>Odporność na ptasie odchody i soki z drzew</li>
+                        <li>Silny efekt hydrofobowy (odpychanie wody)</li>
+                    </ul>
 
-                <div class="btn-group">
-                    <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
+                    <div class="btn-group">
+                        <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,7 +318,7 @@
             <div>
                 <h2>Profesjonalna Antykorozja</h2>
                 <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronную.</p>
+                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
                 <ul class="features-list" style="color: var(--light);">
                     <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                     <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
@@ -335,7 +369,6 @@
                     <p>📞 58 343 26 66</p>
                     <p>✉️ waxoyl@waxoyl.pl</p>
                     
-                    <!-- ИНТЕГРАЦИЯ ИНТЕРАКТИВНОЙ КАРТЫ GOOGLE С ТОЧНЫМ АДРЕСОМ -->
                     <div class="map-wrapper">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2320.640243110293!2d18.5529452!3d54.4344469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda73b75a1d7f1%3A0xc319409ffcbb52db!2sul.%20Rzemie%C5%9Blnicza%2035%2C%2081-856%20Sopot!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" 
