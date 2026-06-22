@@ -54,10 +54,11 @@
         /* Navigation */
         header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .logo img { height: 35px; width: auto; display: block; }
+        nav { display: block; }
         nav ul { list-style: none; display: flex; gap: 25px; }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); white-space: nowrap; }
         nav a:hover { color: var(--primary); }
         
         /* Hero Desktop */
@@ -144,32 +145,47 @@
         }
 
         /* ========================================================
-           ЖЕСТКАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ЭКРАНЫ МЕНЬШЕ 992px)
+           ИСПРАВЛЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ЭКРАНЫ МЕНЬШЕ 992px)
         ======================================================== */
         @media (max-width: 992px) {
             .container { padding: 0 20px !important; }
             section { padding: 50px 0 !important; }
             
-            /* Новая мобильная адаптация для меню (показываем пункты навигации) */
+            /* Аккуратная мини-шапка без гигантских белых отступов */
+            header { padding: 10px 0 !important; }
             .nav-container { 
                 flex-direction: column !important; 
-                gap: 10px !important;
-                padding: 10px !important; 
+                align-items: center !important;
+                gap: 8px !important;
+                padding: 0 10px !important; 
             }
+            .logo { font-size: 1rem !important; }
+            .logo img { height: 26px !important; }
+            
+            /* Горизонтальный скролл меню (аккуратная строка, листается пальцем) */
             nav { 
-                display: block !important; 
-                width: 100%;
+                width: 100% !important;
+                overflow-x: auto !important; 
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px;
             }
+            /* Скрываем некрасивый ползунок скроллбара */
+            nav::-webkit-scrollbar { display: none; }
+            
             nav ul { 
-                flex-wrap: wrap !important; 
-                justify-content: center !important; 
-                gap: 10px 15px !important; 
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: flex-start !important;
+                gap: 15px !important; 
+                padding: 0 10px !important;
+                width: max-content !important;
             }
             nav a { 
-                font-size: 0.75rem !important; 
+                font-size: 0.8rem !important; 
             }
             header .btn { 
-                display: none !important; /* Прячем кнопку из шапки, чтобы освободить место под меню */
+                display: none !important; /* Убираем кнопку Купить из шапки, она только мешает */
             }
 
             /* Блок Hero (Главный) */
@@ -237,6 +253,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO (ГЛАВНАЯ) -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -276,6 +293,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" class="o-nas-section">
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
             <div style="max-width: 650px;">
@@ -284,4 +302,166 @@
                 <ul class="features-list" style="margin-bottom: 35px;">
                     <li style="color: #111; font-weight: 700;">Trwałość w ekstremalnych warunkach</li>
                     <li style="color: #111; font-weight: 700;">Globalne zaufanie eksperów detailingowych</li>
-                    <li style="color: #111; font-weight: 700;">Certyfik
+                    <li style="color: #111; font-weight: 700;">Certyfikowane technologie i preparaty</li>
+                    <li style="color: #111; font-weight: 700;">Zabezpieczenie wartości rynkowej pojazdu</li>
+                </ul>
+                <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
+            </div>
+            
+            <img src="img/2strona.png" alt="Waxoyl Ochrona" class="o-nas-mobile-img">
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
+    <section id="ceramika">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
+                
+                <!-- Картинка -->
+                <div style="flex: 0 0 58%; min-width: 300px;">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18);">
+                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+                
+                <!-- Текст -->
+                <div style="flex: 0 0 38%; min-width: 300px;">
+                    <h2>Ceramiczna Ochrona Lakieru</h2>
+                    <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <ul class="features-list">
+                        <li>Głęboki, lustrzany połysk i podbicie koloru</li>
+                        <li>Efekt samooczyszczania i łatwiejsze mycie</li>
+                        <li>Odporność na ptasie odchody i soki z drzew</li>
+                        <li>Silny efekt hydrofobowy (odpychanie wody)</li>
+                    </ul>
+
+                    <div class="btn-group">
+                        <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
+    <section id="antykorozja" class="bg-dark">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
+                
+                <!-- Текст и видео слева -->
+                <div style="flex: 0 0 38%; min-width: 300px;">
+                    <h2>Profesjonalna Antykorozja</h2>
+                    <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
+                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
+                    <ul class="features-list" style="color: var(--light);">
+                        <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
+                        <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
+                        <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
+                    </ul>
+                    
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" 
+                            title="Waxoyl Antykorozja" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="#kontakt" class="btn btn-primary">Zabezpiecz podwozie</a>
+                    </div>
+                </div>
+                
+                <!-- Картинка справа -->
+                <div style="flex: 0 0 58%; min-width: 300px;">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
+    <section>
+        <div class="container">
+            <div class="cta-banner">
+                <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
+                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
+                    <a href="#" class="btn btn-outline-light">Autoryzowane Punkty</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 6: KONTAKT -->
+    <section id="kontakt" class="bg-gray">
+        <div class="container">
+            <h2>Contact</h2>
+            <h3 class="red-subtitle">Umów wizytę w naszym centrum</h3>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
+                    <p>📞 58 343 26 66</p>
+                    <p>✉️ waxoyl@waxoyl.pl</p>
+                    
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2320.640243110293!2d18.5529452!3d54.4344469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda73b75a1d7f1%3A0xc319409ffcbb52db!2sul.%20Rzemie%C5%9Blnicza%2035%2C%2081-856%20Sopot!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Twoje Imię i Nazwisko" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Numer Telefonu" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Ceramiczna Ochrona Lakieru</option>
+                                <option>Antykorozja Podwozia</option>
+                                <option>Zabezpieczenie Komory Silnika</option>
+                                <option>Impregnacja Tapicerki</option>
+                                <option>Inne / Doradztwo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Twoja Wiadomość (opcjonalnie)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij zapytanie</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Waxoyl Polska. Wszelkie prawa zastrzeżone. | Projekt: Premium Web Design</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
