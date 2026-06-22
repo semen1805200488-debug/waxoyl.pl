@@ -153,27 +153,30 @@
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
 
         /* ========================================================
-            МОБИЛЬНАЯ АДАПТАЦИЯ (ЭКРАНЫ МЕНЬШЕ 992px)
+            МАКСИМАЛЬНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ЭКРАНЫ МЕНЬШЕ 992px)
         ======================================================== */
         @media (max-width: 992px) {
-            .container { padding: 0 20px !important; }
-            section { padding: 50px 0 !important; }
+            html, body { overflow-x: hidden; width: 100%; }
+            .container { padding: 0 15px !important; }
+            section { padding: 40px 0 !important; }
             
-            header { padding: 10px 0 !important; }
+            header { padding: 12px 0 !important; }
             .nav-container { 
                 flex-direction: column !important; 
                 align-items: center !important;
-                gap: 8px !important;
+                gap: 12px !important;
                 padding: 0 10px !important; 
             }
-            .logo { font-size: 1rem !important; }
-            .logo img { height: 26px !important; }
+            .logo { font-size: 1.2rem !important; }
+            .logo img { height: 30px !important; }
             
             nav { 
-                width: 100% !important;
+                width: 100vw !important;
+                margin-left: -15px; 
+                padding-left: 15px;
                 overflow-x: auto !important; 
                 -webkit-overflow-scrolling: touch;
-                padding-bottom: 4px;
+                padding-bottom: 5px;
             }
             nav::-webkit-scrollbar { display: none; }
             
@@ -182,30 +185,48 @@
                 flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 justify-content: flex-start !important;
-                gap: 15px !important; 
-                padding: 0 10px !important;
+                gap: 20px !important; 
+                padding-right: 30px !important; 
                 width: max-content !important;
             }
-            nav a { font-size: 0.8rem !important; }
+            nav a { font-size: 0.9rem !important; padding: 5px 0; }
 
-            .hero { padding-top: 110px !important; height: auto !important; min-height: auto !important; }
+            .hero { padding-top: 130px !important; height: auto !important; min-height: auto !important; text-align: center; }
             .hero-split { flex-direction: column !important; text-align: center !important; }
-            .hero-left { padding: 20px 10px !important; max-width: 100% !important; }
-            h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
-            h2 { font-size: 1.6rem !important; }
+            .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 30px; }
             
-            .btn-group { flex-direction: column !important; gap: 10px !important; margin-top: 20px !important; }
-            .btn { width: 100% !important; padding: 14px 20px !important; }
+            h1 { font-size: 2.2rem !important; line-height: 1.2 !important; margin-bottom: 15px; }
+            h2 { font-size: 1.8rem !important; margin-bottom: 15px; }
+            h3.red-subtitle { font-size: 1.1rem !important; margin-bottom: 15px; }
+            p { font-size: 1rem !important; margin-bottom: 15px; }
             
-            .icon-grid { grid-template-columns: 1fr !important; gap: 15px !important; justify-items: center !important; }
+            .btn-group { flex-direction: column !important; gap: 15px !important; margin-top: 25px !important; }
+            .btn { width: 100% !important; padding: 16px 20px !important; font-size: 1rem !important; }
             
-            .hero-right { width: 100% !important; height: auto !important; margin-top: 25px !important; }
-            .hero-img-full { height: auto !important; max-height: 35vh !important; width: 100% !important; }
+            /* Делаем иконки аккуратной плашкой на мобильном */
+            .icon-grid { grid-template-columns: 1fr !important; gap: 15px !important; background: var(--gray); padding: 25px; border-radius: 12px; margin-top: 30px; justify-items: flex-start !important; text-align: left !important; }
+            .icon-box { min-height: auto !important; width: 100%; justify-content: flex-start; font-size: 1rem !important; gap: 20px; }
+            .icon-box img { height: 26px !important; }
+            
+            .hero-right { width: 100% !important; height: auto !important; margin-top: 10px !important; }
+            .hero-img-full { height: auto !important; max-height: 40vh !important; width: 100% !important; border-radius: 12px; object-fit: cover !important; }
 
-            .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+            .split-row { flex-direction: column !important; gap: 30px !important; }
+            .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; text-align: center; }
+            
+            /* КРИТИЧНО: на мобильных картинка ВСЕГДА будет идти над текстом, чтобы не было сплошной стены текста */
+            .split-col-media { order: -1; }
+            
+            /* Исправляем секцию O Nas для мобилок */
+            #o-nas .hero-right img { border-radius: 12px; }
+            #o-nas .hero-left { padding-bottom: 20px !important; }
+
+            .features-list { text-align: left; }
+            .features-list li { font-size: 1rem !important; margin-bottom: 15px !important; }
+            
+            .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; text-align: left; }
             .cta-banner { padding: 40px 20px !important; }
-            .map-wrapper { padding-bottom: 75% !important; }
-            .split-row { gap: 30px !important; }
+            .map-wrapper { padding-bottom: 75% !important; margin-top: 20px !important; }
         }
     </style>
 </head>
@@ -230,6 +251,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO (ГЛАВНАЯ) -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -269,9 +291,11 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS (КАРТИНКА НА ВСЮ ПРАВУЮ ПОЛОВИНУ) -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             
+            <!-- Текст слева -->
             <div class="hero-left" style="padding-bottom: 0;">
                 <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
                 <p style="color: #222; font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
@@ -281,26 +305,32 @@
                     <li style="color: #111; font-weight: 700;">Certyfikowane technologie i preparaty</li>
                     <li style="color: #111; font-weight: 700;">Zabezpieczenie wartości rynkowej pojazdu</li>
                 </ul>
-                <a href="#kontakt" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
+                <div class="btn-group">
+                    <a href="#kontakt" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
+                </div>
             </div>
             
-            <div class="hero-right" style="height: auto; align-self: stretch;">
+            <!-- Картинка справа -->
+            <div class="hero-right split-col-media" style="height: auto; align-self: stretch;">
                 <img src="img/2strona.png" alt="Waxoyl Ochrona" class="hero-img-full" style="object-fit: cover; height: 100%; width: 100%;">
             </div>
             
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
                 
+                <!-- Картинка слева -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
                     </div>
                 </div>
                 
+                <!-- Текст справа -->
                 <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
@@ -321,10 +351,12 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
                 
+                <!-- Текст и видео слева -->
                 <div class="split-col-text">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
@@ -349,6 +381,7 @@
                     </div>
                 </div>
                 
+                <!-- Картинка справа -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
                         <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl">
@@ -359,10 +392,12 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
                 
+                <!-- Текст слева -->
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
@@ -373,6 +408,7 @@
                     </div>
                 </div>
                 
+                <!-- Картинка справа -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika">
@@ -383,16 +419,19 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
                 
+                <!-- Картинка слева -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="U.P.T. Impregnacja Tapicerki">
                     </div>
                 </div>
 
+                <!-- Текст справа -->
                 <div class="split-col-text">
                     <h2>U.P.T. Impregnacja</h2>
                     <h3 class="red-subtitle">Ochrona Wnętrza</h3>
@@ -407,6 +446,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
@@ -420,6 +460,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 6: KONTAKT -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>KONTAKT</h2>
