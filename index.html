@@ -41,7 +41,7 @@
         
         /* Buttons */
         .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; }
-        .btn-primary { background-color: var(--primary); color: var(--light); }
+        .btn-primary { background-color: var(--primary); color: var(--light); border: none; }
         .btn-primary:hover { background-color: var(--primary-hover); }
         .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
         .btn-outline:hover { background-color: var(--dark); color: var(--light); }
@@ -205,6 +205,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO (ГЛАВНАЯ) -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -244,10 +245,12 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas">
         <div class="container">
             <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
                 
+                <!-- Текст слева -->
                 <div style="flex: 1; min-width: 300px;">
                     <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
                     <p style="color: #222; font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
@@ -260,6 +263,7 @@
                     <a href="#kontakt" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
                 </div>
                 
+                <!-- Картинка справа -->
                 <div style="flex: 1; min-width: 300px;">
                     <img src="img/2strona.png" alt="Waxoyl Ochrona" style="width: 100%; height: auto; display: block; border-radius: 8px;">
                 </div>
@@ -268,20 +272,23 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
                 
+                <!-- Картинка -->
                 <div style="flex: 0 0 58%; min-width: 300px;">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18);">
                         <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
                 
+                <!-- Текст -->
                 <div style="flex: 0 0 38%; min-width: 300px;">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на лакире Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
                     <ul class="features-list">
                         <li>Głęboki, lustrzany połysk i podbicie koloru</li>
                         <li>Efekt samooczyszczania i łatwiejsze mycie</li>
@@ -298,10 +305,12 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
                 
+                <!-- Текст и видео слева -->
                 <div style="flex: 0 0 38%; min-width: 300px;">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
@@ -326,6 +335,7 @@
                     </div>
                 </div>
                 
+                <!-- Картинка справа -->
                 <div style="flex: 0 0 58%; min-width: 300px;">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
                         <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" style="width: 100%; height: auto; display: block;">
@@ -336,6 +346,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
@@ -349,6 +360,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 6: KONTAKT (ФОРМА ТЕПЕРЬ С ОТПРАВКОЙ НА ТВОЮ ПОЧТУ) -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>KONTAKT</h2>
@@ -369,24 +381,25 @@
                     </div>
                 </div>
                 <div>
-                    <form>
+                    <!-- ПОДКЛЮЧЕН СЕРВИС ОТПРАВКИ FORMSPREE -->
+                    <form action="https://formspree.io/f/semen.synenko@waxoyl.pl" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Twoje Imię i Nazwisko" required>
+                            <input type="text" name="Imię i Nazwisko" class="form-control" placeholder="Twoje Imię i Nazwisko" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Numer Telefonu" required>
+                            <input type="tel" name="Telefon" class="form-control" placeholder="Numer Telefonu" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
-                                <option>Ceramiczna Ochrona Lakieru</option>
-                                <option>Antykorozja Podwozia</option>
-                                <option>Zabezpieczenie Komory Silnika</option>
-                                <option>Impregnacja Tapicerki</option>
-                                <option>Inne / Doradztwo</option>
+                            <select name="Usługa" class="form-control">
+                                <option value="Ceramika">Ceramiczna Ochrona Lakieru</option>
+                                <option value="Antykorozja">Antykorozja Podwozia</option>
+                                <option value="Silnik">Zabezpieczenie Komory Silnika</option>
+                                <option value="Tapicerka">Impregnacja Tapicerki</option>
+                                <option value="Inne">Inne / Doradztwo</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Twoja Wiadomość (opcjonalnie)"></textarea>
+                            <textarea name="Wiadomość" class="form-control" rows="5" placeholder="Twoja Wiadomość (opcjonalnie)"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">WYŚLIJ ZAPYTANIE</button>
                     </form>
