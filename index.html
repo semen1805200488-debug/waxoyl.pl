@@ -68,8 +68,10 @@
         .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
         .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-        .icon-box { display: flex; align-items: center; gap: 15px; font-weight: 700; color: var(--dark); }
-        .icon-box img { height: 24px; width: auto; display: block; }
+        .icon-box { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--dark); min-height: 40px; }
+        
+        /* Стилизация иконок преимуществ: увеличили размер для читаемости логотипа 360 */
+        .icon-box img { height: 35px; width: auto; display: block; flex-shrink: 0; }
 
         /* Features */
         .features-list { list-style: none; margin-bottom: 30px; }
@@ -156,7 +158,6 @@
         </div>
     </header>
 
-    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -170,9 +171,8 @@
                 <div class="icon-grid">
                     <div class="icon-box">🇨🇭 Swiss Technology</div>
                     <div class="icon-box">🏆 85+ lat doświadczenia</div>
-                    <!-- ДОБАВИЛИ ЛОГОТИП К ПУНКТУ OCHRONA 360 -->
                     <div class="icon-box">
-                        <img src="img/logo.swiss360.png" alt="Icon 360"> 
+                        <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
                         Ochrona 360°
                     </div>
                     <div class="icon-box">📍 Autoryzowane Punkty</div>
@@ -184,7 +184,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" class="bg-gray">
         <div class="container split-section">
             <div>
@@ -204,7 +203,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container split-section">
             <div>
@@ -228,7 +226,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container split-section">
             <div>
@@ -241,7 +238,6 @@
                     <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
                 </ul>
                 
-                <!-- ПЛЕЕР YOUTUBE С КОРРЕКТНЫМ СТАРТОМ -->
                 <div class="video-wrapper">
                     <iframe 
                         src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" 
@@ -261,7 +257,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
@@ -275,7 +270,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 6: KONTAKT -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>Kontakt</h2>
