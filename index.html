@@ -67,7 +67,7 @@
         .hero-right { flex: 1; height: calc(100vh - 110px); display: flex; align-items: center; justify-content: flex-end; }
         .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
-        /* Сетка преимуществ */
+        /* Сетка преимуществ с иконками */
         .icon-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -82,7 +82,7 @@
             color: var(--dark); 
             min-height: 56px; 
         }
-        /* Все логотипы крупные, сочные и в один размер */
+        /* Все 4 графических логотипа приведены к красивому крупному размеру */
         .icon-box img { 
             height: 56px; 
             width: auto; 
@@ -175,6 +175,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO (ГЛАВНАЯ) -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -186,6 +187,7 @@
                     <a href="#ceramika" class="btn btn-outline">Poznaj rozwiązania</a>
                 </div>
                 
+                <!-- ГОТОВАЯ СЕТКА: ВСЕ ЧЕТЫРЕ ГРАФИЧЕСКИХ ЛОГОТИПА ИНТЕГРИРОВАНЫ -->
                 <div class="icon-grid">
                     <div class="icon-box">
                         <img src="img/logo.swiss1.png" alt="Swiss Technology">
@@ -202,7 +204,10 @@
                         Ochrona 360°
                     </div>
                     
-                    <div class="icon-box">📍 Autoryzowane Punkty</div>
+                    <div class="icon-box">
+                        <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
+                        Autoryzowane Punkty
+                    </div>
                 </div>
             </div>
             <div class="hero-right">
@@ -211,6 +216,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" class="bg-gray">
         <div class="container split-section">
             <div>
@@ -230,6 +236,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container split-section">
             <div>
@@ -253,6 +260,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container split-section">
             <div>
@@ -284,11 +292,12 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
                 <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
+                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktizuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
                     <a href="#" class="btn btn-outline-light">Autoryzowane Punkty</a>
@@ -297,9 +306,10 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 6: KONTAKT -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
-            <h2>Contact</h2>
+            <h2>Kontakt</h2>
             <h3 class="red-subtitle">Umów wizytę w naszym centrum</h3>
             <div class="contact-grid">
                 <div class="contact-info">
