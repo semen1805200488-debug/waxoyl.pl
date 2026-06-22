@@ -36,35 +36,6 @@
         .split-section { display: flex; align-items: center; gap: 60px; }
         .split-section > div { flex: 1; }
         
-        /* Специальные асимметричные пропорции для секции Керамики */
-        .ceramika-split {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        .ceramika-media {
-            flex: 0 0 55%; /* Картинка теперь забирает 55% ширины вместо 50% */
-        }
-        .ceramika-content {
-            flex: 0 0 45%; /* Текст аккуратно занимает оставшиеся 45% */
-        }
-        .ceramika-img-wrapper {
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
-            transition: var(--transition);
-        }
-        .ceramika-img-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        /* Эффект интерактивности при наведении на блок с картинкой */
-        .ceramika-img-wrapper:hover img {
-            transform: scale(1.02);
-        }
-        
         /* Backgrounds */
         .bg-gray { background-color: var(--gray); }
         .bg-dark { background-color: var(--dark); color: var(--light); }
@@ -191,10 +162,6 @@
             .split-section { flex-direction: column !important; gap: 30px !important; text-align: center !important; }
             .split-section > div { width: 100% !important; }
             
-            /* В керамике пропорции сбрасываются в 100% на мобильных */
-            .ceramika-split { flex-direction: column-reverse !important; gap: 30px !important; text-align: center !important; }
-            .ceramika-media, .ceramika-content { flex: 0 0 100% !important; width: 100% !important; }
-            
             .features-list li { text-align: left !important; font-size: 0.95rem !important; }
             .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
             .cta-banner { padding: 40px 20px !important; }
@@ -230,7 +197,7 @@
             <div class="hero-left">
                 <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
                 <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
-                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
+                <p>Od ochrony lakieru i tapecerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
                 <div class="btn-group">
                     <a href="#kontakt" class="btn btn-primary">Umów konsultację</a>
                     <a href="#ceramika" class="btn btn-outline">Poznaj rozwiązania</a>
@@ -284,16 +251,20 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA (ОБНОВЛЕННЫЕ ПРОПОРЦИИ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНКИ) -->
+    <!-- СЕКЦИЯ 3: CERAMIKA (ЖЕСТКОЕ ФИКСИРОВАННОЕ УВЕЛИЧЕНИЕ КАРТИНКИ) -->
     <section id="ceramika">
-        <div class="container">
-            <div class="ceramika-split">
-                <div class="ceramika-media">
-                    <div class="ceramika-img-wrapper">
-                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
+                
+                <!-- Картинка: железно занимает 58% общей ширины экрана -->
+                <div style="flex: 0 0 58%; min-width: 300px;">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18);">
+                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
-                <div class="ceramika-content">
+                
+                <!-- Текст: аккуратно занимает 38% ширины -->
+                <div style="flex: 0 0 38%; min-width: 300px;">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
                     <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
@@ -308,6 +279,7 @@
                         <a href="#kontakt" class="btn btn-primary">Umów zabezpieczenie lakieru</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -348,7 +320,7 @@
     <section>
         <div class="container">
             <div class="cta-banner">
-                <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
+                <h2 style="color: white;">Zadbaj o pełną ochronę своего auta już dziś</h2>
                 <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
