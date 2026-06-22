@@ -1,131 +1,21 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl Polska</title>
-    <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #D60000;
-            --primary-hover: #b30000;
-            --dark: #111111;
-            --darker: #0a0a0a;
-            --light: #ffffff;
-            --gray: #f5f5f5;
-            --text: #333333;
-            --text-light: #777777;
-            --font: 'Montserrat', sans-serif;
-            --transition: all 0.3s ease;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { font-family: var(--font); color: var(--text); background-color: var(--light); line-height: 1.6; -webkit-text-size-adjust: 100%; }
-        
-        /* Typography */
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
-        h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; color: var(--dark); }
-        h3.red-subtitle { color: var(--primary); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-light); }
-        
-        /* Layout */
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 100px 0; }
-        
-        /* Buttons */
-        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; }
-        .btn-primary { background-color: var(--primary); color: var(--light); border: none; }
-        .btn-primary:hover { background-color: var(--primary-hover); }
-        .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
-        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-
-        /* Navigation */
-        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 35px; width: auto; }
-        nav ul { list-style: none; display: flex; gap: 25px; }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
-
-        /* Sections */
-        .hero { padding-top: 150px; min-height: 100vh; display: flex; align-items: center; }
-        .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; flex-wrap: wrap; }
-        .hero-left { flex: 1; max-width: 700px; padding: 40px; }
-        .hero-right { flex: 1; display: flex; justify-content: center; }
-        .hero-img-full { width: 100%; max-width: 600px; height: auto; }
-
-        .split-row { display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap; }
-        .split-col-text { flex: 1; min-width: 300px; }
-        .split-col-media { flex: 1; min-width: 300px; display: flex; justify-content: center; }
-        .split-col-media img { width: 100%; max-width: 500px; height: auto; border-radius: 12px; }
-        
-        .features-list { list-style: none; margin-bottom: 30px; }
-        .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; }
-        .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
-        
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 30px; width: 100%; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        
-        .map-wrapper { position: relative; padding-bottom: 40%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 20px; }
-        .map-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .form-control { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
-        footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; }
-
-        @media (max-width: 992px) { .hero-split, .split-row, .contact-grid { flex-direction: column; } }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo"><img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl"> WAXOYL POLSKA</a>
-            <nav>
-                <ul>
-                    <li><a href="#ceramika">Ceramika</a></li>
-                    <li><a href="#antykorozja">Antykorozja</a></li>
-                    <li><a href="#silnik">Silnik</a></li>
-                    <li><a href="#tapicerka">Tapicerka</a></li>
-                    <li><a href="#punkty">Punkty</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="ceramika">
-        <div class="container">
-            <div class="split-row">
-                <div class="split-col-media">
-                    <img src="img/ceramika.png.png" alt="Ceramika">
-                </div>
-                <div class="split-col-text">
-                    <h2>Ceramiczna Ochrona Lakieru</h2>
-                    <ul class="features-list">
-                        <li>Głęboki, lustrzany połysk</li>
-                        <li>Efekt samooczyszczania</li>
-                        <li>Silny efekt hydrofobowy</li>
-                    </ul>
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" title="Video" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="silnik">
+<section id="silnik">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie i wydłuża żywotność przewodów gumowych.</p>
+                    <h3 class="red-subtitle">Zabezpieczenie komory silnika</h3>
+                    <p>Środek konserwujący, który tworzy antystatyczny i hydrofobowy film ochronny. Odporny na wysokie temperatury, zapewnia świeży, zadbany wygląd oraz wydłuża żywotność elementów[cite: 9, 10, 11, 13, 15].</p>
+                    <ul class="features-list">
+                        <li>Działa antykorozyjnie na metale i chroni złącza elektryczne przed utlenianiem[cite: 14].</li>
+                        <li>Nadaje elastyczności wężom gumowym i przewodom[cite: 15].</li>
+                        <li>Odnawia matowe powierzchnie plastikowe i wykazuje działanie smarujące[cite: 12, 16].</li>
+                    </ul>
+                    <div class="btn-group">
+                        <a href="#kontakt" class="btn btn-primary">ZABEZPIECZ SILNIK</a>
+                    </div>
                 </div>
                 <div class="split-col-media">
-                    <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care">
+                    <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Waxoyl Motor Care">
                 </div>
             </div>
         </div>
@@ -135,46 +25,21 @@
         <div class="container">
             <div class="split-row">
                 <div class="split-col-media">
-                    <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="Tapicerka">
+                    <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="Waxoyl U.P.T. Impregnacja tapicerki">
                 </div>
                 <div class="split-col-text">
-                    <h2>U.P.T. Impregnacja</h2>
-                    <p>Niewidzialna bariera ochronna dla włókien. Chroni przed rozlanymi płynami, olejem i brudem, nie zmieniając wyglądu tapicerki.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="punkty">
-        <div class="container">
-            <h2>Autoryzowane Punkty</h2>
-            <p>Sprawdź, gdzie możesz wykonać profesjonalny serwis Waxoyl.</p>
-        </div>
-    </section>
-
-    <section id="kontakt" class="bg-gray">
-        <div class="container">
-            <h2>KONTAKT</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
-                    <p>📞 58 343 26 66</p>
-                    <div class="map-wrapper">
-                        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
+                    <h2>U.P.T. Impregnacja tapicerki</h2>
+                    <h3 class="red-subtitle">Hydrofobowa ochrona włókien</h3>
+                    <p>Waxoyl U.P.T. tworzy niewidzialną barierę, która zabezpiecza pojedyncze włókna materiału, zamiast tworzyć sztywną warstwę na powierzchni[cite: 1, 4, 5].</p>
+                    <ul class="features-list">
+                        <li>Bardzo wysoka hydrofobowość chroni przed rozlanymi napojami, olejem i brudem[cite: 2, 3].</li>
+                        <li>Redukuje tarcie pomiędzy włóknami, znacząco wydłużając żywotność tapicerki[cite: 5].</li>
+                        <li>Produkt bezpieczny dla środowiska, spełniający wymogi REACH[cite: 8].</li>
+                    </ul>
+                    <div class="btn-group">
+                        <a href="#kontakt" class="btn btn-primary">ZABEZPIECZ TAPICERKĘ</a>
                     </div>
                 </div>
-                <div>
-                    <form action="https://formspree.io/f/mojoqvoo" method="POST">
-                        <input type="text" name="Imię" class="form-control" placeholder="Imię" style="margin-bottom: 15px;" required>
-                        <textarea name="Wiadomość" class="form-control" rows="5" style="margin-bottom: 15px;"></textarea>
-                        <button type="submit" class="btn btn-primary">WYŚLIJ</button>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
-
-    <footer><p>© 2026 Waxoyl Polska. Wszelkie prawa zastrzeżone.</p></footer>
-
-</body>
-</html>
