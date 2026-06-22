@@ -88,13 +88,39 @@
             flex-shrink: 0; 
         }
 
+        /* Новые стили для секции "O Nas" и двухколоночных блоков */
+        .split-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .split-col-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .split-col-media {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .split-col-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
         /* Features */
         .features-list { list-style: none; margin-bottom: 30px; }
         .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
         /* Video Wrapper */
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; width: 100%; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
         /* Адаптивный контейнер для интерактивной карты Google */
@@ -179,6 +205,7 @@
             .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
             .cta-banner { padding: 40px 20px !important; }
             .map-wrapper { padding-bottom: 75% !important; }
+            .split-row { gap: 30px !important; }
         }
     </style>
 </head>
@@ -203,6 +230,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO (ГЛАВНАЯ) -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -242,11 +270,13 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS (ИСПРАВЛЕНО - КАРТИНКА ТЕПЕРЬ КРУПНАЯ) -->
     <section id="o-nas">
         <div class="container">
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap;">
+            <div class="split-row">
                 
-                <div style="flex: 1; min-width: 300px; max-width: 650px;">
+                <!-- Текст слева -->
+                <div class="split-col-text">
                     <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
                     <p style="color: #222; font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
                     <ul class="features-list" style="margin-bottom: 35px;">
@@ -258,25 +288,29 @@
                     <a href="#kontakt" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
                 </div>
                 
-                <div style="flex: 1; min-width: 300px; display: flex; justify-content: flex-end;">
-                    <img src="img/2strona.png" alt="Waxoyl Ochrona" style="width: 100%; max-width: 650px; height: auto; display: block; object-fit: contain;">
+                <!-- Картинка справа -->
+                <div class="split-col-media">
+                    <img src="img/2strona.png" alt="Waxoyl Ochrona">
                 </div>
                 
             </div>
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
-            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
+            <div class="split-row">
                 
-                <div style="flex: 1; min-width: 300px;">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18);">
-                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" style="width: 100%; height: auto; display: block;">
+                <!-- Картинка слева -->
+                <div class="split-col-media">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
+                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
                     </div>
                 </div>
                 
-                <div style="flex: 1; min-width: 300px;">
+                <!-- Текст справа -->
+                <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
                     <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
@@ -296,14 +330,16 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
-            <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
+            <div class="split-row">
                 
-                <div style="flex: 1; min-width: 300px;">
+                <!-- Текст и видео слева -->
+                <div class="split-col-text">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronную.</p>
+                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
                     <ul class="features-list" style="color: var(--light);">
                         <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                         <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
@@ -324,9 +360,10 @@
                     </div>
                 </div>
                 
-                <div style="flex: 1; min-width: 300px;">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" style="width: 100%; height: auto; display: block;">
+                <!-- Картинка справа -->
+                <div class="split-col-media">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
+                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl">
                     </div>
                 </div>
 
@@ -334,6 +371,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 5: CTA BANNER -->
     <section>
         <div class="container">
             <div class="cta-banner">
@@ -347,6 +385,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 6: KONTAKT -->
     <section id="kontakt" class="bg-gray">
         <div class="container">
             <h2>KONTAKT</h2>
