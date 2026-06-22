@@ -70,22 +70,23 @@
         .icon-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 25px 20px; 
+            gap: 30px 25px; 
             margin-top: 40px; 
         }
         .icon-box { 
             display: flex; 
             align-items: center; 
-            gap: 15px; 
+            gap: 20px; 
             font-weight: 700; 
             color: var(--dark); 
             min-height: 56px; 
         }
         .icon-box img { 
-            height: 30px; 
+            height: 45px; /* Увеличено с 30px для лучшего баланса */
             width: auto; 
             display: block; 
             flex-shrink: 0; 
+            object-fit: contain;
         }
 
         /* Новые стили для секции "O Nas" и двухколоночных блоков */
@@ -203,10 +204,10 @@
             .btn-group { flex-direction: column !important; gap: 15px !important; margin-top: 25px !important; }
             .btn { width: 100% !important; padding: 16px 20px !important; font-size: 1rem !important; }
             
-            /* Делаем иконки аккуратной плашкой на мобильном */
+            /* Настройки плашки иконок на мобильном */
             .icon-grid { grid-template-columns: 1fr !important; gap: 15px !important; background: var(--gray); padding: 25px; border-radius: 12px; margin-top: 30px; justify-items: flex-start !important; text-align: left !important; }
             .icon-box { min-height: auto !important; width: 100%; justify-content: flex-start; font-size: 1rem !important; gap: 20px; }
-            .icon-box img { height: 26px !important; }
+            .icon-box img { height: 38px !important; } /* Увеличено с 26px для мобильных телефонов */
             
             .hero-right { width: 100% !important; height: auto !important; margin-top: 10px !important; }
             .hero-img-full { height: auto !important; max-height: 40vh !important; width: 100% !important; border-radius: 12px; object-fit: cover !important; }
@@ -214,10 +215,8 @@
             .split-row { flex-direction: column !important; gap: 30px !important; }
             .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; text-align: center; }
             
-            /* КРИТИЧНО: на мобильных картинка ВСЕГДА будет идти над текстом, чтобы не было сплошной стены текста */
             .split-col-media { order: -1; }
             
-            /* Исправляем секцию O Nas для мобилок */
             #o-nas .hero-right img { border-radius: 12px; }
             #o-nas .hero-left { padding-bottom: 20px !important; }
 
@@ -291,11 +290,10 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS (КАРТИНКА НА ВСЮ ПРАВУЮ ПОЛОВИНУ) -->
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             
-            <!-- Текст слева -->
             <div class="hero-left" style="padding-bottom: 0;">
                 <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
                 <p style="color: #222; font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
@@ -310,7 +308,6 @@
                 </div>
             </div>
             
-            <!-- Картинка справа -->
             <div class="hero-right split-col-media" style="height: auto; align-self: stretch;">
                 <img src="img/2strona.png" alt="Waxoyl Ochrona" class="hero-img-full" style="object-fit: cover; height: 100%; width: 100%;">
             </div>
@@ -323,14 +320,12 @@
         <div class="container">
             <div class="split-row">
                 
-                <!-- Картинка слева -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
                     </div>
                 </div>
                 
-                <!-- Текст справа -->
                 <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
@@ -356,7 +351,6 @@
         <div class="container">
             <div class="split-row">
                 
-                <!-- Текст и видео слева -->
                 <div class="split-col-text">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
@@ -381,7 +375,6 @@
                     </div>
                 </div>
                 
-                <!-- Картинка справа -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
                         <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl">
@@ -397,7 +390,6 @@
         <div class="container">
             <div class="split-row">
                 
-                <!-- Текст слева -->
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
@@ -408,7 +400,6 @@
                     </div>
                 </div>
                 
-                <!-- Картинка справа -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika">
@@ -424,14 +415,12 @@
         <div class="container">
             <div class="split-row">
                 
-                <!-- Картинка слева -->
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="U.P.T. Impregnacja Tapicerki">
                     </div>
                 </div>
 
-                <!-- Текст справа -->
                 <div class="split-col-text">
                     <h2>U.P.T. Impregnacja</h2>
                     <h3 class="red-subtitle">Ochrona Wnętrza</h3>
@@ -451,7 +440,7 @@
         <div class="container">
             <div class="cta-banner">
                 <h2 style="color: white;">ZADBAJ O PEŁNĄ OCHRONĘ SWOJEGO AUTA JUŻ DZIŚ</h2>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
+                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najboljze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="#kontakt" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
                     <a href="https://www.google.com/maps/d/viewer?mid=1OvSl7OttrdsVqu_gwBz5ZzHGxKe77GE&femb=1&ll=52.137810614401545%2C18.900656184781507&z=7" target="_blank" class="btn btn-outline-light">AUTORYZOWANE PUNKTY</a>
