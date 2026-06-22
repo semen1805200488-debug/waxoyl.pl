@@ -82,7 +82,6 @@
             color: var(--dark); 
             min-height: 56px; 
         }
-        /* Все 4 графических логотипа приведены к красивому крупному размеру */
         .icon-box img { 
             height: 56px; 
             width: auto; 
@@ -98,6 +97,25 @@
         /* Video Wrapper */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-top: 30px; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Адаптивный контейнер для интерактивной карты Google */
+        .map-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Пропорции 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         /* CTA Banner */
         .cta-banner { border-radius: 16px; padding: 80px; text-align: center; background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%); }
@@ -150,6 +168,7 @@
             .features-list li { text-align: left !important; font-size: 0.95rem !important; }
             .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
             .cta-banner { padding: 40px 20px !important; }
+            .map-wrapper { padding-bottom: 75% !important; /* Чуть выше карту на мобильных */ }
         }
     </style>
 </head>
@@ -187,7 +206,6 @@
                     <a href="#ceramika" class="btn btn-outline">Poznaj rozwiązania</a>
                 </div>
                 
-                <!-- ГОТОВАЯ СЕТКА: ВСЕ ЧЕТЫРЕ ГРАФИЧЕСКИХ ЛОГОТИПА ИНТЕГРИРОВАНЫ -->
                 <div class="icon-grid">
                     <div class="icon-box">
                         <img src="img/logo.swiss1.png" alt="Swiss Technology">
@@ -266,7 +284,7 @@
             <div>
                 <h2>Profesjonalna Antykorozja</h2>
                 <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
+                <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronную.</p>
                 <ul class="features-list" style="color: var(--light);">
                     <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                     <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
@@ -297,7 +315,7 @@
         <div class="container">
             <div class="cta-banner">
                 <h2 style="color: white;">Zadbaj o pełną ochronę swojego auta już dziś</h2>
-                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktizuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
+                <p style="color: #ccc; max-width: 600px; margin: 0 auto 30px;">Skontaktuj się z nami i dobierz najlepsze rozwiązania ochronne dopasowane do Twojego pojazdu i stylu jazdy.</p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
                     <a href="#" class="btn btn-outline-light">Autoryzowane Punkty</a>
@@ -316,8 +334,15 @@
                     <p>📍 ul. Rzemieślnicza 35, 81-856 Sopot</p>
                     <p>📞 58 343 26 66</p>
                     <p>✉️ waxoyl@waxoyl.pl</p>
-                    <div style="margin-top: 40px;">
-                        <img src="https://via.placeholder.com/600x300/ddd/333?text=Google+Maps+Sopot" alt="Mapa Sopot" style="width: 100%; border-radius: 8px;">
+                    
+                    <!-- ИНТЕГРАЦИЯ ИНТЕРАКТИВНОЙ КАРТЫ GOOGLE С ТОЧНЫМ АДРЕСОМ -->
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2320.640243110293!2d18.5529452!3d54.4344469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda73b75a1d7f1%3A0xc319409ffcbb52db!2sul.%20Rzemie%C5%9Blnicza%2035%2C%2081-856%20Sopot!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
                 <div>
