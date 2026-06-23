@@ -107,7 +107,7 @@
         .hamburger-btn.open span:nth-child(2) { opacity: 0; }
         .hamburger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-        /* УЛЬТРА-НАДЕЖНОЕ МОБИЛЬНОЕ МЕНЮ (Скрыто по умолчанию через opacity/visibility) */
+        /* УЛЬТРА-НАДЕЖНОЕ МОБИЛЬНОЕ МЕНЮ */
         .mobile-overlay {
             position: fixed;
             top: 0;
@@ -121,9 +121,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 60px; /* Чтобы ссылки не залезали под шапку */
+            padding-top: 60px;
             
-            /* Скрытое состояние с безопасной анимацией */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -131,7 +130,6 @@
             transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
         }
         
-        /* Активное состояние мобильного меню */
         .mobile-overlay.active {
             opacity: 1;
             visibility: visible;
@@ -325,8 +323,8 @@
             .logo-title { font-size: 1.3rem !important; }
             .logo-subtitle { font-size: 0.6rem !important; }
             
-            /* Скрываем горизонтальное меню */
-            nav { display: none !important; }
+            /* ИСПРАВЛЕНО: Скрываем ТОЛЬКО компьютерное навигационное меню в шапке, мобильный nav теперь не пострадает */
+            header nav { display: none !important; }
             
             /* Включаем кнопку гамбургера */
             .hamburger-btn { display: flex !important; }
@@ -399,7 +397,6 @@
                 </div>
             </a>
             
-            <!-- Десктопное меню -->
             <nav>
                 <ul>
                     <li><a href="#home">O Waxoyl</a></li>
@@ -410,7 +407,6 @@
                 </ul>
             </nav>
 
-            <!-- Кнопка Гамбургера -->
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -419,7 +415,6 @@
         </div>
     </header>
 
-    <!-- Исправленная полноэкранная шторка меню -->
     <div class="mobile-overlay" id="mobileOverlay">
         <nav class="mobile-nav">
             <ul>
@@ -432,13 +427,12 @@
         </nav>
     </div>
 
-    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
                 <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
                 <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
-                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
+                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej exploatacji.</p>
                 
                 <div class="btn-group">
                     <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
@@ -472,7 +466,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             <div class="hero-left" style="padding-bottom: 0;">
@@ -494,7 +487,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
@@ -521,7 +513,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
@@ -555,14 +546,13 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych i znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń электрических и значительно ведут к увеличению срока службы эластичных элементов.</p>
                     <div class="btn-group">
                         <a href="#" class="btn btn-primary">Zabezpiecz silnik</a>
                     </div>
@@ -576,7 +566,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
@@ -603,7 +592,6 @@
         </div>
     </footer>
 
-    <!-- СТРУКТУРА LIGHTBOX МОДАЛКИ -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">×</span>
         <img class="image-modal-content" id="modalTargetImg">
@@ -651,7 +639,6 @@
                 document.body.style.overflow = "";
             });
         });
-
 
         // СКРИПТ УВЕЛИЧЕНИЯ КАРТИНОК ПО КЛИКУ (LIGHTBOX)
         const modal = document.getElementById("customImageModal");
