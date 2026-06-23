@@ -550,8 +550,8 @@
                 border-radius: 3px;
             }
             
-            .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; }
-            .hero-img-full { max-height: 28vh !important; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+            .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; padding: 0 20px !important; }
+            .hero-img-full { max-height: 35vh !important; border-radius: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transform: translateY(10px); }
 
             /* VIDEO PERFORMANCE OPTIMIZATION FOR SMARTPHONES */
             .video-section { 
@@ -584,7 +584,13 @@
             .modal-tip { display: block; }
             footer { padding: 35px 0 !important; font-size: 0.78rem; margin-bottom: 4px; }
         }
-    </style>
+    
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+</style>
 </head>
 <body>
 
