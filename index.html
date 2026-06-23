@@ -6,9 +6,7 @@
     <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl</title>
     <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
     
-    <!-- Ikonka вкладки настроена под ваш файл favicon.jpg -->
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +36,6 @@
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         section { padding: 100px 0; }
         
-        /* Backgrounds */
         .bg-gray { background-color: var(--gray); }
         .bg-dark { background-color: var(--dark); color: var(--light); }
         .bg-dark h2, .bg-dark p { color: var(--light); }
@@ -51,15 +48,13 @@
         .btn-outline:hover { background-color: var(--dark); color: var(--light); }
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
 
-        /* Navigation (Логотип снова слева, меню справа) */
+        /* Navigation */
         header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
-        /* Логотип слева, но текст внутри центрирован */
         .logo { text-decoration: none; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         .logo img { height: 45px; width: auto; display: block; }
         
-        /* Центрирование WAXOYL над PROFESSIONAL CAR CARE */
         .logo-text { display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.1; }
         .logo-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
         .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
@@ -76,7 +71,7 @@
         .hero-right { flex: 1; height: calc(100vh - 110px); display: flex; align-items: center; justify-content: flex-end; }
         .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
-        /* Сетка преимуществ с иконками */
+        /* Сетка преимуществ */
         .icon-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -99,7 +94,7 @@
             object-fit: contain;
         }
 
-        /* Двухколоночные blocks */
+        /* Двухколоночные блоки */
         .split-row {
             display: flex;
             align-items: center;
@@ -125,6 +120,15 @@
             object-fit: contain;
         }
 
+        /* Опция увеличения картинок при клике (Курсор-лупа) */
+        .zoomable-img {
+            cursor: zoom-in;
+            transition: opacity 0.2s ease;
+        }
+        .zoomable-img:hover {
+            opacity: 0.95;
+        }
+
         /* Features */
         .features-list { list-style: none; margin-bottom: 30px; }
         .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
@@ -135,6 +139,66 @@
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
+
+        /* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА УВЕЛИЧЕНИЯ (LIGHTBOX) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(5px);
+        }
+        .image-modal-content {
+            margin: auto;
+            display: block;
+            width: 95%;
+            max-width: 1200px;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            animation: zoomInEffect 0.25s ease;
+        }
+        @keyframes zoomInEffect {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .image-modal-close:hover {
+            background: var(--primary);
+        }
+        .image-modal-hint {
+            text-align: center;
+            color: #ccc;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 992px) {
@@ -196,7 +260,22 @@
             .split-row { flex-direction: column !important; gap: 30px !important; }
             .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; text-align: center; }
             
-            .split-col-media { order: -1; }
+            /* КАРТИНКИ НА МОБИЛЬНЫХ: убираем боковые поля сайта для инфографик, чтобы сделать их максимально крупными */
+            .split-col-media { 
+                order: -1; 
+                width: 100vw !important;
+                margin-left: -15px !important;
+                margin-right: -15px !important;
+            }
+            .split-col-media div {
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                width: 100% !important;
+            }
+            .split-col-media img {
+                border-radius: 0 !important;
+                width: 100% !important;
+            }
             
             #o-nas .hero-right img { border-radius: 12px; }
             #o-nas .hero-left { padding-bottom: 20px !important; }
@@ -210,7 +289,6 @@
 
     <header>
         <div class="nav-container">
-            <!-- Логотип слева, текст внутри красиво отцентрирован -->
             <a href="#home" class="logo">
                 <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
                 <div class="logo-text">
@@ -298,7 +376,8 @@
             <div class="split-row">
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru">
+                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
+                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img">
                     </div>
                 </div>
                 <div class="split-col-text">
@@ -346,7 +425,8 @@
                 </div>
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
-                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl">
+                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
+                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img">
                     </div>
                 </div>
             </div>
@@ -367,7 +447,8 @@
                 </div>
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika">
+                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
+                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img">
                     </div>
                 </div>
             </div>
@@ -380,7 +461,8 @@
             <div class="split-row">
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="U.P.T. Impregnacja Tapicerki">
+                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
+                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="U.P.T. Impregnacja Tapicerki" class="zoomable-img">
                     </div>
                 </div>
                 <div class="split-col-text">
@@ -401,7 +483,15 @@
         </div>
     </footer>
 
+    <!-- ЭЛЕМЕНТЫ МОДАЛЬНОГО ОКНА ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК -->
+    <div id="customImageModal" class="image-modal">
+        <span class="image-modal-close">×</span>
+        <img class="image-modal-content" id="modalTargetImg">
+        <div class="image-modal-hint">Kliknij w dowolnym miejscu, aby zamknąć</div>
+    </div>
+
     <script>
+        // Плавный скролл меню
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -412,6 +502,29 @@
                     });
                 }
             });
+        });
+
+        // Скрипт увеличения инфографик (Lightbox)
+        const modal = document.getElementById("customImageModal");
+        const modalImg = document.getElementById("modalTargetImg");
+        const closeBtn = document.querySelector(".image-modal-close");
+        
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        });
+
+        // Закрытие по крестику или по клику на область вокруг картинки
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+        
+        modal.addEventListener('click', function(e) {
+            if(e.target === modal || e.target === modalImg || e.target === closeBtn) {
+                modal.style.display = "none";
+            }
         });
     </script>
 </body>
