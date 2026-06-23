@@ -572,7 +572,7 @@
 
     <section id="o-nas" class="video-section">
         <video autoplay muted loop playsinline class="video-bg">
-            <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
+            <source src="6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео.
         </video>
         
@@ -689,83 +689,3 @@
                     </div>
                 </div>
                 <div class="split-col-text">
-                    <h2>Zabezpieczenie silnika</h2>
-                    <h3 class="red-subtitle">Ochrona komponentów przed korozją</h3>
-                    <p>Specjalistyczny preparat <strong>Waxoyl Motor Care</strong> zabezpiecza elementy silnika, wiązki elektryczne i podzespoły przed wpływem wilgoci, soli oraz utlenianiem.</p>
-                    <ul class="features-list">
-                        <li>Antykorozyjna ochrona wszystkich elementów pod maską</li>
-                        <li>Trwałość w trudnych warunkach termicznych (wysoka temperatura)</li>
-                        <li>Bezpieczeństwo dla przewodów gumowych i plastikowych</li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#tapicerka" class="btn btn-primary">OCHRONA TAPICERKI</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 WAXOYL. Wszelkie prawa zastrzeżone.</p>
-    </footer>
-
-    <div id="imageModal" class="image-modal">
-        <span class="image-modal-close">&times;</span>
-        <img class="image-modal-content" id="modalImg">
-    </div>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                if(document.getElementById('mobileOverlay').classList.contains('active')) {
-                    toggleMobileMenu();
-                }
-            });
-        });
-
-        // Mobile menu
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        
-        function toggleMobileMenu() {
-            hamburgerBtn.classList.toggle('open');
-            mobileOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : 'auto';
-        }
-        
-        hamburgerBtn.addEventListener('click', toggleMobileMenu);
-
-        // Accordion
-        function toggleAccordion(btn) {
-            const item = btn.parentElement;
-            item.classList.toggle('active');
-        }
-
-        // Modal
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
-        const closeBtn = document.querySelector(".image-modal-close");
-
-        document.querySelectorAll('.zoomable-img').forEach(img => {
-            img.onclick = function() {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
-        });
-
-        closeBtn.onclick = function() { modal.style.display = "none"; }
-        window.onclick = function(event) { if(event.target == modal) modal.style.display = "none"; }
-
-        // Scroll Progress
-        window.onscroll = function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("scrollProgress").style.width = scrolled + "%";
-        };
-    </script>
-</body>
-</html>
