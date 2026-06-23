@@ -238,6 +238,60 @@
             object-fit: contain;
         }
 
+        /* СЕКЦИЯ С ВИДЕО-ФОНОМ (O NAS) */
+        .video-section {
+            position: relative;
+            width: 100%;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: var(--darker);
+            padding: 80px 0;
+        }
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .video-overlay-tint {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 100%);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 2;
+        }
+        .video-section-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            color: var(--light);
+            padding: 0 40px;
+        }
+        .video-section-content h2, .video-section-content h3 { color: var(--light) !important; }
+        .video-section-content p { color: #e5e5ea !important; font-weight: 500; margin-bottom: 30px; }
+        .video-section-content .features-list {
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+        .video-section-content .features-list li { color: var(--light); font-weight: 600; }
+
         /* Двухколоночные блоки */
         .split-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
         .split-col-text { flex: 1; min-width: 350px; }
@@ -367,12 +421,12 @@
         }
         .image-modal-close:hover { background: rgba(255,255,255,0.15); }
 
-        /* ТАКТИЛЬНЫЙ ФИДБЕК НА СМАРТФОНАХ (Упругое нажатие элементов) */
+        /* ТАКТИЛЬНЫЙ ФИДБЕК НА СМАРТФОНАХ */
         .btn:active, .tech-trigger:active {
             transform: scale(0.98);
         }
 
-        /* ГЛУБОКАЯ МОБИЛЬНАЯ ОПТИМИЗАЦИЯ СМАРТФОНОВ (Уровень Apple/Porsche UI) */
+        /* ГЛУБОКАЯ МОБИЛЬНАЯ ОПТИМИЗАЦИЯ СМАРТФОНОВ */
         @media (max-width: 992px) {
             html, body { overflow-x: hidden; width: 100%; }
             
@@ -403,13 +457,13 @@
             .btn-group { margin-top: 10px !important; }
             .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.88rem !important; border-radius: 10px; }
             
-            /* ИННОВАЦИОННАЯ ГОРИЗОНТАЛЬНАЯ ЛЕНТА ПРЕИМУЩЕСТВ (Native iOS-like Carousel) */
+            /* ИННОВАЦИОННАЯ ГОРИЗОНТАЛЬНАЯ ЛЕНТА ПРЕИМУЩЕСТВ */
             .icon-grid { 
                 display: flex !important; 
                 flex-direction: row !important;
                 overflow-x: auto !important; 
                 scroll-snap-type: x mandatory !important;
-                -webkit-overflow-scrolling: touch !important; /* Плавный инерционный скролл в Safari */
+                -webkit-overflow-scrolling: touch !important;
                 gap: 14px !important; 
                 padding: 10px 24px 25px 24px !important; 
                 margin-left: -24px !important; 
@@ -417,11 +471,10 @@
                 margin-top: 32px !important;
                 scroll-behavior: smooth;
             }
-            /* Прячем дефолтный скроллбар */
             .icon-grid::-webkit-scrollbar { display: none; }
             
             .icon-box { 
-                flex: 0 0 78% !important; /* Карточка занимает 78% ширины экрана, следующая слегка выглядывает */
+                flex: 0 0 78% !important;
                 scroll-snap-align: start !important;
                 background: #ffffff;
                 border: 1px solid rgba(0, 0, 0, 0.05);
@@ -434,16 +487,21 @@
                 gap: 16px !important; 
             }
             .icon-box img { height: 34px !important; }
-            .icon-box:active { transform: scale(0.97); }
             
             .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; }
             .hero-img-full { max-height: 28vh !important; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+            /* Настройка мобильной секции с видео */
+            .video-section { min-height: 60vh !important; padding: 40px 0 !important; }
+            .video-section-content { padding: 0 24px !important; }
+            .video-section-content p { text-align: center !important; font-size: 0.95rem !important; }
+            .video-section-content .features-list { display: block !important; margin-bottom: 24px !important; }
+            .video-section-content .features-list li { font-size: 0.92rem !important; margin-bottom: 8px !important; }
 
             /* Реструктуризация секций каталога */
             .split-row { flex-direction: column !important; gap: 28px !important; }
             .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; }
             
-            /* Изображение сверху контента для мобильной иерархии */
             .split-col-media { order: -1; width: 100% !important; }
             .split-col-media div { border-radius: 12px !important; }
             .split-col-media img { border-radius: 12px !important; }
@@ -451,16 +509,12 @@
             .features-list { margin-bottom: 24px !important; }
             .features-list li { font-size: 0.95rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; padding-left: 28px !important; }
             
-            #o-nas .hero-right img { border-radius: 12px; max-height: 28vh; width: 100%; object-fit: cover; }
-            #o-nas .hero-left { padding-bottom: 0 !important; }
-            
             footer { padding: 35px 0 !important; font-size: 0.78rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Линия прогресса изучения презентации -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <header>
@@ -491,7 +545,6 @@
         </div>
     </header>
 
-    <!-- ИНТЕРАКТИВНОЕ МОБИЛЬНОЕ МЕНЮ БЕЗ КОНТАКТОВ -->
     <div class="mobile-overlay" id="mobileOverlay">
         <nav class="mobile-nav">
             <ul>
@@ -504,7 +557,6 @@
         </nav>
     </div>
 
-    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -516,7 +568,6 @@
                     <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
                 </div>
                 
-                <!-- Мобильная свайп-лента преимуществ -->
                 <div class="icon-grid">
                     <div class="icon-box">
                         <img src="img/logo.swiss1.png" alt="Swiss Technology">
@@ -542,29 +593,31 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS -->
-    <section id="o-nas" style="padding-top: 40px; padding-bottom: 40px; overflow: hidden; background-color: var(--light);">
-        <div class="hero-split">
-            <div class="hero-left">
-                <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
-                <p style="font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
-                <ul class="features-list">
-                    <li style="font-weight: 600;">Trwałość w ekstremalnych warunkach klimatycznych</li>
-                    <li style="font-weight: 600;">Globalne zaufanie ekspertów detailingowych i OEM</li>
-                    <li style="font-weight: 600;">Certyfikowane technologie i bezpieczne preparaty</li>
-                    <li style="font-weight: 600;">Zabezpieczenie długoterminowej wartości rynkowej pojazdu</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="#ceramika" class="btn btn-primary">ZOBACZ KATALOG PRODUKTÓW</a>
-                </div>
-            </div>
-            <div class="hero-right split-col-media">
-                <img src="img/2strona.png" alt="Waxoyl Ochrona" class="hero-img-full" loading="lazy">
+    <section id="o-nas" class="video-section">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        
+        <div class="video-overlay-tint"></div>
+
+        <div class="video-section-content">
+            <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
+            <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
+            
+            <ul class="features-list">
+                <li>Trwałość w ekstremalnych warunkach klimatycznych</li>
+                <li>Globalne zaufanie ekspertów detailingowych i OEM</li>
+                <li>Certyfikowane technologie i bezpieczne preparaty</li>
+                <li>Zabezpieczenie długoterminowej wartości rynkowej pojazdu</li>
+            </ul>
+            
+            <div class="btn-group" style="justify-content: center;">
+                <a href="#ceramika" class="btn btn-primary">ZOBACZ KATALOG PRODUKTÓW</a>
             </div>
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
@@ -583,7 +636,6 @@
                         <li>Odporność na agresywną chemię, ptasie odchody i soki z drzew</li>
                     </ul>
                     
-                    <!-- Премиальный раскрывающийся блок со спецификацией -->
                     <div class="tech-accordion">
                         <div class="tech-item">
                             <button class="tech-trigger" onclick="toggleAccordion(this)">
@@ -605,7 +657,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
@@ -615,7 +666,7 @@
                     <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>.</p>
                     <ul class="features-list">
                         <li style="color: var(--light);">Trwała ochrona przed solą drogową, chemią i wilgocią</li>
-                        <li style="color: var(--light);">Dokładne zabezpieczenie trudnodostępnych profili zamkniętych</li>
+                        <li style="color: var(--light);">Dokładne zabezpieчение trudnodostępnych profili zamkniętych</li>
                     </ul>
                     
                     <div class="tech-accordion">
@@ -652,7 +703,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 5: SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
@@ -664,7 +714,7 @@
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny на wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych.</p>
                     
                     <div class="tech-accordion">
                         <div class="tech-item">
@@ -673,7 +723,7 @@
                             </button>
                             <div class="tech-content">
                                 <div class="tech-content-inner">
-                                    Waxoyl Motor Protector tworzy bezbarwną, elastyczną barierę ochronną, która zapobiega utlenianiu się elementów aluminiowych i korozji styków. Ułatwia późniejsze czyszczenie komory silnika.
+                                    Waxoyl Motor Protector tworzy bezbarwną, elastyczną barierę ochronную, która zapobiega utlenianiu się elementów aluminiowych i korozji styków. Ułatwia późniejsze czyszczenie komory silnika.
                                 </div>
                             </div>
                         </div>
@@ -687,7 +737,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 6: TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
@@ -724,7 +773,6 @@
         </div>
     </footer>
 
-    <!-- LIGHTBOX MODAL -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">×</span>
         <img class="image-modal-content" id="modalTargetImg">
