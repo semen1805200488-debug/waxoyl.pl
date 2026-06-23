@@ -6,7 +6,7 @@
     <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl</title>
     <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
     
-    <!-- Иконка вкладки настроена под ваш файл favicon.jpg -->
+    <!-- Ikonka вкладки настроена под ваш файл favicon.jpg -->
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
@@ -52,10 +52,16 @@
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
 
         /* Navigation */
-        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 12px 0; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-        .logo img { height: 35px; width: auto; display: block; }
+        
+        /* Блок логотипа Car Care */
+        .logo { text-decoration: none; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .logo img { height: 42px; width: auto; display: block; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+        .logo-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
+        .logo-subtitle { font-size: 0.7rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; }
+
         nav { display: block; }
         nav ul { list-style: none; display: flex; gap: 25px; }
         nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); white-space: nowrap; }
@@ -91,7 +97,7 @@
             object-fit: contain;
         }
 
-        /* Двухколоночные блоки */
+        /* Двухколоночные blocks */
         .split-row {
             display: flex;
             align-items: center;
@@ -134,15 +140,16 @@
             .container { padding: 0 15px !important; }
             section { padding: 40px 0 !important; }
             
-            header { padding: 12px 0 !important; }
+            header { padding: 10px 0 !important; }
             .nav-container { 
                 flex-direction: column !important; 
                 align-items: center !important;
                 gap: 12px !important;
                 padding: 0 10px !important; 
             }
-            .logo { font-size: 1.2rem !important; }
-            .logo img { height: 30px !important; }
+            .logo img { height: 35px !important; }
+            .logo-title { font-size: 1.3rem !important; }
+            .logo-subtitle { font-size: 0.6rem !important; }
             
             nav { 
                 width: 100vw !important;
@@ -165,7 +172,7 @@
             }
             nav a { font-size: 0.9rem !important; padding: 5px 0; }
 
-            .hero { padding-top: 130px !important; height: auto !important; min-height: auto !important; text-align: center; }
+            .hero { padding-top: 140px !important; height: auto !important; min-height: auto !important; text-align: center; }
             .hero-split { flex-direction: column !important; text-align: center !important; }
             .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 30px; }
             
@@ -201,13 +208,17 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
+            <!-- Обновленный логотип с подписью Professional Car Care -->
+            <a href="#home" class="logo">
                 <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
-                WAXOYL
+                <div class="logo-text">
+                    <span class="logo-title">WAXOYL</span>
+                    <span class="logo-subtitle">Professional Car Care</span>
+                </div>
             </a>
             <nav>
                 <ul>
-                    <li><a href="#o-nas">O Waxoyl</a></li>
+                    <li><a href="#home">O Waxoyl</a></li>
                     <li><a href="#ceramika">Ceramika</a></li>
                     <li><a href="#antykorozja">Antykorozja</a></li>
                     <li><a href="#silnik">Silnik</a></li>
@@ -291,7 +302,7 @@
                 <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
                     <ul class="features-list">
                         <li>Głęboki, lustrzany połysk i podbicie koloru</li>
                         <li>Efekt samooczyszczania i łatwiejsze mycie</li>
@@ -313,7 +324,7 @@
                 <div class="split-col-text">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronную.</p>
+                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
                     <ul class="features-list" style="color: var(--light);">
                         <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                         <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
@@ -347,7 +358,7 @@
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń электрических и znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych i znacznie wydłuża żywotność elastycznych элементов gumowych.</p>
                     <div class="btn-group">
                         <a href="#" class="btn btn-primary">Zabezpiecz silnik</a>
                     </div>
@@ -381,8 +392,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ТЁМНЫЙ БАННЕР С КНОПКАМИ УСПЕШНО УДАЛЁН ОТСЮДА -->
 
     <footer>
         <div class="container">
