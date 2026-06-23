@@ -16,21 +16,41 @@
             --darker: #0a0a0a;
             --light: #ffffff;
             --gray: #f5f5f5;
-            --text: #333333;
-            --text-light: #777777;
+            --text: #222222;
+            --text-light: #555555;
             --font: 'Montserrat', sans-serif;
             --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body { font-family: var(--font); color: var(--text); background-color: var(--light); line-height: 1.6; -webkit-text-size-adjust: 100%; }
+        body { 
+            font-family: var(--font); 
+            color: var(--text); 
+            background-color: var(--light); 
+            line-height: 1.6; 
+            -webkit-text-size-adjust: 100%;
+            /* Улучшение отображения букв на телефонах */
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         
         /* Typography */
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
-        h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; color: var(--dark); }
+        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.5px; }
+        h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; color: var(--dark); letter-spacing: -0.5px; }
         h3.red-subtitle { color: var(--primary); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-light); }
+        
+        p { 
+            margin-bottom: 20px; 
+            font-size: 1.1rem; 
+            color: var(--text-light); 
+            line-height: 1.65;
+            /* Включаем автопереносы для длинных слов */
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
         
         /* Layout & Containers */
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
@@ -39,6 +59,7 @@
         .bg-gray { background-color: var(--gray); }
         .bg-dark { background-color: var(--dark); color: var(--light); }
         .bg-dark h2, .bg-dark p { color: var(--light); }
+        .bg-dark p { color: #e0e0e0; }
         
         /* Buttons */
         .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; }
@@ -120,7 +141,6 @@
             object-fit: contain;
         }
 
-        /* Опция увеличения картинок при клике (Курсор-лупа) */
         .zoomable-img {
             cursor: zoom-in;
             transition: opacity 0.2s ease;
@@ -131,7 +151,15 @@
 
         /* Features */
         .features-list { list-style: none; margin-bottom: 30px; }
-        .features-list li { position: relative; padding-left: 30px; margin-bottom: 12px; font-weight: 500; color: var(--dark); }
+        .features-list li { 
+            position: relative; 
+            padding-left: 30px; 
+            margin-bottom: 12px; 
+            font-weight: 500; 
+            color: var(--dark);
+            hyphens: auto;
+            -webkit-hyphens: auto;
+        }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
         /* Video Wrapper */
@@ -140,7 +168,7 @@
 
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 30px 0; font-size: 0.9rem; }
 
-        /* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА УВЕЛИЧЕНИЯ (LIGHTBOX) */
+        /* LIGHTBOX MODAL */
         .image-modal {
             display: none;
             position: fixed;
@@ -200,11 +228,11 @@
             letter-spacing: 1px;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ (УЛУЧШЕННЫЙ ТЕКСТ) */
         @media (max-width: 992px) {
             html, body { overflow-x: hidden; width: 100%; }
-            .container { padding: 0 15px !important; }
-            section { padding: 40px 0 !important; }
+            .container { padding: 0 20px !important; }
+            section { padding: 45px 0 !important; }
             
             header { padding: 12px 0 !important; }
             .nav-container { 
@@ -219,8 +247,8 @@
             
             nav { 
                 width: 100vw !important;
-                margin-left: -15px; 
-                padding-left: 15px;
+                margin-left: -20px; 
+                padding-left: 20px;
                 overflow-x: auto !important; 
                 -webkit-overflow-scrolling: touch;
                 padding-bottom: 5px;
@@ -238,34 +266,48 @@
             }
             nav a { font-size: 0.9rem !important; padding: 5px 0; }
 
-            .hero { padding-top: 140px !important; height: auto !important; min-height: auto !important; text-align: center; }
-            .hero-split { flex-direction: column !important; text-align: center !important; }
+            .hero { padding-top: 150px !important; height: auto !important; min-height: auto !important; }
+            .hero-split { flex-direction: column !important; }
             .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 30px; }
             
-            h1 { font-size: 2.2rem !important; line-height: 1.2 !important; margin-bottom: 15px; }
-            h2 { font-size: 1.8rem !important; margin-bottom: 15px; }
-            h3.red-subtitle { font-size: 1.1rem !important; margin-bottom: 15px; }
-            p { font-size: 1rem !important; margin-bottom: 15px; }
+            /* Настройки мобильных заголовков — центрируем для красоты */
+            h1 { font-size: 2.1rem !important; line-height: 1.2 !important; margin-bottom: 15px; text-align: center; }
+            h2 { font-size: 1.75rem !important; line-height: 1.25 !important; margin-bottom: 12px; text-align: center; }
+            h3.red-subtitle { font-size: 1.05rem !important; margin-bottom: 15px; text-align: center; }
             
-            .btn-group { flex-direction: column !important; gap: 15px !important; margin-top: 25px !important; }
-            .btn { width: 100% !important; padding: 16px 20px !important; font-size: 1rem !important; }
+            /* Настройки мобильных абзацев — ровняем по левому краю для идеальной читаемости */
+            p { 
+                font-size: 1rem !important; 
+                line-height: 1.65 !important; 
+                margin-bottom: 20px; 
+                text-align: left !important; 
+                color: #333333;
+            }
+            .bg-dark p { color: #e5e5e5 !important; }
             
-            .icon-grid { grid-template-columns: 1fr !important; gap: 15px !important; background: var(--gray); padding: 25px; border-radius: 12px; margin-top: 30px; justify-items: flex-start !important; text-align: left !important; }
-            .icon-box { min-height: auto !important; width: 100%; justify-content: flex-start; font-size: 1rem !important; gap: 20px; }
-            .icon-box img { height: 38px !important; }
+            .btn-group { flex-direction: column !important; gap: 12px !important; margin-top: 25px !important; }
+            .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.95rem !important; }
+            
+            .icon-grid { grid-template-columns: 1fr !important; gap: 15px !important; background: var(--gray); padding: 25px; border-radius: 12px; margin-top: 30px; }
+            .icon-box { min-height: auto !important; width: 100%; justify-content: flex-start; font-size: 0.95rem !important; gap: 15px; color: var(--dark); }
+            .icon-box img { height: 35px !important; }
             
             .hero-right { width: 100% !important; height: auto !important; margin-top: 10px !important; }
-            .hero-img-full { height: auto !important; max-height: 40vh !important; width: 100% !important; border-radius: 12px; object-fit: cover !important; }
+            .hero-img-full { height: auto !important; max-height: 35vh !important; width: 100% !important; border-radius: 12px; object-fit: cover !important; }
 
-            .split-row { flex-direction: column !important; gap: 30px !important; }
-            .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; text-align: center; }
+            .split-row { flex-direction: column !important; gap: 35px !important; }
+            .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; }
             
-            /* КАРТИНКИ НА МОБИЛЬНЫХ */
+            /* Выравнивание списков особенностей на мобилках */
+            .features-list { text-align: left; margin-bottom: 25px; }
+            .features-list li { font-size: 0.95rem !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
+            
+            /* Картинки на весь экран телефона */
             .split-col-media { 
                 order: -1; 
                 width: 100vw !important;
-                margin-left: -15px !important;
-                margin-right: -15px !important;
+                margin-left: -20px !important;
+                margin-right: -20px !important;
             }
             .split-col-media div {
                 border-radius: 0 !important;
@@ -279,9 +321,6 @@
             
             #o-nas .hero-right img { border-radius: 12px; }
             #o-nas .hero-left { padding-bottom: 20px !important; }
-
-            .features-list { text-align: left; }
-            .features-list li { font-size: 1rem !important; margin-bottom: 15px !important; }
         }
     </style>
 </head>
@@ -308,6 +347,7 @@
         </div>
     </header>
 
+    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -347,16 +387,17 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             <div class="hero-left" style="padding-bottom: 0;">
                 <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
-                <p style="color: #222; font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
-                <ul class="features-list" style="margin-bottom: 35px;">
-                    <li style="color: #111; font-weight: 700;">Trwałość w ekstremalnych warunkach</li>
-                    <li style="color: #111; font-weight: 700;">Globalne zaufanie ekspertów detailingowych</li>
-                    <li style="color: #111; font-weight: 700;">Certyfikowane technologie i preparaty</li>
-                    <li style="color: #111; font-weight: 700;">Zabezpieczenie wartości rynkowej pojazdu</li>
+                <p style="font-weight: 500;">Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach: motoryzacji, przemyśle, lotnictwie i transporcie morskim.</p>
+                <ul class="features-list">
+                    <li style="color: var(--dark); font-weight: 700;">Trwałość w ekstremalnych warunkach</li>
+                    <li style="color: var(--dark); font-weight: 700;">Globalne zaufanie ekspertów detailingowych</li>
+                    <li style="color: var(--dark); font-weight: 700;">Certyfikowane technologie i preparaty</li>
+                    <li style="color: var(--dark); font-weight: 700;">Zabezpieczenie wartości rynkowej pojazdu</li>
                 </ul>
                 <div class="btn-group">
                     <a href="#" class="btn btn-primary">SKONTAKTUJ SIĘ</a>
@@ -368,11 +409,13 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
+                        <!-- Новая крутая инфографика -->
                         <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img">
                     </div>
                 </div>
@@ -394,6 +437,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
@@ -401,7 +445,7 @@
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
                     <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>. Aktywnie wypiera wilgoć, zatrzymuje rdzę i tworzy elastyczną barierę ochronną.</p>
-                    <ul class="features-list" style="color: var(--light);">
+                    <ul class="features-list">
                         <li style="color: var(--light);">Ochrona przed solą drogową i wilgocią</li>
                         <li style="color: var(--light);">Zabezpieczenie trudnodostępnych profili zamkniętych</li>
                         <li style="color: var(--light);">Znaczące wydłużenie żywotności podwozia</li>
@@ -427,6 +471,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
@@ -447,6 +492,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
@@ -473,6 +519,7 @@
         </div>
     </footer>
 
+    <!-- СТРУКТУРА LIGHTBOX МОДАЛКИ -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">×</span>
         <img class="image-modal-content" id="modalTargetImg">
@@ -480,7 +527,7 @@
     </div>
 
     <script>
-        // Плавный скролл меню
+        // Плавный скролл
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -493,7 +540,7 @@
             });
         });
 
-        // Скрипт увеличения инфографик (Lightbox)
+        // Скрипт увеличения инфографик
         const modal = document.getElementById("customImageModal");
         const modalImg = document.getElementById("modalTargetImg");
         const closeBtn = document.querySelector(".image-modal-close");
@@ -505,7 +552,6 @@
             });
         });
 
-        // Закрытие по крестику или по клику на область вокруг картинки
         closeBtn.addEventListener('click', function() {
             modal.style.display = "none";
         });
