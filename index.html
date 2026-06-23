@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl</title>
-    <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komры silnika i tapicerki.">
+    <meta name="description" content="Zabezpiecz swój samochód szwajcarską technologią Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
     
     <!-- Ikonka вкладки настроена под ваш файл favicon.jpg -->
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
@@ -51,16 +51,18 @@
         .btn-outline:hover { background-color: var(--dark); color: var(--light); }
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
 
-        /* Navigation с центрированным логотипом */
+        /* Navigation (Логотип снова слева, меню справа) */
         header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { display: flex; justify-content: flex-end; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; position: relative; min-height: 44px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
-        /* Идеальное центрирование логотипа по центру контейнера */
-        .logo { text-decoration: none; display: flex; align-items: center; gap: 12px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1010; }
-        .logo img { height: 42px; width: auto; display: block; }
-        .logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+        /* Логотип слева, но текст внутри центрирован */
+        .logo { text-decoration: none; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .logo img { height: 45px; width: auto; display: block; }
+        
+        /* Центрирование WAXOYL над PROFESSIONAL CAR CARE */
+        .logo-text { display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.1; }
         .logo-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
-        .logo-subtitle { font-size: 0.7rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; }
+        .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
         nav { display: block; }
         nav ul { list-style: none; display: flex; gap: 25px; }
@@ -140,24 +142,14 @@
             .container { padding: 0 15px !important; }
             section { padding: 40px 0 !important; }
             
-            header { padding: 10px 0 !important; }
+            header { padding: 12px 0 !important; }
             .nav-container { 
                 flex-direction: column !important; 
                 align-items: center !important;
-                justify-content: center !important;
                 gap: 12px !important;
                 padding: 0 10px !important; 
-                position: relative !important;
-                min-height: auto !important;
             }
-            
-            /* Сброс абсолютного позиционирования для мобильных экранов */
-            .logo { 
-                position: static !important; 
-                transform: none !important; 
-                margin-bottom: 5px;
-            }
-            .logo img { height: 35px !important; }
+            .logo img { height: 38px !important; }
             .logo-title { font-size: 1.3rem !important; }
             .logo-subtitle { font-size: 0.6rem !important; }
             
@@ -218,7 +210,7 @@
 
     <header>
         <div class="nav-container">
-            <!-- Логотип теперь идеально центрирован -->
+            <!-- Логотип слева, текст внутри красиво отцентрирован -->
             <a href="#home" class="logo">
                 <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
                 <div class="logo-text">
@@ -368,7 +360,7 @@
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych и znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny на wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych и znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
                     <div class="btn-group">
                         <a href="#" class="btn btn-primary">Zabezpiecz silnik</a>
                     </div>
