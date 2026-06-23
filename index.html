@@ -93,7 +93,7 @@
             border: none;
             cursor: pointer;
             padding: 0;
-            z-index: 1001; /* Поверх шторки меню */
+            z-index: 1001;
         }
         .hamburger-btn span {
             width: 100%;
@@ -102,12 +102,14 @@
             border-radius: 2px;
             transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, background-color 0.3s ease;
         }
-        /* Анимация превращения в крестик */
+        .hamburger-btn.open span {
+            background-color: var(--dark);
+        }
         .hamburger-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
         .hamburger-btn.open span:nth-child(2) { opacity: 0; }
         .hamburger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-        /* УЛЬТРА-НАДЕЖНОЕ МОБИЛЬНОЕ МЕНЮ */
+        /* ЭЛЕГАНТНОЕ ПРЕМИУМ МОБИЛЬНОЕ МЕНЮ */
         .mobile-overlay {
             position: fixed;
             top: 0;
@@ -115,19 +117,19 @@
             width: 100%;
             height: 100vh;
             background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 999;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 60px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 110px 25px 40px 25px; /* Отступы сверху под шапку и снизу под футер */
             
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-            transform: translateY(-15px);
-            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         }
         
         .mobile-overlay.active {
@@ -137,28 +139,94 @@
             transform: translateY(0);
         }
 
+        .mobile-nav {
+            width: 100%;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
         .mobile-nav ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 25px;
             padding: 0;
             width: 100%;
         }
+        
+        .mobile-nav li {
+            width: 100%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .mobile-nav li:first-child {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
         .mobile-nav a {
-            font-size: 1.15rem !important;
+            font-size: 1.05rem !important;
             font-weight: 700;
             color: var(--dark);
             text-transform: uppercase;
             text-decoration: none;
             letter-spacing: 0.5px;
-            display: block;
-            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 10px;
+            transition: all 0.25s ease;
+        }
+        
+        /* Красивые номера пунктов меню (01, 02...) */
+        .mobile-nav a::before {
+            content: attr(data-num);
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-right: 15px;
+            font-family: monospace;
+        }
+        
+        /* Изящная стрелочка справа */
+        .mobile-nav a::after {
+            content: '→';
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 1.2rem;
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+
+        /* Эффект при нажатии/наведении на мобильном */
+        .mobile-nav a:active, .mobile-nav a:hover {
+            color: var(--primary);
+            padding-left: 18px;
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+        .mobile-nav a:active::after, .mobile-nav a:hover::after {
+            color: var(--primary);
+            transform: translateX(6px);
+        }
+
+        /* Нижний блок контактов внутри меню */
+        .mobile-menu-footer {
+            width: 100%;
             text-align: center;
+            margin-top: auto;
+            padding-top: 20px;
+        }
+        .mobile-menu-footer p {
+            font-size: 0.85rem !important;
+            margin-bottom: 4px !important;
+            color: var(--text-light) !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .mobile-menu-footer .menu-phone {
+            font-size: 1.2rem !important;
+            font-weight: 800;
+            color: var(--dark);
+            text-decoration: none;
+            display: inline-block;
             transition: color 0.2s ease;
         }
-        .mobile-nav a:hover {
+        .mobile-menu-footer .menu-phone:active {
             color: var(--primary);
         }
 
@@ -323,10 +391,7 @@
             .logo-title { font-size: 1.3rem !important; }
             .logo-subtitle { font-size: 0.6rem !important; }
             
-            /* ИСПРАВЛЕНО: Скрываем ТОЛЬКО компьютерное навигационное меню в шапке, мобильный nav теперь не пострадает */
             header nav { display: none !important; }
-            
-            /* Включаем кнопку гамбургера */
             .hamburger-btn { display: flex !important; }
 
             /* Настройки контента для мобильных */
@@ -363,7 +428,6 @@
             .features-list { text-align: left; margin-bottom: 25px; }
             .features-list li { font-size: 0.95rem !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
             
-            /* Фотографии на экранах смартфонов во всю ширину */
             .split-col-media { 
                 order: -1; 
                 width: 100vw !important;
@@ -397,6 +461,7 @@
                 </div>
             </a>
             
+            <!-- Десктопное меню -->
             <nav>
                 <ul>
                     <li><a href="#home">O Waxoyl</a></li>
@@ -407,6 +472,7 @@
                 </ul>
             </nav>
 
+            <!-- Кнопка Гамбургера -->
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -415,18 +481,26 @@
         </div>
     </header>
 
+    <!-- ПОЛНОСТЬЮ ОБНОВЛЕННАЯ СТИЛЬНАЯ ШТОРКА МЕНЮ -->
     <div class="mobile-overlay" id="mobileOverlay">
         <nav class="mobile-nav">
             <ul>
-                <li><a href="#home">O Waxoyl</a></li>
-                <li><a href="#ceramika">zabezpieczenie lakieru</a></li>
-                <li><a href="#antykorozja">zabezpieczenie antykorozyjne</a></li>
-                <li><a href="#silnik">zabezpieczenie silnika</a></li>
-                <li><a href="#tapicerka">zabezpieczenie tapicerki</a></li>
+                <li><a href="#home" data-num="01">O Waxoyl</a></li>
+                <li><a href="#ceramika" data-num="02">Zabezpieczenie lakieru</a></li>
+                <li><a href="#antykorozja" data-num="03">Zabezpieczenie antykorozyjne</a></li>
+                <li><a href="#silnik" data-num="04">Zabezpieczenie silnika</a></li>
+                <li><a href="#tapicerka" data-num="05">Zabezpieczenie tapicerki</a></li>
             </ul>
         </nav>
+        
+        <!-- Дополнительный премиальный блок контактов внизу -->
+        <div class="mobile-menu-footer">
+            <p>Masz pytania? Zadzwoń do nas</p>
+            <a href="tel:+48123456789" class="menu-phone">+48 123 456 789</a>
+        </div>
     </div>
 
+    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -466,6 +540,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             <div class="hero-left" style="padding-bottom: 0;">
@@ -487,6 +562,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
@@ -498,7 +574,7 @@
                 <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на лакире Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
                     <ul class="features-list">
                         <li>Głęboki, lustrzany połysk i podbicie koloru</li>
                         <li>Efekt samooczyszczania i łatwiejsze mycie</li>
@@ -513,6 +589,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
@@ -546,13 +623,14 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń электрических и значительно ведут к увеличению срока службы эластичных элементов.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny на высокие температуры. Działa antykorozyjnie, wypiera wodę z połączeń электрических и значительно ведут к увеличению срока службы эластиcznych элементов.</p>
                     <div class="btn-group">
                         <a href="#" class="btn btn-primary">Zabezpiecz silnik</a>
                     </div>
@@ -566,6 +644,7 @@
         </div>
     </section>
 
+    <!-- СЕКЦИЯ TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
@@ -592,6 +671,7 @@
         </div>
     </footer>
 
+    <!-- СТРУКТУРА LIGHTBOX МОДАЛКИ -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">×</span>
         <img class="image-modal-content" id="modalTargetImg">
@@ -612,7 +692,7 @@
             });
         });
 
-        // ИСПРАВЛЕННЫЙ НАДЕЖНЫЙ СКРИПТ МОБИЛЬНОГО МЕНЮ
+        // Скрипт мобильного меню
         const hamburgerBtn = document.getElementById("hamburgerBtn");
         const mobileOverlay = document.getElementById("mobileOverlay");
         const mobileLinks = document.querySelectorAll(".mobile-nav a");
@@ -621,7 +701,6 @@
             hamburgerBtn.classList.toggle("open");
             mobileOverlay.classList.toggle("active");
             
-            // Блокируем скролл страницы при открытом меню
             if (mobileOverlay.classList.contains("active")) {
                 document.body.style.overflow = "hidden";
             } else {
@@ -631,7 +710,6 @@
 
         hamburgerBtn.addEventListener("click", toggleMobileMenu);
 
-        // Надежное закрытие при клике на любой из пунктов меню
         mobileLinks.forEach(link => {
             link.addEventListener("click", () => {
                 hamburgerBtn.classList.remove("open");
@@ -640,7 +718,7 @@
             });
         });
 
-        // СКРИПТ УВЕЛИЧЕНИЯ КАРТИНОК ПО КЛИКУ (LIGHTBOX)
+        // Скрипт увеличения картинок по клику (Lightbox)
         const modal = document.getElementById("customImageModal");
         const modalImg = document.getElementById("modalTargetImg");
         const closeBtn = document.querySelector(".image-modal-close");
