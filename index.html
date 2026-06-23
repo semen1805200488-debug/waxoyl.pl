@@ -23,16 +23,44 @@
             --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: var(--font); color: var(--text); background-color: var(--light); line-height: 1.6; -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+        }
         
-        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background-color: var(--primary); z-index: 1002; transition: width 0.1s ease-out; }
+        body { 
+            font-family: var(--font); 
+            color: var(--text); 
+            background-color: var(--light); 
+            line-height: 1.6; 
+            -webkit-text-size-adjust: 100%;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--primary);
+            z-index: 1002;
+            transition: width 0.1s ease-out;
+        }
         
         h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -0.5px; }
         h2 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; text-transform: uppercase; color: var(--dark); letter-spacing: -0.5px; }
         h3.red-subtitle { color: var(--primary); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; letter-spacing: 1.5px; }
         
-        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
+        p { 
+            margin-bottom: 20px; 
+            font-size: 1.05rem; 
+            color: var(--text-light); 
+            line-height: 1.7;
+        }
         
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         section { padding: 120px 0; }
@@ -45,82 +73,437 @@
         .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; font-size: 0.85rem; letter-spacing: 0.5px; }
         .btn-primary { background-color: var(--primary); color: var(--light); border: none; }
         .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(214, 0, 0, 0.3); }
+        .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
+        .btn-outline:hover { background-color: var(--dark); color: var(--light); }
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 35px; }
 
-        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 1000; box-shadow: 0 1px 10px rgba(0,0,0,0.02); padding: 16px 0; transition: var(--transition); }
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000; 
+            box-shadow: 0 1px 10px rgba(0,0,0,0.02); 
+            padding: 16px 0; 
+            transition: var(--transition);
+        }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
         .logo { text-decoration: none; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
         .logo img { height: 44px; width: auto; display: block; }
+        
         .logo-text { display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.1; }
         .logo-title { font-size: 1.45rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
         .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
+        nav { display: block; }
         nav ul { list-style: none; display: flex; gap: 30px; }
         nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); white-space: nowrap; letter-spacing: 0.5px; }
         nav a:hover { color: var(--primary); }
         
-        .hamburger-btn { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 16px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
-        .hamburger-btn span { width: 100%; height: 2px; background-color: var(--dark); border-radius: 2px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, background-color 0.3s ease; }
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        .hamburger-btn span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--dark);
+            border-radius: 2px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, background-color 0.3s ease;
+        }
         .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger-btn.open span:nth-child(2) { opacity: 0; }
         .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        .mobile-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(25px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding: 110px 30px 60px 30px; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-12px); transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s ease; }
-        .mobile-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 110px 30px 60px 30px;
+            
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-12px);
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s ease;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-nav { width: 100%; }
         .mobile-nav ul { list-style: none; display: flex; flex-direction: column; padding: 0; width: 100%; }
         .mobile-nav li { width: 100%; border-bottom: 1px solid rgba(0, 0, 0, 0.04); }
-        .mobile-nav a { font-size: 1.05rem; font-weight: 700; color: var(--dark); text-transform: uppercase; text-decoration: none; padding: 24px 8px; display: flex; align-items: center; justify-content: space-between; }
-        .mobile-nav a::before { content: attr(data-num); font-size: 0.8rem; color: var(--primary); margin-right: 15px; }
+        .mobile-nav li:first-child { border-top: 1px solid rgba(0, 0, 0, 0.04); }
 
-        .hero { padding-top: 120px; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); }
+        .mobile-nav a {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 8px;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav a::before {
+            content: attr(data-num);
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .mobile-nav a::after {
+            content: '→';
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:active {
+            color: var(--primary);
+            padding-left: 16px;
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+        .mobile-nav a:active::after {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .hero { padding-top: 120px; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
         .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; }
-        .hero-left { flex: 1; max-width: 700px; padding: 0 40px; }
-        .hero-right { flex: 1; display: flex; align-items: center; justify-content: flex-end; }
-        .hero-img-full { width: 100%; object-fit: cover; }
+        .hero-left { flex: 1; max-width: 700px; padding-left: 40px; padding-right: 20px; padding-bottom: 60px; }
+        .hero-right { flex: 1; height: calc(100vh - 120px); display: flex; align-items: center; justify-content: flex-end; }
+        .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
-        .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px; margin-top: 45px; }
-        .icon-box { display: flex; align-items: center; gap: 20px; font-weight: 700; color: var(--dark); }
-        .icon-box img { height: 44px; object-fit: contain; }
+        .icon-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 32px 24px; 
+            margin-top: 45px; 
+        }
+        .icon-box { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            font-weight: 700; 
+            color: var(--dark); 
+            min-height: 56px; 
+            font-size: 1rem;
+        }
+        .icon-box img { 
+            height: 44px; 
+            width: auto; 
+            display: block; 
+            flex-shrink: 0; 
+            object-fit: contain;
+        }
 
-        .video-section { position: relative; width: 100%; min-height: 75vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: var(--darker); padding: 80px 0; }
-        .video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: 1; transform: translate(-50%, -50%); object-fit: cover; pointer-events: none; }
-        .video-overlay-tint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,10,0.6); z-index: 2; }
-        .video-section-content { position: relative; z-index: 3; max-width: 900px; text-align: center; color: var(--light); padding: 0 40px; }
+        .video-section {
+            position: relative;
+            width: 100%;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: var(--darker);
+            padding: 80px 0;
+        }
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .video-overlay-tint {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 100%);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 2;
+        }
+        .video-section-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            color: var(--light);
+            padding: 0 40px;
+        }
+        .video-section-content h2, .video-section-content h3 { color: var(--light) !important; }
+        .video-section-content p { color: #e5e5ea !important; font-weight: 500; margin-bottom: 30px; }
+        .video-section-content .features-list {
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+        .video-section-content .features-list li { color: var(--light); font-weight: 600; }
 
         .split-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
         .split-col-text { flex: 1; min-width: 350px; }
-        .split-col-media { flex: 1; min-width: 350px; display: flex; justify-content: center; }
-        .split-col-media img { width: 100%; height: auto; border-radius: 12px; }
+        .split-col-media { flex: 1; min-width: 350px; display: flex; justify-content: center; align-items: center; }
+        .split-col-media img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+        .zoomable-img { cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease; }
+        .zoomable-img:hover { transform: scale(1.02); }
 
         .features-list { list-style: none; margin-bottom: 35px; }
-        .features-list li { position: relative; padding-left: 32px; margin-bottom: 14px; font-weight: 500; }
+        .features-list li { 
+            position: relative; 
+            padding-left: 32px; 
+            margin-bottom: 14px; 
+            font-weight: 500; 
+            color: var(--dark);
+        }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
-        .tech-accordion { border-top: 1px solid var(--border-light); margin-top: 25px; }
-        .tech-item { border-bottom: 1px solid var(--border-light); }
-        .tech-trigger { width: 100%; background: transparent; border: none; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--dark); text-transform: uppercase; cursor: pointer; }
-        .tech-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .tech-accordion {
+            border-top: 1px solid var(--border-light);
+            margin-top: 25px;
+        }
+        .tech-item {
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        .tech-trigger {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .bg-dark .tech-trigger { color: var(--light); }
+        .bg-dark .tech-accordion { border-top-color: rgba(255,255,255,0.1); }
+        .bg-dark .tech-item { border-bottom-color: rgba(255,255,255,0.1); }
+        
+        .tech-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            color: var(--text-light);
+        }
+        .bg-dark .tech-icon { color: #aeaeae; }
+        
+        .tech-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tech-content-inner {
+            padding: 4px 0 20px 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .bg-dark .tech-content-inner { color: #aeaeae; }
+        
+        .tech-item.active .tech-icon { transform: rotate(180deg); color: var(--primary); }
         .tech-item.active .tech-content { max-height: 300px; }
 
-        footer { background: var(--darker); color: var(--light); text-align: center; padding: 40px 0; font-size: 0.85rem; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin-top: 35px; width: 100%; }
+        .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        footer { background: var(--darker); color: var(--light); text-align: center; padding: 40px 0; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .image-modal-content {
+            margin: auto;
+            display: block;
+            width: 92%;
+            max-width: 1100px;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 6px;
+            animation: zoomInEffect 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        @keyframes zoomInEffect {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 36px;
+            font-weight: 300;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .image-modal-close:hover { background: rgba(255,255,255,0.15); }
+
+        .btn:active, .tech-trigger:active {
+            transform: scale(0.98);
+        }
 
         @media (max-width: 992px) {
+            html, body { overflow-x: hidden; width: 100%; }
+            
+            .container { padding: 0 24px !important; }
+            section { padding: 60px 0 !important; }
+            
+            header { padding: 12px 0 !important; height: 62px; background: rgba(255, 255, 255, 0.88); border-bottom: 1px solid rgba(0,0,0,0.03); }
+            .nav-container { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; padding: 0 24px !important; }
+            .logo img { height: 38px !important; }
+            .logo-title { font-size: 1.25rem !important; }
+            .logo-subtitle { font-size: 0.58rem !important; }
+            
             header nav { display: none !important; }
             .hamburger-btn { display: flex !important; }
+
+            .hero { padding-top: 95px !important; min-height: auto !important; }
             .hero-split { flex-direction: column !important; }
-            .split-row { flex-direction: column !important; }
+            .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 10px; padding-bottom: 20px !important; }
+            
+            h1 { font-size: 2.1rem !important; line-height: 1.15 !important; margin-bottom: 14px; text-align: center; letter-spacing: -0.5px; }
+            h2 { font-size: 1.75rem !important; line-height: 1.2 !important; margin-bottom: 8px; text-align: center; letter-spacing: -0.3px; }
+            h3.red-subtitle { font-size: 0.95rem !important; margin-bottom: 24px; text-align: center; letter-spacing: 1px; }
+            
+            p { font-size: 0.98rem !important; line-height: 1.65 !important; margin-bottom: 24px; text-align: justify; color: var(--text-light); }
+            
+            .btn-group { margin-top: 10px !important; }
+            .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.88rem !important; border-radius: 10px; }
+            
+            .icon-grid { 
+                display: flex !important; 
+                flex-direction: row !important;
+                overflow-x: auto !important; 
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                gap: 14px !important; 
+                padding: 10px 24px 25px 24px !important; 
+                margin-left: -24px !important; 
+                margin-right: -24px !important; 
+                margin-top: 32px !important;
+                scroll-behavior: smooth;
+            }
+            .icon-grid::-webkit-scrollbar { display: none; }
+            
+            .icon-box { 
+                flex: 0 0 78% !important;
+                scroll-snap-align: start !important;
+                background: #ffffff;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+                padding: 18px 20px !important;
+                border-radius: 12px !important;
+                min-height: 80px !important; 
+                font-size: 0.92rem !important; 
+                line-height: 1.3 !important;
+                gap: 16px !important; 
+            }
+            .icon-box img { height: 34px !important; }
+            
+            .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; }
+            .hero-img-full { max-height: 28vh !important; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+            .video-section { min-height: 60vh !important; padding: 40px 0 !important; }
+            .video-section-content { padding: 0 24px !important; }
+            .video-section-content p { text-align: center !important; font-size: 0.95rem !important; }
+            .video-section-content .features-list { display: block !important; margin-bottom: 24px !important; }
+            .video-section-content .features-list li { font-size: 0.92rem !important; margin-bottom: 8px !important; }
+
+            .split-row { flex-direction: column !important; gap: 28px !important; }
+            .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; }
+            
+            .split-col-media { order: -1; width: 100% !important; }
+            .split-col-media div { border-radius: 12px !important; }
+            .split-col-media img { border-radius: 12px !important; }
+            
+            .features-list { margin-bottom: 24px !important; }
+            .features-list li { font-size: 0.95rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; padding-left: 28px !important; }
+            
+            footer { padding: 35px 0 !important; font-size: 0.78rem; }
         }
     </style>
 </head>
 <body>
+
     <div class="scroll-progress" id="scrollProgress"></div>
+
     <header>
         <div class="nav-container">
             <a href="#home" class="logo">
                 <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
-                <div class="logo-text"><span class="logo-title">WAXOYL</span><span class="logo-subtitle">Professional Car Care</span></div>
+                <div class="logo-text">
+                    <span class="logo-title">WAXOYL</span>
+                    <span class="logo-subtitle">Professional Car Care</span>
+                </div>
             </a>
+            
             <nav>
                 <ul>
                     <li><a href="#home">O Waxoyl</a></li>
@@ -130,7 +513,12 @@
                     <li><a href="#tapicerka">Tapicerka</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-btn" id="hamburgerBtn"><span></span><span></span><span></span></button>
+
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -138,10 +526,10 @@
         <nav class="mobile-nav">
             <ul>
                 <li><a href="#home" data-num="01">O Waxoyl</a></li>
-                <li><a href="#ceramika" data-num="02">Ceramika</a></li>
-                <li><a href="#antykorozja" data-num="03">Antykorozja</a></li>
-                <li><a href="#silnik" data-num="04">Silnik</a></li>
-                <li><a href="#tapicerka" data-num="05">Tapicerka</a></li>
+                <li><a href="#ceramika" data-num="02">Zabezpieczenie lakieru</a></li>
+                <li><a href="#antykorozja" data-num="03">Zabezpieczenie antykorozyjne</a></li>
+                <li><a href="#silnik" data-num="04">Zabezpieczenie silnika</a></li>
+                <li><a href="#tapicerka" data-num="05">Zabezpieczenie tapicerki</a></li>
             </ul>
         </nav>
     </div>
@@ -149,51 +537,211 @@
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
-                <h1>Kompleksowa ochrona samochodu</h1>
-                <p>Szwajcarskie technologie od ponad 85 lat.</p>
-                <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
+                <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
+                <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
+                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
+                
+                <div class="btn-group">
+                    <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
+                </div>
+                
+                <div class="icon-grid">
+                    <div class="icon-box">
+                        <img src="img/logo.swiss1.png" alt="Swiss Technology">
+                        <span>CH Swiss Technology</span>
+                    </div>
+                    <div class="icon-box">
+                        <img src="img/logo.swiss85.png" alt="85+ lat doświadczenia">
+                        <span>85+ lat doświadczenia</span>
+                    </div>
+                    <div class="icon-box">
+                        <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
+                        <span>Ochrona 360° pojazdu</span>
+                    </div>
+                    <div class="icon-box">
+                        <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
+                        <span>Autoryzowane Punkty</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-right"><img src="img/odzdrerzaka.png" alt="Auto"></div>
+            <div class="hero-right">
+                <img src="img/odzdrerzaka.png" alt="Auto Premium" class="hero-img-full" loading="lazy">
+            </div>
         </div>
     </section>
 
-    <section id="ceramika"><div class="container"><div class="split-row"><div class="split-col-media"><img src="img/ceramika2.png" alt="Ceramika"></div><div class="split-col-text"><h2>Ceramiczna Ochrona Lakieru</h2><p>Maksymalny połysk i ochrona.</p></div></div></div></section>
-    
-    <section id="antykorozja" class="bg-gray"><div class="container"><div class="split-row"><div class="split-col-text"><h2>Antykorozja</h2><p>Profesjonalne zabezpieczenie podwozia.</p></div><div class="split-col-media"><img src="img/antycor.1.png" alt="Antykorozja"></div></div></div></section>
-    
-    <section id="silnik"><div class="container"><div class="split-row"><div class="split-col-media"><img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Silnik"></div><div class="split-col-text"><h2>Zabezpieczenie silnika</h2><p>Ochrona podzespołów komory silnika.</p></div></div></div></section>
-    
-    <section id="tapicerka" class="bg-gray">
+    <section id="o-nas" class="video-section">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        
+        <div class="video-overlay-tint"></div>
+
+        <div class="video-section-content">
+            <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
+            <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
+            
+            <ul class="features-list">
+                <li>Trwałość w ekstremalnych warunkach klimatycznych</li>
+                <li>Globalne zaufanie ekspertów detailingowych i OEM</li>
+                <li>Certyfikowane technologie i bezpieczne preparaty</li>
+                <li>Zabezpieczenie długoterminowej wartości rynkowej pojazdu</li>
+            </ul>
+            
+            <div class="btn-group" style="justify-content: center;">
+                <a href="#ceramika" class="btn btn-primary">ZOBACZ KATALOG PRODUKTÓW</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ceramika">
+        <div class="container">
+            <div class="split-row">
+                <div class="split-col-media">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%;">
+                        <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img" loading="lazy">
+                    </div>
+                </div>
+                <div class="split-col-text">
+                    <h2>Ceramiczna Ochrona Lakieru</h2>
+                    <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <ul class="features-list">
+                        <li>Głęboki, lustrzany połysk i podbicie głębi koloru</li>
+                        <li>Efekt samooczyszczania (hydrofobowość) i łatwiejsze mycie</li>
+                        <li>Odporność na agresywną chemię, ptasie odchody i soki z drzew</li>
+                    </ul>
+                    
+                    <div class="tech-accordion">
+                        <div class="tech-item">
+                            <button class="tech-trigger" onclick="toggleAccordion(this)">
+                                Specyfikacja techniczna <span class="tech-icon">▼</span>
+                            </button>
+                            <div class="tech-content">
+                                <div class="tech-content-inner">
+                                    Twardość strukturalna na poziomie 9H. Trwałość powłoki wynosi do 36 miesięcy przy odpowiedniej pielęgnacji. Grubość warstwy ochronnej: ok. 2-3 mikrony. Odporność na temperatury do 300°C.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="#antykorozja" class="btn btn-primary">SPECYFIKACJĘ ANTYKOROZJI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-text">
-                    <h2>ZABEZPIECZENIE TAPICERKI</h2>
-                    <h3 class="red-subtitle">OCHRONA TKANIN I SKÓR</h3>
-                    <p>Technologia <strong>Waxoyl Textile Care</strong> tworzy niewidzialną barierę molekularną na włóknach tapicerki, która skutecznie odpycha płyny i chroni przed trwałymi zabrudzeniami.</p>
+                    <h2>Profesjonalna Antykorozja</h2>
+                    <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
+                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>.</p>
                     <ul class="features-list">
-                        <li>Skuteczna bariera dla rozlanych płynów (kawa, napoje)</li>
-                        <li>Ochrona przed promieniami UV (zapobiega płowieniu)</li>
-                        <li>Zachowanie miękkości i oddychalności materiałów</li>
+                        <li style="color: var(--light);">Trwała ochrona przed solą drogową, chemią i wilgocią</li>
+                        <li style="color: var(--light);">Dokładne zabezpieczenie trudnodostępnych profili zamkniętych</li>
                     </ul>
+                    
+                    <div class="tech-accordion">
+                        <div class="tech-item">
+                            <button class="tech-trigger" onclick="toggleAccordion(this)">
+                                Właściwości technologiczne <span class="tech-icon">▼</span>
+                            </button>
+                            <div class="tech-content">
+                                <div class="tech-content-inner">
+                                    Preparat Waxoyl 120-4 posiada doskonałe właściwości penetrujące i zdolność do samoregeneracji (pełzania). Warstwa antykorozyjna nie pęka, nie łuszczy się i zachowuje elastyczność w temperaturach ujemnych.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" 
+                            title="Waxoyl Antykorozja" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#silnik" class="btn btn-primary">OCHRONA SILNIKA</a>
+                    </div>
                 </div>
                 <div class="split-col-media">
-                    <img src="img/tapicerka.png" alt="Ochrona tapicerki">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
+                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer><p>&copy; 2026 WAXOYL. Wszelkie prawa zastrzeżone.</p></footer>
+    <section id="silnik">
+        <div class="container">
+            <div class="split-row">
+                <div class="split-col-media">
+                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%;">
+                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img" loading="lazy">
+                    </div>
+                </div>
+                <div class="split-col-text">
+                    <h2>Zabezpieczenie silnika</h2>
+                    <h3 class="red-subtitle">Ochrona komponentów przed korozją</h3>
+                    <p>Specjalistyczny preparat <strong>Waxoyl Motor Care</strong> zabezpiecza elementy silnika, wiązki elektryczne i podzespoły przed wpływem wilgoci, soli oraz utlenianiem.</p>
+                    <ul class="features-list">
+                        <li>Antykorozyjna ochrona wszystkich elementów pod maską</li>
+                        <li>Trwałość w trudnych warunkach termicznych (wysoka temperatura)</li>
+                        <li>Bezpieczeństwo dla przewodów gumowych i plastikowych</li>
+                    </ul>
+                    <div class="btn-group">
+                        <a href="#tapicerka" class="btn btn-primary">OCHRONA TAPICERKI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 WAXOYL. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close" onclick="closeModal()">&times;</span>
+        <img class="image-modal-content" id="modalImg">
+    </div>
 
     <script>
+        function toggleAccordion(el) {
+            el.parentElement.classList.toggle('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.onclick = function() {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImg');
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+            }
+        });
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        };
+
         document.getElementById('hamburgerBtn').onclick = function() {
             this.classList.toggle('open');
             document.getElementById('mobileOverlay').classList.toggle('active');
-        };
-        window.onscroll = () => {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("scrollProgress").style.width = (winScroll / height) * 100 + "%";
         };
     </script>
 </body>
