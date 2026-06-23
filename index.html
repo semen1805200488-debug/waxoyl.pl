@@ -260,7 +260,7 @@
             .split-row { flex-direction: column !important; gap: 30px !important; }
             .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; text-align: center; }
             
-            /* КАРТИНКИ НА МОБИЛЬНЫХ: убираем боковые поля сайта для инфографик, чтобы сделать их максимально крупными */
+            /* КАРТИНКИ НА МОБИЛЬНЫХ */
             .split-col-media { 
                 order: -1; 
                 width: 100vw !important;
@@ -308,7 +308,6 @@
         </div>
     </header>
 
-    <!-- СЕКЦИЯ 1: HERO -->
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -348,7 +347,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: O NAS -->
     <section id="o-nas" style="padding-top: 50px; padding-bottom: 50px; overflow: hidden; background-color: var(--light);">
         <div class="hero-split">
             <div class="hero-left" style="padding-bottom: 0;">
@@ -370,20 +368,18 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: CERAMIKA -->
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
-                        <img src="img/ceramika.png.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img">
+                        <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img">
                     </div>
                 </div>
                 <div class="split-col-text">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę на lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
+                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
                     <ul class="features-list">
                         <li>Głęboki, lustrzany połysk i podbicie koloru</li>
                         <li>Efekt samooczyszczania i łatwiejsze mycie</li>
@@ -398,7 +394,6 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: ANTYKOROZJA -->
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
@@ -425,7 +420,6 @@
                 </div>
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
-                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
                         <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img">
                     </div>
                 </div>
@@ -433,21 +427,19 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ SILNIK -->
     <section id="silnik">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-text">
                     <h2>Motor Care</h2>
                     <h3 class="red-subtitle">Zabezpieczenie Komory Silnika</h3>
-                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny на wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych и znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
+                    <p>Profesjonalna ochrona silnika: antystatyczny i hydrofobowy film ochronny, odporny na wysokie temperatury. Działa antykorozyjnie, wypiera wodę z połączeń elektrycznych i znacznie wydłuża żywotność elastycznych elementów gumowych.</p>
                     <div class="btn-group">
                         <a href="#" class="btn btn-primary">Zabezpiecz silnik</a>
                     </div>
                 </div>
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img">
                     </div>
                 </div>
@@ -455,13 +447,11 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ TAPICERKA -->
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
                 <div class="split-col-media">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.18); width: 100%;">
-                        <!-- Добавлен класс zoomable-img для увеличения картинок -->
                         <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="U.P.T. Impregnacja Tapicerki" class="zoomable-img">
                     </div>
                 </div>
@@ -483,7 +473,6 @@
         </div>
     </footer>
 
-    <!-- ЭЛЕМЕНТЫ МОДАЛЬНОГО ОКНА ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">×</span>
         <img class="image-modal-content" id="modalTargetImg">
