@@ -646,13 +646,6 @@
                         <li style="color: var(--light);">Dokładne zabezpieczenie trudnodostępnych profili zamkniętych</li>
                     </ul>
                     
-                    <div class="video-wrapper">
-                        <video controls width="100%">
-                            <source src="IMG_1438.MOV" type="video/quicktime">
-                            Ваш браузер не поддерживает видео.
-                        </video>
-                    </div>
-                    
                     <div class="tech-accordion">
                         <div class="tech-item">
                             <button class="tech-trigger" onclick="toggleAccordion(this)">
@@ -722,7 +715,6 @@
     </div>
 
     <script>
-        // Добавленная функциональность для модального окна и аккордеона, чтобы все работало
         function toggleAccordion(el) {
             el.parentElement.classList.toggle('active');
         }
@@ -731,7 +723,6 @@
             document.getElementById('imageModal').style.display = 'none';
         }
 
-        // Обработка изображений для зума
         document.querySelectorAll('.zoomable-img').forEach(img => {
             img.onclick = function() {
                 const modal = document.getElementById('imageModal');
@@ -741,7 +732,6 @@
             }
         });
 
-        // Скролл прогресс бар
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -749,7 +739,6 @@
             document.getElementById("scrollProgress").style.width = scrolled + "%";
         };
 
-        // Бургер меню
         document.getElementById('hamburgerBtn').onclick = function() {
             this.classList.toggle('open');
             document.getElementById('mobileOverlay').classList.toggle('active');
