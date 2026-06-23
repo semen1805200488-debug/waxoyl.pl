@@ -195,10 +195,55 @@
             padding-left: 16px;
             background-color: rgba(0, 0, 0, 0.01);
         }
-        .mobile-nav a:active::after {
-            color: var(--primary);
-            transform: translateX(4px);
+
+        /* MOBILE APP-LIKE BOTTOM BAR navigation */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.06);
+            z-index: 998;
+            border-top: 1px solid rgba(0,0,0,0.04);
         }
+        .mobile-bottom-nav ul {
+            display: flex;
+            height: 100%;
+            list-style: none;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .mobile-bottom-nav li { flex: 1; text-align: center; }
+        .mobile-bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            gap: 4px;
+            transition: var(--transition);
+        }
+        .mobile-bottom-nav a svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--text-light);
+            stroke-width: 2.5;
+            transition: var(--transition);
+        }
+        .mobile-bottom-nav a:active { color: var(--primary); }
+        .mobile-bottom-nav a:active svg { stroke: var(--primary); }
 
         .hero { padding-top: 120px; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
         .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; }
@@ -206,6 +251,7 @@
         .hero-right { flex: 1; height: calc(100vh - 120px); display: flex; align-items: center; justify-content: flex-end; }
         .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
+        .icon-grid-wrapper { width: 100%; position: relative; }
         .icon-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -228,6 +274,7 @@
             flex-shrink: 0; 
             object-fit: contain;
         }
+        .slider-dots { display: none; }
 
         .video-section {
             position: relative;
@@ -357,6 +404,7 @@
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin-top: 35px; width: 100%; }
         .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
+        /* LIGHTBOX IMAGE MODAL UPGRADES */
         .image-modal {
             display: none;
             position: fixed;
@@ -364,55 +412,69 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 2000;
             cursor: zoom-out;
+            touch-action: none; /* Предотвращает системный скролл при свайпе картинки */
         }
         .image-modal-content {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            max-width: 90%;
+            transform: translate(-50%, -50%);
+            max-width: 92%;
             max-height: 85vh;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            animation: zoomIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        @keyframes zoomIn {
-            to { transform: translate(-50%, -50%) scale(1); }
+            transition: transform 0.1s ease-out; /* Для плавности свайпа на мобильных */
+            user-select: none;
+            -webkit-user-drag: none;
         }
         .image-modal-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.08);
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
             color: white;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
-            font-weight: 300;
             z-index: 2001;
         }
-        .image-modal-close:hover { background: rgba(255,255,255,0.15); }
+        .image-modal-close:hover { background: rgba(255,255,255,0.2); }
+        
+        .modal-tip {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+            font-weight: 500;
+            pointer-events: none;
+            display: none;
+        }
 
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 40px 0; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
         .btn:active, .tech-trigger:active { transform: scale(0.98); }
 
+        /* ADVANCED MEDIA QUERY FOR MAX PERFORMANCE AND APP-LIKE UX */
         @media (max-width: 992px) {
             html, body { overflow-x: hidden; width: 100%; }
+            body { padding-bottom: 64px; } /* Место под фиксированный нижний тулбар навигации */
             
             .container { padding: 0 24px !important; }
-            section { padding: 60px 0 !important; }
+            section { padding: 64px 0 !important; }
             
             header { padding: 12px 0 !important; height: 62px; background: rgba(255, 255, 255, 0.88); border-bottom: 1px solid rgba(0,0,0,0.03); }
             .nav-container { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; padding: 0 24px !important; }
@@ -422,6 +484,7 @@
             
             header nav { display: none !important; }
             .hamburger-btn { display: flex !important; }
+            .mobile-bottom-nav { display: block; }
 
             .hero { padding-top: 95px !important; min-height: auto !important; }
             .hero-split { flex-direction: column !important; }
@@ -436,6 +499,7 @@
             .btn-group { margin-top: 10px !important; }
             .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.88rem !important; border-radius: 10px; }
             
+            /* SWIPE SNAP SLIDER FOR BENEFITS */
             .icon-grid { 
                 display: flex !important; 
                 flex-direction: row !important;
@@ -443,33 +507,62 @@
                 scroll-snap-type: x mandatory !important;
                 -webkit-overflow-scrolling: touch !important;
                 gap: 14px !important; 
-                padding: 10px 24px 25px 24px !important; 
+                padding: 10px 24px 14px 24px !important; 
                 margin-left: -24px !important; 
                 margin-right: -24px !important; 
                 margin-top: 32px !important;
-                scroll-behavior: smooth;
             }
             .icon-grid::-webkit-scrollbar { display: none; }
             
             .icon-box { 
-                flex: 0 0 78% !important;
-                scroll-snap-align: start !important;
+                flex: 0 0 82% !important;
+                scroll-snap-align: center !important;
                 background: #ffffff;
                 border: 1px solid rgba(0, 0, 0, 0.05);
                 box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
                 padding: 18px 20px !important;
                 border-radius: 12px !important;
-                min-height: 80px !important; 
+                min-height: 84px !important; 
                 font-size: 0.92rem !important; 
                 line-height: 1.3 !important;
                 gap: 16px !important; 
             }
-            .icon-box img { height: 34px !important; }
+            .icon-box img { height: 36px !important; }
+            
+            /* Dots indicator for benefits slider */
+            .slider-dots {
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 4px;
+                margin-bottom: 20px;
+            }
+            .slider-dots span {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: rgba(0,0,0,0.15);
+                transition: var(--transition);
+            }
+            .slider-dots span.active {
+                background: var(--primary);
+                width: 14px;
+                border-radius: 3px;
+            }
             
             .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; }
             .hero-img-full { max-height: 28vh !important; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-            .video-section { min-height: 60vh !important; padding: 40px 0 !important; }
+            /* VIDEO PERFORMANCE OPTIMIZATION FOR SMARTPHONES */
+            .video-section { 
+                min-height: 55vh !important; 
+                padding: 50px 0 !important; 
+                background-image: url('img/odzdrerzaka.png'); /* Заглушка вместо тяжелого видео на смартфонах */
+                background-size: cover;
+                background-position: center;
+            }
+            .video-bg { display: none !important; } /* Полностью выключаем видео на телефонах */
+            
             .video-section-content { padding: 0 24px !important; }
             .video-section-content p { text-align: center !important; font-size: 0.95rem !important; }
             .video-section-content .features-list { display: block !important; margin-bottom: 24px !important; }
@@ -485,7 +578,11 @@
             .features-list { margin-bottom: 24px !important; }
             .features-list li { font-size: 0.95rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; padding-left: 28px !important; }
             
-            footer { padding: 35px 0 !important; font-size: 0.78rem; }
+            /* Крупная область тапа в аккордеоне */
+            .tech-trigger { padding: 22px 0; font-size: 0.98rem; }
+            
+            .modal-tip { display: block; }
+            footer { padding: 35px 0 !important; font-size: 0.78rem; margin-bottom: 4px; }
         }
     </style>
 </head>
@@ -533,6 +630,35 @@
         </nav>
     </div>
 
+    <div class="mobile-bottom-nav">
+        <ul>
+            <li>
+                <a href="#home">
+                    <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11v11a1 1 0 01-1 1h-3m-6 0V11a1 1 0 011-1h2a1 1 0 011 1v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Start</span>
+                </a>
+            </li>
+            <li>
+                <a href="#ceramika">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Ceramika</span>
+                </a>
+            </li>
+            <li>
+                <a href="#antykorozja">
+                    <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Podwozie</span>
+                </a>
+            </li>
+            <li>
+                <a href="#tapicerka">
+                    <svg viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Wnętrze</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <section class="hero" id="home">
         <div class="hero-split">
             <div class="hero-left">
@@ -544,22 +670,28 @@
                     <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
                 </div>
                 
-                <div class="icon-grid">
-                    <div class="icon-box">
-                        <img src="img/logo.swiss1.png" alt="Swiss Technology">
-                        <span>CH Swiss Technology</span>
+                <div class="icon-grid-wrapper">
+                    <div class="icon-grid" id="benefitsSlider">
+                        <div class="icon-box">
+                            <img src="img/logo.swiss1.png" alt="Swiss Technology">
+                            <span>CH Swiss Technology</span>
+                        </div>
+                        <div class="icon-box">
+                            <img src="img/logo.swiss85.png" alt="85+ lat doświadczenia">
+                            <span>85+ lat doświadczenia</span>
+                        </div>
+                        <div class="icon-box">
+                            <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
+                            <span>Ochrona 360° pojazdu</span>
+                        </div>
+                        <div class="icon-box">
+                            <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
+                            <span>Autoryzowane Punkty</span>
+                        </div>
                     </div>
-                    <div class="icon-box">
-                        <img src="img/logo.swiss85.png" alt="85+ lat doświadczenia">
-                        <span>85+ lat doświadczenia</span>
-                    </div>
-                    <div class="icon-box">
-                        <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
-                        <span>Ochrona 360° pojazdu</span>
-                    </div>
-                    <div class="icon-box">
-                        <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
-                        <span>Autoryzowane Punkty</span>
+                    <div class="slider-dots" id="sliderDots">
+                        <span class="active"></span>
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -572,7 +704,6 @@
     <section id="o-nas" class="video-section">
         <video autoplay muted loop playsinline class="video-bg">
             <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
         </video>
         
         <div class="video-overlay-tint"></div>
@@ -753,16 +884,17 @@
         <p>&copy; 2026 WAXOYL. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- LIGHTBOX IMAGE MODAL -->
     <div id="customImageModal" class="image-modal">
         <span class="image-modal-close">&times;</span>
         <img class="image-modal-content" id="modalTargetImg" alt="Powiększony widok">
+        <div class="modal-tip">Przesuń w górę lub w dół, aby zamknąć</div>
     </div>
 
     <script>
+        // MOBILE OVERLAY BURGER MENU
         const hamburgerBtn = document.getElementById("hamburgerBtn");
         const mobileOverlay = document.getElementById("mobileOverlay");
-        const mobileLinks = document.querySelectorAll(".mobile-nav a");
+        const mobileLinks = document.querySelectorAll(".mobile-nav a, .mobile-bottom-nav a");
 
         function toggleMobileMenu() {
             hamburgerBtn.classList.toggle("open");
@@ -774,22 +906,48 @@
 
         mobileLinks.forEach(link => {
             link.addEventListener("click", () => {
-                toggleMobileMenu();
+                if(mobileOverlay.classList.contains("active")) {
+                    toggleMobileMenu();
+                }
             });
         });
 
+        // ACCORDION
         function toggleAccordion(button) {
             button.parentElement.classList.toggle('active');
         }
 
+        // BENEFITS SLIDER DOTS TRACKING
+        const slider = document.getElementById('benefitsSlider');
+        const dots = document.querySelectorAll('#sliderDots span');
+        if(slider && dots.length > 0) {
+            slider.addEventListener('scroll', () => {
+                const scrollLeft = slider.scrollLeft;
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+                if(maxScroll > 0) {
+                    const index = scrollLeft > maxScroll / 2 ? 1 : 0;
+                    dots.forEach((dot, i) => {
+                        if(i === index) dot.classList.add('active');
+                        else dot.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // UPGRADED MODAL LIGHTBOX WITH SWIPE-TO-CLOSE
         const modal = document.getElementById("customImageModal");
         const modalImg = document.getElementById("modalTargetImg");
         const closeBtn = document.querySelector(".image-modal-close");
         
+        let startY = 0;
+        let currentY = 0;
+        let isDragging = false;
+
         document.querySelectorAll('.zoomable-img').forEach(img => {
             img.addEventListener('click', function() {
                 modal.style.display = "block";
                 modalImg.src = this.src;
+                modalImg.style.transform = "translate(-50%, -50%) scale(1)";
                 document.body.style.overflow = "hidden";
             });
         });
@@ -797,6 +955,7 @@
         function closeModal() {
             modal.style.display = "none";
             document.body.style.overflow = "";
+            modalImg.style.transform = "translate(-50%, -50%)";
         }
 
         closeBtn.addEventListener('click', closeModal);
@@ -804,6 +963,40 @@
             if(e.target === modal || e.target === modalImg) closeModal();
         });
 
+        // SWIPE TO CLOSE EVENT LISTENERS (FOR PHONES)
+        modalImg.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        }, {passive: true});
+
+        modalImg.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentY = e.touches[0].clientY;
+            const diffY = currentY - startY;
+            
+            // Сдвигаем картинку вслед за пальцем с легким затуханием
+            if (Math.abs(diffY) > 0) {
+                modalImg.style.transform = `translate(-50%, calc(-50% + ${diffY}px)) scale(${Math.max(0.85, 1 - Math.abs(diffY)/1000)})`;
+            }
+        }, {passive: true});
+
+        modalImg.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diffY = currentY - startY;
+            
+            // Если смахнули дальше чем на 120px — закрываем модалку
+            if (Math.abs(diffY) > 120) {
+                closeModal();
+            } else {
+                // Если смахнули мало — возвращаем картинку в центр
+                modalImg.style.transform = "translate(-50%, -50%) scale(1)";
+            }
+            startY = 0;
+            currentY = 0;
+        });
+
+        // SCROLL PROGRESS LINE
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
