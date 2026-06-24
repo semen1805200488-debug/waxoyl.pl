@@ -83,6 +83,7 @@
       width: 54px;
       height: 54px;
       object-fit: contain;
+      flex: 0 0 auto;
     }
 
     .brand strong {
@@ -431,18 +432,19 @@
       overflow: hidden;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      background: #e9eaec;
+      background: #f3f4f5;
     }
 
     .service-media img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
       transition: transform 0.55s ease;
       cursor: zoom-in;
     }
 
-    .service-media:hover img { transform: scale(1.04); }
+    .service-media:hover img { transform: none; }
 
     .label {
       display: inline-flex;
@@ -624,12 +626,29 @@
         height: 70px;
       }
 
+      .brand {
+        gap: 9px;
+        max-width: calc(100% - 58px);
+      }
+
       .brand img {
         width: 46px;
         height: 46px;
       }
 
-      .brand span { display: none; }
+      .brand span {
+        display: block;
+      }
+
+      .brand strong {
+        font-size: 0.82rem;
+      }
+
+      .brand > span span {
+        margin-top: 2px;
+        font-size: 0.58rem;
+      }
+
       .mobile-panel { inset-top: 70px; }
       .hero { padding-top: 70px; }
       .hero-copy { padding-top: 50px; }
