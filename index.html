@@ -39,7 +39,8 @@
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
         }
-        
+
+        /* Скроллбар и прогресс */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -47,20 +48,28 @@
             width: 0%;
             height: 3px;
             background-color: var(--primary);
-            z-index: 1002;
+            z-index: 1003;
             transition: width 0.1s ease-out;
         }
+
+        /* Анимация появления элементов при скролле (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal.delay-1 { transition-delay: 0.15s; }
+        .reveal.delay-2 { transition-delay: 0.3s; }
         
         h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -0.5px; }
         h2 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; text-transform: uppercase; color: var(--dark); letter-spacing: -0.5px; }
         h3.red-subtitle { color: var(--primary); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; letter-spacing: 1.5px; }
         
-        p { 
-            margin-bottom: 20px; 
-            font-size: 1.05rem; 
-            color: var(--text-light); 
-            line-height: 1.7;
-        }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
         
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         section { padding: 120px 0; }
@@ -70,34 +79,43 @@
         .bg-dark h2, .bg-dark h3 { color: var(--light); }
         .bg-dark p { color: #aeaeae; }
         
+        /* Кнопки */
         .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; font-size: 0.85rem; letter-spacing: 0.5px; }
         .btn-primary { background-color: var(--primary); color: var(--light); border: none; }
         .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(214, 0, 0, 0.3); }
         .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
         .btn-outline:hover { background-color: var(--dark); color: var(--light); }
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 35px; }
+        .btn:active, .tech-trigger:active, .icon-box:active { transform: scale(0.96); }
 
+        /* Динамический Хедер */
         header { 
             position: fixed; 
             top: 0; 
             left: 0; 
             width: 100%; 
+            background: transparent; 
+            z-index: 1000; 
+            padding: 24px 0; 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        header.scrolled {
             background: rgba(255, 255, 255, 0.85); 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            z-index: 1000; 
-            box-shadow: 0 1px 10px rgba(0,0,0,0.02); 
-            padding: 16px 0; 
-            transition: var(--transition);
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05); 
+            padding: 12px 0; 
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
         
         .logo { text-decoration: none; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-        .logo img { height: 44px; width: auto; display: block; }
+        .logo img { height: 44px; width: auto; display: block; transition: var(--transition); }
+        header.scrolled .logo img { height: 38px; }
         
         .logo-text { display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.1; }
-        .logo-title { font-size: 1.45rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; }
-        .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .logo-title { font-size: 1.45rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; transition: var(--transition); }
+        header.scrolled .logo-title { font-size: 1.25rem; }
+        .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; transition: var(--transition); }
 
         nav { display: block; }
         nav ul { list-style: none; display: flex; gap: 30px; }
@@ -127,33 +145,37 @@
         .hamburger-btn.open span:nth-child(2) { opacity: 0; }
         .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+        /* Мобильное меню: Шторка iOS Style */
+        .menu-backdrop {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+        .menu-backdrop.active { opacity: 1; visibility: visible; }
+
         .mobile-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            bottom: 0; left: 0; width: 100%;
+            background-color: #ffffff;
             z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 110px 30px 60px 30px;
-            
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transform: translateY(-12px);
-            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s ease;
+            border-radius: 28px 28px 0 0;
+            padding: 20px 24px 85px 24px; /* Отступ снизу для мобильного тулбара */
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            transform: translateY(100%);
+            transition: transform 0.45s cubic-bezier(0.32, 1, 0.23, 1);
         }
+        .mobile-overlay.active { transform: translateY(0); }
         
-        .mobile-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateY(0);
+        .sheet-handle {
+            width: 40px; height: 5px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin: 0 auto 20px auto;
         }
 
         .mobile-nav { width: 100%; }
@@ -162,7 +184,7 @@
         .mobile-nav li:first-child { border-top: 1px solid rgba(0, 0, 0, 0.04); }
 
         .mobile-nav a {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--dark);
             text-transform: uppercase;
@@ -171,7 +193,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 24px 8px;
+            padding: 22px 8px;
             transition: var(--transition);
         }
         
@@ -182,301 +204,105 @@
             font-weight: 600;
             margin-right: 15px;
         }
-        
-        .mobile-nav a::after {
-            content: '→';
-            color: rgba(0, 0, 0, 0.15);
-            font-size: 1.1rem;
-            transition: var(--transition);
-        }
+        .mobile-nav a:active { color: var(--primary); padding-left: 12px; background-color: rgba(0, 0, 0, 0.02); }
 
-        .mobile-nav a:active {
-            color: var(--primary);
-            padding-left: 16px;
-            background-color: rgba(0, 0, 0, 0.01);
-        }
-
-        /* MOBILE APP-LIKE BOTTOM BAR navigation */
+        /* Нижний тулбар (Bottom Nav) */
         .mobile-bottom-nav {
             display: none;
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 64px;
+            bottom: 0; left: 0; width: 100%; height: 64px;
             background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 -2px 15px rgba(0,0,0,0.06);
-            z-index: 998;
+            z-index: 1002;
             border-top: 1px solid rgba(0,0,0,0.04);
+            padding-bottom: env(safe-area-inset-bottom);
         }
-        .mobile-bottom-nav ul {
-            display: flex;
-            height: 100%;
-            list-style: none;
-            justify-content: space-around;
-            align-items: center;
-            padding: 0 10px;
-        }
+        .mobile-bottom-nav ul { display: flex; height: 100%; list-style: none; justify-content: space-around; align-items: center; padding: 0 10px; }
         .mobile-bottom-nav li { flex: 1; text-align: center; }
         .mobile-bottom-nav a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            gap: 4px;
-            transition: var(--transition);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-decoration: none; color: var(--text-light); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; gap: 4px; transition: var(--transition);
         }
-        .mobile-bottom-nav a svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: var(--text-light);
-            stroke-width: 2.5;
-            transition: var(--transition);
-        }
+        .mobile-bottom-nav a svg { width: 20px; height: 20px; fill: none; stroke: var(--text-light); stroke-width: 2.5; transition: var(--transition); }
         .mobile-bottom-nav a:active { color: var(--primary); }
         .mobile-bottom-nav a:active svg { stroke: var(--primary); }
 
-        .hero { padding-top: 120px; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
-        .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; }
+        /* Hero Секция */
+        .hero { padding-top: 0; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
+        .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; padding-top: 80px; }
         .hero-left { flex: 1; max-width: 700px; padding-left: 40px; padding-right: 20px; padding-bottom: 60px; }
-        .hero-right { flex: 1; height: calc(100vh - 120px); display: flex; align-items: center; justify-content: flex-end; }
+        .hero-right { flex: 1; height: 100vh; display: flex; align-items: center; justify-content: flex-end; }
         .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
 
         .icon-grid-wrapper { width: 100%; position: relative; }
-        .icon-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 32px 24px; 
-            margin-top: 45px; 
-        }
-        .icon-box { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-            font-weight: 700; 
-            color: var(--dark); 
-            min-height: 56px; 
-            font-size: 1rem;
-        }
-        .icon-box img { 
-            height: 44px; 
-            width: auto; 
-            display: block; 
-            flex-shrink: 0; 
-            object-fit: contain;
-        }
+        .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px; margin-top: 45px; }
+        .icon-box { display: flex; align-items: center; gap: 20px; font-weight: 700; color: var(--dark); min-height: 56px; font-size: 1rem; transition: transform 0.2s; }
+        .icon-box img { height: 44px; width: auto; display: block; flex-shrink: 0; object-fit: contain; }
         .slider-dots { display: none; }
 
-        .video-section {
-            position: relative;
-            width: 100%;
-            min-height: 75vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background-color: var(--darker);
-            padding: 80px 0;
-        }
-        .video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            pointer-events: none;
-        }
-        .video-overlay-tint {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 100%);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            z-index: 2;
-        }
-        .video-section-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-            color: var(--light);
-            padding: 0 40px;
-        }
+        /* Видео Секция */
+        .video-section { position: relative; width: 100%; min-height: 75vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: var(--darker); padding: 80px 0; }
+        .video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; transform: translate(-50%, -50%); object-fit: cover; pointer-events: none; }
+        .video-overlay-tint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 100%); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 2; }
+        .video-section-content { position: relative; z-index: 3; max-width: 900px; width: 100%; text-align: center; color: var(--light); padding: 0 40px; }
         .video-section-content h2, .video-section-content h3 { color: var(--light) !important; }
         .video-section-content p { color: #e5e5ea !important; font-weight: 500; margin-bottom: 30px; }
-        .video-section-content .features-list {
-            display: inline-block;
-            text-align: left;
-            margin-bottom: 35px;
-        }
+        .video-section-content .features-list { display: inline-block; text-align: left; margin-bottom: 35px; }
         .video-section-content .features-list li { color: var(--light); font-weight: 600; }
 
+        /* Секции с текстом и фото */
         .split-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
         .split-col-text { flex: 1; min-width: 350px; }
         .split-col-media { flex: 1; min-width: 350px; display: flex; justify-content: center; align-items: center; }
         .split-col-media img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-        .zoomable-img { cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease; }
+        .zoomable-img { cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
         .zoomable-img:hover { transform: scale(1.02); }
 
         .features-list { list-style: none; margin-bottom: 35px; }
-        .features-list li { 
-            position: relative; 
-            padding-left: 32px; 
-            margin-bottom: 14px; 
-            font-weight: 500; 
-            color: var(--dark);
-        }
+        .features-list li { position: relative; padding-left: 32px; margin-bottom: 14px; font-weight: 500; color: var(--dark); }
         .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
         .bg-dark .features-list li { color: var(--light); }
 
-        .tech-accordion {
-            border-top: 1px solid var(--border-light);
-            margin-top: 25px;
-        }
-        .tech-item {
-            border-bottom: 1px solid var(--border-light);
-            overflow: hidden;
-        }
-        .tech-trigger {
-            width: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            padding: 18px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--dark);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            text-align: left;
-        }
+        /* Аккордеон */
+        .tech-accordion { border-top: 1px solid var(--border-light); margin-top: 25px; }
+        .tech-item { border-bottom: 1px solid var(--border-light); overflow: hidden; }
+        .tech-trigger { width: 100%; background: transparent; border: none; outline: none; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); font-size: 0.95rem; font-weight: 700; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; text-align: left; transition: transform 0.2s; }
         .bg-dark .tech-trigger { color: var(--light); }
         .bg-dark .tech-accordion { border-top-color: rgba(255,255,255,0.1); }
         .bg-dark .tech-item { border-bottom-color: rgba(255,255,255,0.1); }
-        
-        .tech-icon {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-            color: var(--text-light);
-        }
+        .tech-icon { font-size: 0.8rem; transition: transform 0.3s ease; color: var(--text-light); }
         .bg-dark .tech-icon { color: #aeaeae; }
-        
-        .tech-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .tech-content-inner {
-            padding: 4px 0 20px 0;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+        .tech-content { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tech-content-inner { padding: 4px 0 20px 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
         .bg-dark .tech-content-inner { color: #aeaeae; }
-        
         .tech-item.active .tech-icon { transform: rotate(180deg); color: var(--primary); }
         .tech-item.active .tech-content { max-height: 300px; }
 
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin-top: 35px; width: 100%; }
         .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* LIGHTBOX IMAGE MODAL UPGRADES */
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 10, 0.96);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 2000;
-            cursor: zoom-out;
-            touch-action: none; /* Предотвращает системный скролл при свайпе картинки */
-        }
-        .image-modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 92%;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            transition: transform 0.1s ease-out; /* Для плавности свайпа на мобильных */
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-        .image-modal-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            color: white;
-            font-size: 26px;
-            cursor: pointer;
-            z-index: 2001;
-        }
+        /* Модальное окно картинок */
+        .image-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 2005; cursor: zoom-out; touch-action: none; }
+        .image-modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 92%; max-height: 85vh; object-fit: contain; border-radius: 10px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); transition: transform 0.1s ease-out; user-select: none; -webkit-user-drag: none; }
+        .image-modal-close { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: white; font-size: 26px; cursor: pointer; z-index: 2006; }
         .image-modal-close:hover { background: rgba(255,255,255,0.2); }
-        
-        .modal-tip {
-            position: absolute;
-            bottom: 24px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.75rem;
-            font-weight: 500;
-            pointer-events: none;
-            display: none;
-        }
+        .modal-tip { position: absolute; bottom: 24px; left: 0; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-weight: 500; pointer-events: none; display: none; }
 
         footer { background: var(--darker); color: var(--light); text-align: center; padding: 40px 0; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
-        .btn:active, .tech-trigger:active { transform: scale(0.98); }
 
-        /* ADVANCED MEDIA QUERY FOR MAX PERFORMANCE AND APP-LIKE UX */
+        /* Мобильная Адаптация */
         @media (max-width: 992px) {
             html, body { overflow-x: hidden; width: 100%; }
-            body { padding-bottom: 64px; } /* Место под фиксированный нижний тулбар навигации */
+            body { padding-bottom: 64px; }
             
             .container { padding: 0 24px !important; }
             section { padding: 64px 0 !important; }
             
-            header { padding: 12px 0 !important; height: 62px; background: rgba(255, 255, 255, 0.88); border-bottom: 1px solid rgba(0,0,0,0.03); }
+            header { padding: 12px 0; background: transparent; }
+            header.scrolled { padding: 12px 0; background: rgba(255, 255, 255, 0.88); border-bottom: 1px solid rgba(0,0,0,0.03); }
+            
             .nav-container { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; padding: 0 24px !important; }
             .logo img { height: 38px !important; }
             .logo-title { font-size: 1.25rem !important; }
@@ -486,83 +312,33 @@
             .hamburger-btn { display: flex !important; }
             .mobile-bottom-nav { display: block; }
 
-            .hero { padding-top: 95px !important; min-height: auto !important; }
-            .hero-split { flex-direction: column !important; }
+            .hero { padding-top: 0 !important; min-height: auto !important; }
+            .hero-split { flex-direction: column !important; padding-top: 95px; }
             .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 10px; padding-bottom: 20px !important; }
             
             h1 { font-size: 2.1rem !important; line-height: 1.15 !important; margin-bottom: 14px; text-align: center; letter-spacing: -0.5px; }
             h2 { font-size: 1.75rem !important; line-height: 1.2 !important; margin-bottom: 8px; text-align: center; letter-spacing: -0.3px; }
             h3.red-subtitle { font-size: 0.95rem !important; margin-bottom: 24px; text-align: center; letter-spacing: 1px; }
-            
             p { font-size: 0.98rem !important; line-height: 1.65 !important; margin-bottom: 24px; text-align: justify; color: var(--text-light); }
             
             .btn-group { margin-top: 10px !important; }
             .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.88rem !important; border-radius: 10px; }
             
-            /* SWIPE SNAP SLIDER FOR BENEFITS */
-            .icon-grid { 
-                display: flex !important; 
-                flex-direction: row !important;
-                overflow-x: auto !important; 
-                scroll-snap-type: x mandatory !important;
-                -webkit-overflow-scrolling: touch !important;
-                gap: 14px !important; 
-                padding: 10px 24px 14px 24px !important; 
-                margin-left: -24px !important; 
-                margin-right: -24px !important; 
-                margin-top: 32px !important;
-            }
+            /* Слайдер иконок */
+            .icon-grid { display: flex !important; flex-direction: row !important; overflow-x: auto !important; scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch !important; gap: 14px !important; padding: 10px 24px 14px 24px !important; margin-left: -24px !important; margin-right: -24px !important; margin-top: 32px !important; }
             .icon-grid::-webkit-scrollbar { display: none; }
-            
-            .icon-box { 
-                flex: 0 0 82% !important;
-                scroll-snap-align: center !important;
-                background: #ffffff;
-                border: 1px solid rgba(0, 0, 0, 0.05);
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
-                padding: 18px 20px !important;
-                border-radius: 12px !important;
-                min-height: 84px !important; 
-                font-size: 0.92rem !important; 
-                line-height: 1.3 !important;
-                gap: 16px !important; 
-            }
+            .icon-box { flex: 0 0 82% !important; scroll-snap-align: center !important; background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03); padding: 18px 20px !important; border-radius: 12px !important; min-height: 84px !important; font-size: 0.92rem !important; line-height: 1.3 !important; gap: 16px !important; }
             .icon-box img { height: 36px !important; }
             
-            /* Dots indicator for benefits slider */
-            .slider-dots {
-                display: flex;
-                justify-content: center;
-                gap: 6px;
-                margin-top: 4px;
-                margin-bottom: 20px;
-            }
-            .slider-dots span {
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background: rgba(0,0,0,0.15);
-                transition: var(--transition);
-            }
-            .slider-dots span.active {
-                background: var(--primary);
-                width: 14px;
-                border-radius: 3px;
-            }
+            .slider-dots { display: flex; justify-content: center; gap: 6px; margin-top: 4px; margin-bottom: 20px; }
+            .slider-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.15); transition: var(--transition); }
+            .slider-dots span.active { background: var(--primary); width: 14px; border-radius: 3px; }
             
             .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; padding: 0 20px !important; }
             .hero-img-full { max-height: 35vh !important; border-radius: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transform: translateY(10px); }
 
-            /* VIDEO PERFORMANCE OPTIMIZATION FOR SMARTPHONES */
-            .video-section { 
-                min-height: 55vh !important; 
-                padding: 50px 0 !important; 
-                background-image: url('img/odzdrerzaka.png'); /* Заглушка вместо тяжелого видео на смартфонах */
-                background-size: cover;
-                background-position: center;
-            }
-            .video-bg { display: none !important; } /* Полностью выключаем видео на телефонах */
-            
+            .video-section { min-height: 55vh !important; padding: 50px 0 !important; background-image: url('img/odzdrerzaka.png'); background-size: cover; background-position: center; }
+            .video-bg { display: none !important; }
             .video-section-content { padding: 0 24px !important; }
             .video-section-content p { text-align: center !important; font-size: 0.95rem !important; }
             .video-section-content .features-list { display: block !important; margin-bottom: 24px !important; }
@@ -570,35 +346,25 @@
 
             .split-row { flex-direction: column !important; gap: 28px !important; }
             .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; }
-            
             .split-col-media { order: -1; width: 100% !important; }
-            .split-col-media div { border-radius: 12px !important; }
-            .split-col-media img { border-radius: 12px !important; }
+            .split-col-media div, .split-col-media img { border-radius: 12px !important; }
             
             .features-list { margin-bottom: 24px !important; }
             .features-list li { font-size: 0.95rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; padding-left: 28px !important; }
             
-            /* Крупная область тапа в аккордеоне */
             .tech-trigger { padding: 22px 0; font-size: 0.98rem; }
-            
             .modal-tip { display: block; }
             footer { padding: 35px 0 !important; font-size: 0.78rem; margin-bottom: 4px; }
         }
-    
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-</style>
+    </style>
 </head>
 <body>
 
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <header>
+    <header id="mainHeader">
         <div class="nav-container">
-            <a href="#home" class="logo">
+            <a href="#home" class="logo tap-effect">
                 <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
                 <div class="logo-text">
                     <span class="logo-title">WAXOYL</span>
@@ -608,30 +374,33 @@
             
             <nav>
                 <ul>
-                    <li><a href="#home">O Waxoyl</a></li>
-                    <li><a href="#ceramika">Ceramika</a></li>
-                    <li><a href="#antykorozja">Antykorozja</a></li>
-                    <li><a href="#silnik">Silnik</a></li>
-                    <li><a href="#tapicerka">Tapicerka</a></li>
+                    <li><a href="#home" class="tap-effect">O Waxoyl</a></li>
+                    <li><a href="#ceramika" class="tap-effect">Ceramika</a></li>
+                    <li><a href="#antykorozja" class="tap-effect">Antykorozja</a></li>
+                    <li><a href="#silnik" class="tap-effect">Silnik</a></li>
+                    <li><a href="#tapicerka" class="tap-effect">Tapicerka</a></li>
                 </ul>
             </nav>
 
-            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger-btn tap-effect" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
 
+    <!-- Фон шторки -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <!-- Сама шторка -->
     <div class="mobile-overlay" id="mobileOverlay">
+        <div class="sheet-handle"></div>
         <nav class="mobile-nav">
             <ul>
-                <li><a href="#home" data-num="01">O Waxoyl</a></li>
-                <li><a href="#ceramika" data-num="02">Zabezpieczenie lakieru</a></li>
-                <li><a href="#antykorozja" data-num="03">Zabezpieczenie antykorozyjne</a></li>
-                <li><a href="#silnik" data-num="04">Zabezpieczenie silnika</a></li>
-                <li><a href="#tapicerka" data-num="05">Zabezpieczenie tapicerki</a></li>
+                <li><a href="#home" class="tap-effect" data-num="01">O Waxoyl</a></li>
+                <li><a href="#ceramika" class="tap-effect" data-num="02">Zabezpieczenie lakieru</a></li>
+                <li><a href="#antykorozja" class="tap-effect" data-num="03">Zabezpieczenie podwozia</a></li>
+                <li><a href="#silnik" class="tap-effect" data-num="04">Zabezpieczenie silnika</a></li>
+                <li><a href="#tapicerka" class="tap-effect" data-num="05">Zabezpieczenie wnętrza</a></li>
             </ul>
         </nav>
     </div>
@@ -639,25 +408,25 @@
     <div class="mobile-bottom-nav">
         <ul>
             <li>
-                <a href="#home">
+                <a href="#home" class="tap-effect">
                     <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11v11a1 1 0 01-1 1h-3m-6 0V11a1 1 0 011-1h2a1 1 0 011 1v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Start</span>
                 </a>
             </li>
             <li>
-                <a href="#ceramika">
+                <a href="#ceramika" class="tap-effect">
                     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Ceramika</span>
                 </a>
             </li>
             <li>
-                <a href="#antykorozja">
+                <a href="#antykorozja" class="tap-effect">
                     <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Podwozie</span>
                 </a>
             </li>
             <li>
-                <a href="#tapicerka">
+                <a href="#tapicerka" class="tap-effect">
                     <svg viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Wnętrze</span>
                 </a>
@@ -667,30 +436,30 @@
 
     <section class="hero" id="home">
         <div class="hero-split">
-            <div class="hero-left">
+            <div class="hero-left reveal">
                 <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
                 <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
                 <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
                 
                 <div class="btn-group">
-                    <a href="#ceramika" class="btn btn-primary">POZNAJ ROZWIĄZANIA</a>
+                    <a href="#ceramika" class="btn btn-primary tap-effect">POZNAJ ROZWIĄZANIA</a>
                 </div>
                 
-                <div class="icon-grid-wrapper">
+                <div class="icon-grid-wrapper reveal delay-1">
                     <div class="icon-grid" id="benefitsSlider">
-                        <div class="icon-box">
+                        <div class="icon-box tap-effect">
                             <img src="img/logo.swiss1.png" alt="Swiss Technology">
                             <span>CH Swiss Technology</span>
                         </div>
-                        <div class="icon-box">
+                        <div class="icon-box tap-effect">
                             <img src="img/logo.swiss85.png" alt="85+ lat doświadczenia">
                             <span>85+ lat doświadczenia</span>
                         </div>
-                        <div class="icon-box">
+                        <div class="icon-box tap-effect">
                             <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
                             <span>Ochrona 360° pojazdu</span>
                         </div>
-                        <div class="icon-box">
+                        <div class="icon-box tap-effect">
                             <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
                             <span>Autoryzowane Punkty</span>
                         </div>
@@ -701,7 +470,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-right">
+            <div class="hero-right reveal delay-2">
                 <img src="img/odzdrerzaka.png" alt="Auto Premium" class="hero-img-full" loading="lazy">
             </div>
         </div>
@@ -711,22 +480,21 @@
         <video autoplay muted loop playsinline class="video-bg">
             <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
         </video>
-        
         <div class="video-overlay-tint"></div>
 
-        <div class="video-section-content">
+        <div class="video-section-content reveal">
             <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
             <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
             
             <ul class="features-list">
                 <li>Trwałość w ekstremalnych warunkach klimatycznych</li>
-                <li>Globalne zaufanie experts detailingowych i OEM</li>
+                <li>Globalne zaufanie ekspertów detailingowych i OEM</li>
                 <li>Certyfikowane technologie i bezpieczne preparaty</li>
                 <li>Zabezpieczenie długoterminowej wartości rynkowej pojazdu</li>
             </ul>
             
             <div class="btn-group" style="justify-content: center;">
-                <a href="#ceramika" class="btn btn-primary">ZOBACZ KATALOG PRODUKTÓW</a>
+                <a href="#ceramika" class="btn btn-primary tap-effect">ZOBACZ KATALOG PRODUKTÓW</a>
             </div>
         </div>
     </section>
@@ -734,12 +502,12 @@
     <section id="ceramika">
         <div class="container">
             <div class="split-row">
-                <div class="split-col-media">
+                <div class="split-col-media reveal">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%;">
-                        <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img" loading="lazy">
+                        <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img tap-effect" loading="lazy">
                     </div>
                 </div>
-                <div class="split-col-text">
+                <div class="split-col-text reveal delay-1">
                     <h2>Ceramiczna Ochrona Lakieru</h2>
                     <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
                     <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
@@ -751,7 +519,7 @@
                     
                     <div class="tech-accordion">
                         <div class="tech-item">
-                            <button class="tech-trigger" onclick="toggleAccordion(this)">
+                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)">
                                 Specyfikacja techniczna <span class="tech-icon">▼</span>
                             </button>
                             <div class="tech-content">
@@ -763,7 +531,7 @@
                     </div>
 
                     <div class="btn-group">
-                        <a href="#antykorozja" class="btn btn-primary">SPECYFIKACJĘ ANTYKOROZJI</a>
+                        <a href="#antykorozja" class="btn btn-primary tap-effect">SPECYFIKACJĘ ANTYKOROZJI</a>
                     </div>
                 </div>
             </div>
@@ -773,7 +541,7 @@
     <section id="antykorozja" class="bg-dark">
         <div class="container">
             <div class="split-row">
-                <div class="split-col-text">
+                <div class="split-col-text reveal">
                     <h2>Profesjonalna Antykorozja</h2>
                     <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
                     <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>.</p>
@@ -784,7 +552,7 @@
                     
                     <div class="tech-accordion">
                         <div class="tech-item">
-                            <button class="tech-trigger" onclick="toggleAccordion(this)">
+                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)">
                                 Właściwości technologiczne <span class="tech-icon">▼</span>
                             </button>
                             <div class="tech-content">
@@ -796,20 +564,15 @@
                     </div>
 
                     <div class="video-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" 
-                            title="Waxoyl Antykorozja" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen loading="lazy">
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" title="Waxoyl Antykorozja" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="btn-group">
-                        <a href="#silnik" class="btn btn-primary">OCHRONA SILNIKA</a>
+                        <a href="#silnik" class="btn btn-primary tap-effect">OCHRONA SILNIKA</a>
                     </div>
                 </div>
-                <div class="split-col-media">
+                <div class="split-col-media reveal delay-1">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
-                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img" loading="lazy">
+                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img tap-effect" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -819,15 +582,15 @@
     <section id="silnik">
         <div class="container">
             <div class="split-row">
-                <div class="split-col-media">
+                <div class="split-col-media reveal">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img" loading="lazy">
+                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img tap-effect" loading="lazy">
                     </div>
                 </div>
-                <div class="split-col-text">
+                <div class="split-col-text reveal delay-1">
                     <h2>Zabezpieczenie silnika</h2>
                     <h3 class="red-subtitle">Ochrona komponentów przed korozją</h3>
-                    <p>Specjalistyczny preparat <strong>Waxoyl Motor Care</strong> zabezpiecza elementy silnika, wiązki elektryczne i podzespoły przed wpływem wilgoci, soli oraz utlenianiem.</p>
+                    <p>Specjalistyczny preparat <strong>Waxoyl Motor Care</strong> zabezpiecza elementy silnika, wiązki elektryczne i podzespoły przed wpływem wilgoci, salts oraz utlenianiem.</p>
                     <ul class="features-list">
                         <li>Antykorozyjna ochrona wszystkich elementów pod maską</li>
                         <li>Trwałość w trudnych warunkach termicznych (wysoka temperatura)</li>
@@ -836,7 +599,7 @@
                     
                     <div class="tech-accordion">
                         <div class="tech-item">
-                            <button class="tech-trigger" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
+                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
                             <div class="tech-content">
                                 <div class="tech-content-inner"> Bezpieczny dla silników spalinowych, hybrydowych oraz elektrycznych. Odporność termiczna do 200°C. Chroni gumowe węże przed parwieniem i pękaniem. Trwałość aplikacji do 12 miesięcy. </div>
                             </div>
@@ -844,7 +607,7 @@
                     </div>
 
                     <div class="btn-group">
-                        <a href="#tapicerka" class="btn btn-primary">OCHRONA TAPICERKI</a>
+                        <a href="#tapicerka" class="btn btn-primary tap-effect">OCHRONA TAPICERKI</a>
                     </div>
                 </div>
             </div>
@@ -854,7 +617,7 @@
     <section id="tapicerka" class="bg-gray">
         <div class="container">
             <div class="split-row">
-                <div class="split-col-text">
+                <div class="split-col-text reveal">
                     <h2>Zabezpieczenie tapicerki</h2>
                     <h3 class="red-subtitle">Niewidzialna ochrona wnętrza</h3>
                     <p>Zaawansowane rozwiązania <strong>Waxoyl Upholstery Protector</strong> oraz <strong>Leather Care</strong> zapewniają długotrwałą ochronę wnętrza pojazdu przed plamami, brudem i promieniowaniem UV.</p>
@@ -866,7 +629,7 @@
 
                     <div class="tech-accordion">
                         <div class="tech-item">
-                            <button class="tech-trigger" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
+                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
                             <div class="tech-content">
                                 <div class="tech-content-inner"> Technologia oparta na polimerach fluorowych (dla tkanin) oraz naturalnych woskach i odżywkach (dla skóry). Zapewnia ochronę do 24 miesięcy. Formuła hipoalergiczna, całkowicie bezwonna po wyschnięciu. </div>
                             </div>
@@ -874,12 +637,12 @@
                     </div>
 
                     <div class="btn-group">
-                        <a href="#home" class="btn btn-primary">POWRÓT NA GÓRĘ</a>
+                        <a href="#home" class="btn btn-primary tap-effect">POWRÓT NA GÓRĘ</a>
                     </div>
                 </div>
-                <div class="split-col-media">
+                <div class="split-col-media reveal delay-1">
                     <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="Zabezpieczenie tapicerki Waxoyl" class="zoomable-img" loading="lazy">
+                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="Zabezpieczenie tapicerki Waxoyl" class="zoomable-img tap-effect" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -891,24 +654,74 @@
     </footer>
 
     <div id="customImageModal" class="image-modal">
-        <span class="image-modal-close">&times;</span>
+        <span class="image-modal-close tap-effect">&times;</span>
         <img class="image-modal-content" id="modalTargetImg" alt="Powiększony widok">
         <div class="modal-tip">Przesuń w górę lub w dół, aby zamknąć</div>
     </div>
 
     <script>
-        // MOBILE OVERLAY BURGER MENU
+        // HAPTIC FEEDBACK (Тактильная отдача)
+        function triggerHaptic() {
+            if (navigator.vibrate) {
+                navigator.vibrate(15); // Короткая, приятная вибрация (15 мс)
+            }
+        }
+        document.querySelectorAll('.tap-effect').forEach(el => {
+            el.addEventListener('pointerdown', triggerHaptic);
+        });
+
+        // DYNAMIC HEADER ON SCROLL
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // REVEAL ON SCROLL (Анимация появления)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Анимируем только один раз
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // iOS BOTTOM SHEET MENU
         const hamburgerBtn = document.getElementById("hamburgerBtn");
         const mobileOverlay = document.getElementById("mobileOverlay");
-        const mobileLinks = document.querySelectorAll(".mobile-nav a, .mobile-bottom-nav a");
+        const menuBackdrop = document.getElementById("menuBackdrop");
+        const mobileLinks = document.querySelectorAll(".mobile-nav a");
 
         function toggleMobileMenu() {
+            const isActive = mobileOverlay.classList.contains("active");
             hamburgerBtn.classList.toggle("open");
-            mobileOverlay.classList.toggle("active");
-            document.body.style.overflow = mobileOverlay.classList.contains("active") ? "hidden" : "";
+            
+            if (!isActive) {
+                mobileOverlay.classList.add("active");
+                menuBackdrop.classList.add("active");
+                document.body.style.overflow = "hidden"; // Блокируем скролл сайта
+            } else {
+                mobileOverlay.classList.remove("active");
+                menuBackdrop.classList.remove("active");
+                document.body.style.overflow = "";
+            }
         }
 
         hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        menuBackdrop.addEventListener("click", toggleMobileMenu); // Закрытие по клику на фон
 
         mobileLinks.forEach(link => {
             link.addEventListener("click", () => {
@@ -969,7 +782,6 @@
             if(e.target === modal || e.target === modalImg) closeModal();
         });
 
-        // SWIPE TO CLOSE EVENT LISTENERS (FOR PHONES)
         modalImg.addEventListener('touchstart', (e) => {
             startY = e.touches[0].clientY;
             isDragging = true;
@@ -979,8 +791,6 @@
             if (!isDragging) return;
             currentY = e.touches[0].clientY;
             const diffY = currentY - startY;
-            
-            // Сдвигаем картинку вслед за пальцем с легким затуханием
             if (Math.abs(diffY) > 0) {
                 modalImg.style.transform = `translate(-50%, calc(-50% + ${diffY}px)) scale(${Math.max(0.85, 1 - Math.abs(diffY)/1000)})`;
             }
@@ -990,12 +800,9 @@
             if (!isDragging) return;
             isDragging = false;
             const diffY = currentY - startY;
-            
-            // Если смахнули дальше чем на 120px — закрываем модалку
             if (Math.abs(diffY) > 120) {
                 closeModal();
             } else {
-                // Если смахнули мало — возвращаем картинку в центр
                 modalImg.style.transform = "translate(-50%, -50%) scale(1)";
             }
             startY = 0;
@@ -1003,12 +810,12 @@
         });
 
         // SCROLL PROGRESS LINE
-        window.onscroll = function() {
+        window.addEventListener('scroll', () => {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
-        };
+        });
     </script>
 </body>
 </html>
