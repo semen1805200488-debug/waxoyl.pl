@@ -541,6 +541,22 @@
       color: rgba(255, 255, 255, 0.72);
     }
 
+    .info-video {
+      width: min(980px, 100%);
+      margin: 0 auto 34px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    .info-video video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
     .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -990,6 +1006,12 @@
             Poszczególne rozwiązania można traktować jako osobne obszary ochrony albo jako kompletny system
             dla samochodu, który ma być lepiej przygotowany na codzienną eksploatację.
           </p>
+        </div>
+
+        <div class="info-video reveal">
+          <video autoplay muted loop playsinline controls>
+            <source src="img/6159294-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div class="info-grid">
