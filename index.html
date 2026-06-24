@@ -1,819 +1,981 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kompleksowa Ochrona Samochodu - Ceramika i Antykorozja | Waxoyl</title>
-    <meta name="description" content="Poznaj szwajcarską technologię Waxoyl. Profesjonalna powłoka ceramiczna, zabezpieczenie antykorozyjne podwozia, komory silnika i tapicerki.">
-    
-    <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #D60000;
-            --primary-hover: #b30000;
-            --dark: #111111;
-            --darker: #0a0a0a;
-            --light: #ffffff;
-            --gray: #f8f9fa;
-            --border-light: rgba(0, 0, 0, 0.06);
-            --text: #1c1c1e;
-            --text-light: #636366;
-            --font: 'Montserrat', sans-serif;
-            --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waxoyl - technologie ochrony samochodu</title>
+  <meta name="description" content="Informacyjna prezentacja technologii Waxoyl: ochrona lakieru, zabezpieczenie antykorozyjne, komora silnika oraz wnętrze pojazdu." />
+  <link rel="icon" type="image/jpeg" href="favicon.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #d60000;
+      --red-dark: #a90000;
+      --black: #101010;
+      --ink: #1d1d1f;
+      --muted: #62636a;
+      --line: #e7e7ea;
+      --soft: #f6f7f8;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+      --radius: 8px;
+      --font: "Montserrat", Arial, sans-serif;
+    }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        body { 
-            font-family: var(--font); 
-            color: var(--text); 
-            background-color: var(--light); 
-            line-height: 1.6; 
-            -webkit-text-size-adjust: 100%;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        /* Скроллбар и прогресс */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background-color: var(--primary);
-            z-index: 1003;
-            transition: width 0.1s ease-out;
-        }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Анимация появления элементов при скролле (Reveal) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal.delay-1 { transition-delay: 0.15s; }
-        .reveal.delay-2 { transition-delay: 0.3s; }
-        
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -0.5px; }
-        h2 { font-size: 2.6rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; text-transform: uppercase; color: var(--dark); letter-spacing: -0.5px; }
-        h3.red-subtitle { color: var(--primary); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; letter-spacing: 1.5px; }
-        
-        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
-        
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 120px 0; }
-        
-        .bg-gray { background-color: var(--gray); }
-        .bg-dark { background-color: var(--dark); color: var(--light); }
-        .bg-dark h2, .bg-dark h3 { color: var(--light); }
-        .bg-dark p { color: #aeaeae; }
-        
-        /* Кнопки */
-        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; text-align: center; font-size: 0.85rem; letter-spacing: 0.5px; }
-        .btn-primary { background-color: var(--primary); color: var(--light); border: none; }
-        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(214, 0, 0, 0.3); }
-        .btn-outline { background-color: transparent; border-color: var(--dark); color: var(--dark); }
-        .btn-outline:hover { background-color: var(--dark); color: var(--light); }
-        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 35px; }
-        .btn:active, .tech-trigger:active, .icon-box:active { transform: scale(0.96); }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-        /* Динамический Хедер */
-        header { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            background: transparent; 
-            z-index: 1000; 
-            padding: 24px 0; 
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05); 
-            padding: 12px 0; 
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        
-        .logo { text-decoration: none; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-        .logo img { height: 44px; width: auto; display: block; transition: var(--transition); }
-        header.scrolled .logo img { height: 38px; }
-        
-        .logo-text { display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.1; }
-        .logo-title { font-size: 1.45rem; font-weight: 800; color: var(--primary); letter-spacing: 0.3px; transition: var(--transition); }
-        header.scrolled .logo-title { font-size: 1.25rem; }
-        .logo-subtitle { font-size: 0.65rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; transition: var(--transition); }
+    .scroll-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 50;
+      width: 0;
+      height: 3px;
+      background: var(--red);
+    }
 
-        nav { display: block; }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); white-space: nowrap; letter-spacing: 0.5px; }
-        nav a:hover { color: var(--primary); }
-        
-        .hamburger-btn {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 24px;
-            height: 16px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-        .hamburger-btn span {
-            width: 100%;
-            height: 2px;
-            background-color: var(--dark);
-            border-radius: 2px;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, background-color 0.3s ease;
-        }
-        .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-        /* Мобильное меню: Шторка iOS Style */
-        .menu-backdrop {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            z-index: 998;
-            opacity: 0; visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s;
-        }
-        .menu-backdrop.active { opacity: 1; visibility: visible; }
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(18px);
+    }
 
-        .mobile-overlay {
-            position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            background-color: #ffffff;
-            z-index: 999;
-            border-radius: 28px 28px 0 0;
-            padding: 20px 24px 85px 24px; /* Отступ снизу для мобильного тулбара */
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
-            transform: translateY(100%);
-            transition: transform 0.45s cubic-bezier(0.32, 1, 0.23, 1);
-        }
-        .mobile-overlay.active { transform: translateY(0); }
-        
-        .sheet-handle {
-            width: 40px; height: 5px;
-            background-color: #e0e0e0;
-            border-radius: 3px;
-            margin: 0 auto 20px auto;
-        }
+    .nav {
+      width: min(1320px, calc(100% - 32px));
+      height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        .mobile-nav { width: 100%; }
-        .mobile-nav ul { list-style: none; display: flex; flex-direction: column; padding: 0; width: 100%; }
-        .mobile-nav li { width: 100%; border-bottom: 1px solid rgba(0, 0, 0, 0.04); }
-        .mobile-nav li:first-child { border-top: 1px solid rgba(0, 0, 0, 0.04); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-        .mobile-nav a {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 22px 8px;
-            transition: var(--transition);
-        }
-        
-        .mobile-nav a::before {
-            content: attr(data-num);
-            font-size: 0.8rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-right: 15px;
-        }
-        .mobile-nav a:active { color: var(--primary); padding-left: 12px; background-color: rgba(0, 0, 0, 0.02); }
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
 
-        /* Нижний тулбар (Bottom Nav) */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; width: 100%; height: 64px;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 -2px 15px rgba(0,0,0,0.06);
-            z-index: 1002;
-            border-top: 1px solid rgba(0,0,0,0.04);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .mobile-bottom-nav ul { display: flex; height: 100%; list-style: none; justify-content: space-around; align-items: center; padding: 0 10px; }
-        .mobile-bottom-nav li { flex: 1; text-align: center; }
-        .mobile-bottom-nav a {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-decoration: none; color: var(--text-light); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; gap: 4px; transition: var(--transition);
-        }
-        .mobile-bottom-nav a svg { width: 20px; height: 20px; fill: none; stroke: var(--text-light); stroke-width: 2.5; transition: var(--transition); }
-        .mobile-bottom-nav a:active { color: var(--primary); }
-        .mobile-bottom-nav a:active svg { stroke: var(--primary); }
+    .brand strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
 
-        /* Hero Секция */
-        .hero { padding-top: 0; padding-bottom: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--light); overflow: hidden; }
-        .hero-split { display: flex; align-items: center; width: 100%; justify-content: space-between; padding-top: 80px; }
-        .hero-left { flex: 1; max-width: 700px; padding-left: 40px; padding-right: 20px; padding-bottom: 60px; }
-        .hero-right { flex: 1; height: 100vh; display: flex; align-items: center; justify-content: flex-end; }
-        .hero-img-full { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
+    .brand span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
 
-        .icon-grid-wrapper { width: 100%; position: relative; }
-        .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px; margin-top: 45px; }
-        .icon-box { display: flex; align-items: center; gap: 20px; font-weight: 700; color: var(--dark); min-height: 56px; font-size: 1rem; transition: transform 0.2s; }
-        .icon-box img { height: 44px; width: auto; display: block; flex-shrink: 0; object-fit: contain; }
-        .slider-dots { display: none; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
 
-        /* Видео Секция */
-        .video-section { position: relative; width: 100%; min-height: 75vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: var(--darker); padding: 80px 0; }
-        .video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; transform: translate(-50%, -50%); object-fit: cover; pointer-events: none; }
-        .video-overlay-tint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 100%); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 2; }
-        .video-section-content { position: relative; z-index: 3; max-width: 900px; width: 100%; text-align: center; color: var(--light); padding: 0 40px; }
-        .video-section-content h2, .video-section-content h3 { color: var(--light) !important; }
-        .video-section-content p { color: #e5e5ea !important; font-weight: 500; margin-bottom: 30px; }
-        .video-section-content .features-list { display: inline-block; text-align: left; margin-bottom: 35px; }
-        .video-section-content .features-list li { color: var(--light); font-weight: 600; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: #38383d;
+      font-size: 0.86rem;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
 
-        /* Секции с текстом и фото */
-        .split-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
-        .split-col-text { flex: 1; min-width: 350px; }
-        .split-col-media { flex: 1; min-width: 350px; display: flex; justify-content: center; align-items: center; }
-        .split-col-media img { width: 100%; height: auto; display: block; object-fit: contain; }
+    .nav-links a:hover {
+      color: var(--red);
+      background: #f3f3f4;
+    }
 
-        .zoomable-img { cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-        .zoomable-img:hover { transform: scale(1.02); }
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      cursor: pointer;
+    }
 
-        .features-list { list-style: none; margin-bottom: 35px; }
-        .features-list li { position: relative; padding-left: 32px; margin-bottom: 14px; font-weight: 500; color: var(--dark); }
-        .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
-        .bg-dark .features-list li { color: var(--light); }
+    .menu-button span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 4px auto;
+      background: var(--black);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
 
-        /* Аккордеон */
-        .tech-accordion { border-top: 1px solid var(--border-light); margin-top: 25px; }
-        .tech-item { border-bottom: 1px solid var(--border-light); overflow: hidden; }
-        .tech-trigger { width: 100%; background: transparent; border: none; outline: none; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); font-size: 0.95rem; font-weight: 700; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; text-align: left; transition: transform 0.2s; }
-        .bg-dark .tech-trigger { color: var(--light); }
-        .bg-dark .tech-accordion { border-top-color: rgba(255,255,255,0.1); }
-        .bg-dark .tech-item { border-bottom-color: rgba(255,255,255,0.1); }
-        .tech-icon { font-size: 0.8rem; transition: transform 0.3s ease; color: var(--text-light); }
-        .bg-dark .tech-icon { color: #aeaeae; }
-        .tech-content { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-        .tech-content-inner { padding: 4px 0 20px 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
-        .bg-dark .tech-content-inner { color: #aeaeae; }
-        .tech-item.active .tech-icon { transform: rotate(180deg); color: var(--primary); }
-        .tech-item.active .tech-content { max-height: 300px; }
+    .menu-button.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-button.open span:nth-child(2) { opacity: 0; }
+    .menu-button.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.2); margin-top: 35px; width: 100%; }
-        .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      inset: 78px 0 auto 0;
+      z-index: 35;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+    }
 
-        /* Модальное окно картинок */
-        .image-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 2005; cursor: zoom-out; touch-action: none; }
-        .image-modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 92%; max-height: 85vh; object-fit: contain; border-radius: 10px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); transition: transform 0.1s ease-out; user-select: none; -webkit-user-drag: none; }
-        .image-modal-close { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: white; font-size: 26px; cursor: pointer; z-index: 2006; }
-        .image-modal-close:hover { background: rgba(255,255,255,0.2); }
-        .modal-tip { position: absolute; bottom: 24px; left: 0; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-weight: 500; pointer-events: none; display: none; }
+    .mobile-panel.open { display: block; }
 
-        footer { background: var(--darker); color: var(--light); text-align: center; padding: 40px 0; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .mobile-panel a {
+      display: block;
+      padding: 17px 24px;
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+    }
 
-        /* Мобильная Адаптация */
-        @media (max-width: 992px) {
-            html, body { overflow-x: hidden; width: 100%; }
-            body { padding-bottom: 64px; }
-            
-            .container { padding: 0 24px !important; }
-            section { padding: 64px 0 !important; }
-            
-            header { padding: 12px 0; background: transparent; }
-            header.scrolled { padding: 12px 0; background: rgba(255, 255, 255, 0.88); border-bottom: 1px solid rgba(0,0,0,0.03); }
-            
-            .nav-container { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; padding: 0 24px !important; }
-            .logo img { height: 38px !important; }
-            .logo-title { font-size: 1.25rem !important; }
-            .logo-subtitle { font-size: 0.58rem !important; }
-            
-            header nav { display: none !important; }
-            .hamburger-btn { display: flex !important; }
-            .mobile-bottom-nav { display: block; }
+    .hero {
+      min-height: 100vh;
+      padding-top: 78px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+      background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #f1f2f3 50%, #f1f2f3 100%);
+    }
 
-            .hero { padding-top: 0 !important; min-height: auto !important; }
-            .hero-split { flex-direction: column !important; padding-top: 95px; }
-            .hero-left { padding: 0 !important; max-width: 100% !important; margin-bottom: 10px; padding-bottom: 20px !important; }
-            
-            h1 { font-size: 2.1rem !important; line-height: 1.15 !important; margin-bottom: 14px; text-align: center; letter-spacing: -0.5px; }
-            h2 { font-size: 1.75rem !important; line-height: 1.2 !important; margin-bottom: 8px; text-align: center; letter-spacing: -0.3px; }
-            h3.red-subtitle { font-size: 0.95rem !important; margin-bottom: 24px; text-align: center; letter-spacing: 1px; }
-            p { font-size: 0.98rem !important; line-height: 1.65 !important; margin-bottom: 24px; text-align: justify; color: var(--text-light); }
-            
-            .btn-group { margin-top: 10px !important; }
-            .btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.88rem !important; border-radius: 10px; }
-            
-            /* Слайдер иконок */
-            .icon-grid { display: flex !important; flex-direction: row !important; overflow-x: auto !important; scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch !important; gap: 14px !important; padding: 10px 24px 14px 24px !important; margin-left: -24px !important; margin-right: -24px !important; margin-top: 32px !important; }
-            .icon-grid::-webkit-scrollbar { display: none; }
-            .icon-box { flex: 0 0 82% !important; scroll-snap-align: center !important; background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03); padding: 18px 20px !important; border-radius: 12px !important; min-height: 84px !important; font-size: 0.92rem !important; line-height: 1.3 !important; gap: 16px !important; }
-            .icon-box img { height: 36px !important; }
-            
-            .slider-dots { display: flex; justify-content: center; gap: 6px; margin-top: 4px; margin-bottom: 20px; }
-            .slider-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.15); transition: var(--transition); }
-            .slider-dots span.active { background: var(--primary); width: 14px; border-radius: 3px; }
-            
-            .hero-right { width: 100% !important; margin-top: 0px !important; height: auto !important; padding: 0 20px !important; }
-            .hero-img-full { max-height: 35vh !important; border-radius: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transform: translateY(10px); }
+    .hero-copy {
+      display: flex;
+      align-items: center;
+      padding: 72px clamp(22px, 6vw, 82px);
+    }
 
-            .video-section { min-height: 55vh !important; padding: 50px 0 !important; background-image: url('img/odzdrerzaka.png'); background-size: cover; background-position: center; }
-            .video-bg { display: none !important; }
-            .video-section-content { padding: 0 24px !important; }
-            .video-section-content p { text-align: center !important; font-size: 0.95rem !important; }
-            .video-section-content .features-list { display: block !important; margin-bottom: 24px !important; }
-            .video-section-content .features-list li { font-size: 0.92rem !important; margin-bottom: 8px !important; }
+    .hero-inner { width: min(680px, 100%); }
 
-            .split-row { flex-direction: column !important; gap: 28px !important; }
-            .split-col-text, .split-col-media { width: 100% !important; min-width: 100% !important; flex: none !important; }
-            .split-col-media { order: -1; width: 100% !important; }
-            .split-col-media div, .split-col-media img { border-radius: 12px !important; }
-            
-            .features-list { margin-bottom: 24px !important; }
-            .features-list li { font-size: 0.95rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; padding-left: 28px !important; }
-            
-            .tech-trigger { padding: 22px 0; font-size: 0.98rem; }
-            .modal-tip { display: block; }
-            footer { padding: 35px 0 !important; font-size: 0.78rem; margin-bottom: 4px; }
-        }
-    </style>
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      color: var(--black);
+      font-size: clamp(2.55rem, 5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 680px;
+      color: #55565c;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid var(--black);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.primary {
+      border-color: var(--red);
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .button.primary:hover {
+      border-color: var(--red-dark);
+      background: var(--red-dark);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      max-height: 760px;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.18));
+    }
+
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      min-height: 132px;
+      padding: 26px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:last-child { border-right: 0; }
+
+    .trust-item img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+
+    .trust-item span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    section { padding: clamp(74px, 9vw, 118px) 0; }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 46px;
+    }
+
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: var(--black);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.06;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .video-story {
+      position: relative;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .video-story video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    .video-story::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.38));
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 1;
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-content h2 { color: var(--white); }
+
+    .story-content p {
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.08rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+      list-style: none;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 30px;
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 5px rgba(214, 0, 0, 0.12);
+    }
+
+    .story-content .feature-list {
+      width: min(640px, 100%);
+      margin: 32px auto 0;
+      text-align: left;
+    }
+
+    .story-content .feature-list li { color: rgba(255, 255, 255, 0.9); }
+
+    .service {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(32px, 6vw, 72px);
+      align-items: center;
+    }
+
+    .service.reverse {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+
+    .service.reverse .service-media { order: 2; }
+
+    .service-media {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #e9eaec;
+    }
+
+    .service-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+      cursor: zoom-in;
+    }
+
+    .service-media:hover img { transform: scale(1.04); }
+
+    .label {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .service-copy h2 { margin-bottom: 18px; }
+
+    .service-copy p {
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .soft { background: var(--soft); }
+
+    .dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .dark h2,
+    .dark .service-copy h2 { color: var(--white); }
+
+    .dark .service-copy p { color: rgba(255, 255, 255, 0.72); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-card {
+      min-height: 230px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .info-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .info-card h3 {
+      margin-bottom: 10px;
+      color: var(--black);
+      font-size: 1.05rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .summary {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      text-align: center;
+    }
+
+    .summary p {
+      width: min(780px, calc(100% - 40px));
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 28px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.88);
+    }
+
+    .image-modal.open { display: flex; }
+
+    .image-modal img {
+      max-width: min(1100px, 96vw);
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .menu-button { display: block; }
+
+      .hero,
+      .service,
+      .service.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        background: var(--white);
+      }
+
+      .hero-copy { padding: 70px 22px 34px; }
+
+      .hero-media {
+        min-height: auto;
+        padding: 0 18px 42px;
+        background: #f1f2f3;
+      }
+
+      .hero-media img { max-height: 480px; }
+
+      .trust-grid,
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-item { border-bottom: 1px solid var(--line); }
+      .service.reverse .service-media { order: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1200px); }
+
+      .nav {
+        width: calc(100% - 24px);
+        height: 70px;
+      }
+
+      .brand img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand span { display: none; }
+      .mobile-panel { inset-top: 70px; }
+      .hero { padding-top: 70px; }
+      .hero-copy { padding-top: 50px; }
+      .hero-actions { display: grid; }
+      .button { width: 100%; }
+
+      .trust-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        min-height: 112px;
+        border-right: 0;
+      }
+
+      .video-story { min-height: 560px; }
+      .info-card { min-height: auto; }
+    }
+  </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-    <div class="scroll-progress" id="scrollProgress"></div>
+  <header class="topbar">
+    <div class="nav">
+      <a class="brand" href="#start" aria-label="Waxoyl">
+        <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl" />
+        <span>
+          <strong>WAXOYL</strong>
+          <span>Professional Car Care</span>
+        </span>
+      </a>
 
-    <header id="mainHeader">
-        <div class="nav-container">
-            <a href="#home" class="logo tap-effect">
-                <img src="img/waxoyl_logo_hi_res_OK.jpg" alt="Waxoyl">
-                <div class="logo-text">
-                    <span class="logo-title">WAXOYL</span>
-                    <span class="logo-subtitle">Professional Car Care</span>
-                </div>
-            </a>
-            
-            <nav>
-                <ul>
-                    <li><a href="#home" class="tap-effect">O Waxoyl</a></li>
-                    <li><a href="#ceramika" class="tap-effect">Ceramika</a></li>
-                    <li><a href="#antykorozja" class="tap-effect">Antykorozja</a></li>
-                    <li><a href="#silnik" class="tap-effect">Silnik</a></li>
-                    <li><a href="#tapicerka" class="tap-effect">Tapicerka</a></li>
-                </ul>
-            </nav>
+      <ul class="nav-links" aria-label="Nawigacja główna">
+        <li><a href="#technologia">Technologia</a></li>
+        <li><a href="#lakier">Lakier</a></li>
+        <li><a href="#podwozie">Podwozie</a></li>
+        <li><a href="#silnik">Silnik</a></li>
+        <li><a href="#wnetrze">Wnętrze</a></li>
+      </ul>
 
-            <button class="hamburger-btn tap-effect" id="hamburgerBtn" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-panel" id="mobilePanel" aria-label="Nawigacja mobilna">
+    <a href="#technologia">Technologia Waxoyl</a>
+    <a href="#lakier">Ochrona lakieru</a>
+    <a href="#podwozie">Ochrona podwozia</a>
+    <a href="#silnik">Komora silnika</a>
+    <a href="#wnetrze">Wnętrze pojazdu</a>
+  </nav>
+
+  <main id="start">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-inner reveal">
+          <div class="eyebrow">Szwajcarskie technologie ochronne</div>
+          <h1>Kompleksowa ochrona samochodu</h1>
+          <p class="lead">
+            Waxoyl to system rozwiązań do ochrony pojazdu od lakieru i wnętrza, aż po podwozie,
+            profile zamknięte oraz komorę silnika. Ta strona przedstawia zakres technologii
+            i obszary, w których można je zastosować.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#lakier">Zobacz usługi</a>
+            <a class="button" href="#technologia">Poznaj technologię</a>
+          </div>
         </div>
-    </header>
+      </div>
+      <div class="hero-media reveal">
+        <img src="img/odzdrerzaka.png" alt="Samochód zabezpieczony technologią Waxoyl" />
+      </div>
+    </section>
 
-    <div class="menu-backdrop" id="menuBackdrop"></div>
-    
-    <div class="mobile-overlay" id="mobileOverlay">
-        <div class="sheet-handle"></div>
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#home" class="tap-effect" data-num="01">O Waxoyl</a></li>
-                <li><a href="#ceramika" class="tap-effect" data-num="02">Zabezpieczenie lakieru</a></li>
-                <li><a href="#antykorozja" class="tap-effect" data-num="03">Zabezpieczenie podwozia</a></li>
-                <li><a href="#silnik" class="tap-effect" data-num="04">Zabezpieczenie silnika</a></li>
-                <li><a href="#tapicerka" class="tap-effect" data-num="05">Zabezpieczenie wnętrza</a></li>
-            </ul>
-        </nav>
+    <div class="trust-strip" id="technologia">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <img src="img/logo.swiss1.png" alt="" />
+          <div>
+            <strong>Swiss Technology</strong>
+            <span>Rozwiązania rozwijane z naciskiem na trwałość i precyzję.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <img src="img/logo.swiss85.png" alt="" />
+          <div>
+            <strong>85+ lat doświadczenia</strong>
+            <span>Długa historia marki w obszarze ochrony i pielęgnacji pojazdów.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <img src="img/logo.swiss360.png" alt="" />
+          <div>
+            <strong>Ochrona 360°</strong>
+            <span>System obejmujący elementy widoczne oraz trudno dostępne.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <img src="img/logo.swisspunkt.png" alt="" />
+          <div>
+            <strong>Profesjonalne zastosowanie</strong>
+            <span>Technologie przeznaczone do kontrolowanej aplikacji.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="mobile-bottom-nav">
-    <ul>
-        <li>
-            <a href="#home" class="tap-effect">
-                <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11v11a1 1 0 01-1 1h-3m-6 0V11a1 1 0 011-1h2a1 1 0 011 1v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Start</span>
-            </a>
-        </li>
-        <li>
-            <a href="#ceramika" class="tap-effect">
-                <img src="ceramika.png" alt="Ceramika" style="width: 24px; height: 24px; object-fit: contain;">
-                <span>Ceramika</span>
-            </a>
-        </li>
-        <li>
-            <a href="#antykorozja" class="tap-effect">
-                <img src="podwozie .png" alt="Podwozie" style="width: 24px; height: 24px; object-fit: contain;">
-                <span>Podwozie</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tapicerka" class="tap-effect">
-                <svg viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Wnętrze</span>
-            </a>
-        </li>
-    </ul>
-</div>
-
-    <section class="hero" id="home">
-        <div class="hero-split">
-            <div class="hero-left reveal">
-                <h1>Kompleksowa ochrona samochodu<br>od zderzaka do zderzaka</h1>
-                <h3 class="red-subtitle">Szwajcarskie technologie od ponad 85 lat</h3>
-                <p>Od ochrony lakieru i tapicerki po profesjonalne zabezpieczenie podwozia oraz profili zamkniętych. Waxoyl zapewnia pełną ochronę pojazdu przed wpływem czasu, warunków atmosferycznych i codziennej eksploatacji.</p>
-                
-                <div class="btn-group">
-                    <a href="#ceramika" class="btn btn-primary tap-effect">POZNAJ ROZWIĄZANIA</a>
-                </div>
-                
-                <div class="icon-grid-wrapper reveal delay-1">
-                    <div class="icon-grid" id="benefitsSlider">
-                        <div class="icon-box tap-effect">
-                            <img src="img/logo.swiss1.png" alt="Swiss Technology">
-                            <span>CH Swiss Technology</span>
-                        </div>
-                        <div class="icon-box tap-effect">
-                            <img src="img/logo.swiss85.png" alt="85+ lat doświadczenia">
-                            <span>85+ lat doświadczenia</span>
-                        </div>
-                        <div class="icon-box tap-effect">
-                            <img src="img/logo.swiss360.png" alt="Ochrona 360"> 
-                            <span>Ochrona 360° pojazdu</span>
-                        </div>
-                        <div class="icon-box tap-effect">
-                            <img src="img/logo.swisspunkt.png" alt="Autoryzowane Punkty">
-                            <span>Autoryzowane Punkty</span>
-                        </div>
-                    </div>
-                    <div class="slider-dots" id="sliderDots">
-                        <span class="active"></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-right reveal delay-2">
-                <img src="img/odzdrerzaka.png" alt="Auto Premium" class="hero-img-full" loading="lazy">
-            </div>
-        </div>
+    <section class="video-story">
+      <video autoplay muted loop playsinline>
+        <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4" />
+      </video>
+      <div class="story-content reveal">
+        <span class="label">Idea systemu</span>
+        <h2>Ochrona zaprojektowana dla całego pojazdu</h2>
+        <p>
+          Codzienna eksploatacja, sól drogowa, promieniowanie UV, wilgoć, zabrudzenia i chemia
+          drogowa działają na samochód jednocześnie. Dlatego Waxoyl traktuje ochronę jako system,
+          a nie pojedynczy zabieg.
+        </p>
+        <ul class="feature-list">
+          <li>ochrona powierzchni lakierowanych przed utratą połysku i zabrudzeniami,</li>
+          <li>zabezpieczenie elementów metalowych narażonych na korozję,</li>
+          <li>pielęgnacja komory silnika oraz elementów wnętrza.</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="o-nas" class="video-section">
-        <video autoplay muted loop playsinline class="video-bg">
-            <source src="img/6157780-hd_1920_1080_30fps.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay-tint"></div>
-
-        <div class="video-section-content reveal">
-            <h2>Szwajcarska Precyzja.<br>Bezkompromisowa Ochrona.</h2>
-            <p>Waxoyl to synonim najwyższej jakości w dziedzinie ochrony pojazdów. Z ponad 85-letnim doświadczeniem, nasza szwajcarska marka dostarcza zaawansowane systemy ochronne sprawdzone w najbardziej wymagających sektorach.</p>
-            
-            <ul class="features-list">
-                <li>Trwałość w ekstremalnych warunkach klimatycznych</li>
-                <li>Globalne zaufanie ekspertów detailingowych i OEM</li>
-                <li>Certyfikowane technologie i bezpieczne preparaty</li>
-                <li>Zabezpieczenie długoterminowej wartości rynkowej pojazdu</li>
+    <section id="lakier">
+      <div class="container">
+        <div class="service">
+          <div class="service-media reveal">
+            <img class="zoomable" src="img/ceramika2.png" alt="Ceramiczna ochrona lakieru" />
+          </div>
+          <div class="service-copy reveal">
+            <span class="label">Lakier</span>
+            <h2>Ceramiczna ochrona lakieru</h2>
+            <p>
+              Powłoka ceramiczna tworzy na lakierze twardą, transparentną warstwę ochronną.
+              Pomaga ograniczyć osadzanie się brudu, ułatwia mycie oraz podkreśla głębię koloru.
+              To rozwiązanie dla samochodów, których wygląd ma pozostać świeży i zadbany przez dłuższy czas.
+            </p>
+            <ul class="feature-list">
+              <li>mocniejszy połysk i wizualne pogłębienie koloru,</li>
+              <li>efekt hydrofobowy oraz łatwiejsze usuwanie zabrudzeń,</li>
+              <li>dodatkowa bariera przed promieniowaniem UV i chemią drogową.</li>
             </ul>
-            
-            <div class="btn-group" style="justify-content: center;">
-                <a href="#ceramika" class="btn btn-primary tap-effect">ZOBACZ KATALOG PRODUKTÓW</a>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="ceramika">
-        <div class="container">
-            <div class="split-row">
-                <div class="split-col-media reveal">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%;">
-                        <img src="img/ceramika2.png" alt="Ceramiczna Ochrona Lakieru" class="zoomable-img tap-effect" loading="lazy">
-                    </div>
-                </div>
-                <div class="split-col-text reveal delay-1">
-                    <h2>Ceramiczna Ochrona Lakieru</h2>
-                    <h3 class="red-subtitle">Maksymalny Połysk i Ochrona</h3>
-                    <p>Ekskluzywna powłoka ceramiczna <strong>Waxoyl Crystal Coating</strong> tworzy niewidzialną, ekstremalnie twardą tarczę na lakierze Twojego samochodu. Chroni przed promieniami UV, chemią, brudem i mikrozarysowaniami.</p>
-                    <ul class="features-list">
-                        <li>Głęboki, lustrzany połysk i podbicie głębi koloru</li>
-                        <li>Efekt samooczyszczania (hydrofobowość) i łatwiejsze mycie</li>
-                        <li>Odporność na agresywną chemię, ptasie odchody i soki z drzew</li>
-                    </ul>
-                    
-                    <div class="tech-accordion">
-                        <div class="tech-item">
-                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)">
-                                Specyfikacja techniczna <span class="tech-icon">▼</span>
-                            </button>
-                            <div class="tech-content">
-                                <div class="tech-content-inner">
-                                    Twardość strukturalna na poziomie 9H. Trwałość powłoki wynosi do 36 miesięcy przy odpowiedniej pielęgnacji. Grubość warstwy ochronnej: ok. 2-3 mikrony. Odporność na temperatury do 300°C.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="btn-group">
-                        <a href="#antykorozja" class="btn btn-primary tap-effect">SPECYFIKACJĘ ANTYKOROZJI</a>
-                    </div>
-                </div>
-            </div>
+    <section class="dark" id="podwozie">
+      <div class="container">
+        <div class="service reverse">
+          <div class="service-media reveal">
+            <img class="zoomable" src="img/antykorozja.png" alt="Zabezpieczenie antykorozyjne podwozia" />
+          </div>
+          <div class="service-copy reveal">
+            <span class="label">Podwozie i profile zamknięte</span>
+            <h2>Zabezpieczenie antykorozyjne</h2>
+            <p>
+              Podwozie jest stale narażone na wodę, sól, piasek i uszkodzenia mechaniczne.
+              Zabezpieczenie antykorozyjne Waxoyl ma za zadanie stworzyć trwałą warstwę ochronną
+              na elementach metalowych oraz dotrzeć do miejsc, które trudno kontrolować podczas codziennej pielęgnacji.
+            </p>
+            <ul class="feature-list">
+              <li>ochrona podwozia przed wilgocią i solą drogową,</li>
+              <li>zabezpieczenie profili zamkniętych i trudno dostępnych przestrzeni,</li>
+              <li>wsparcie długoterminowej kondycji konstrukcji pojazdu.</li>
+            </ul>
+          </div>
         </div>
-    </section>
-
-    <section id="antykorozja" class="bg-dark">
-        <div class="container">
-            <div class="split-row">
-                <div class="split-col-text reveal">
-                    <h2>Profesjonalna Antykorozja</h2>
-                    <h3 class="red-subtitle">Skuteczna ochrona na lata</h3>
-                    <p>Zaawansowany system zabezpieczania podwozia i profili zamkniętych produktami <strong>Waxoyl 120-4 Plus</strong> oraz <strong>Waxoyl Hardwax Plus</strong>.</p>
-                    <ul class="features-list">
-                        <li>Trwałość w ekstremalnych warunkach klimatycznych</li>
-                        <li>Zabezpieczenie profili zamkniętych, drzwi, progów i podwozia</li>
-                    </ul>
-                    
-                    <div class="tech-accordion">
-                        <div class="tech-item">
-                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)">
-                                Właściwości technologiczne <span class="tech-icon">▼</span>
-                            </button>
-                            <div class="tech-content">
-                                <div class="tech-content-inner">
-                                    Preparat Waxoyl 120-4 posiada doskonałe właściwości penetrujące i zdolność do samoregeneracji (pełzania). Warstwa antykorozyjna nie pęka, nie łuszczy się i zachowuje elastyczność w temperaturach ujemnych.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/RLQ0LuAcwFA?start=9" title="Waxoyl Antykorozja" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="btn-group">
-                        <a href="#silnik" class="btn btn-primary tap-effect">OCHRONA SILNIKA</a>
-                    </div>
-                </div>
-                <div class="split-col-media reveal delay-1">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); width: 100%;">
-                        <img src="img/antycor.1.png" alt="Zabezpieczenia antykorozyjne Waxoyl" class="zoomable-img tap-effect" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <section id="silnik">
-        <div class="container">
-            <div class="split-row">
-                <div class="split-col-media reveal">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc22.jpg" alt="Motor Care - Ochrona silnika" class="zoomable-img tap-effect" loading="lazy">
-                    </div>
-                </div>
-                <div class="split-col-text reveal delay-1">
-                    <h2>Zabezpieczenie silnika</h2>
-                    <h3 class="red-subtitle">Ochrona komponentów przed korozją</h3>
-                    <p>Specjalistyczny preparat <strong>Waxoyl Motor Care</strong> zabezpiecza elementy silnika, wiązki elektryczne i podzespoły przed wpływem wilgoci, salts oraz utlenianiem.</p>
-                    <ul class="features-list">
-                        <li>Antykorozyjna ochrona wszystkich elementów pod maską</li>
-                        <li>Trwałość w trudnych warunkach termicznych (wysoka temperatura)</li>
-                        <li>Bezpieczeństwo dla przewodów gumowych i plastikowych</li>
-                    </ul>
-                    
-                    <div class="tech-accordion">
-                        <div class="tech-item">
-                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
-                            <div class="tech-content">
-                                <div class="tech-content-inner"> Bezpieczny dla silników spalinowych, hybrydowych oraz elektrycznych. Odporność termiczna do 200°C. Chroni gumowe węże przed parwieniem i pękaniem. Trwałość aplikacji do 12 miesięcy. </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="btn-group">
-                        <a href="#tapicerka" class="btn btn-primary tap-effect">OCHRONA TAPICERKI</a>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="service">
+          <div class="service-media reveal">
+            <img class="zoomable" src="img/silnik.png" alt="Ochrona komory silnika" />
+          </div>
+          <div class="service-copy reveal">
+            <span class="label">Komora silnika</span>
+            <h2>Ochrona elementów technicznych</h2>
+            <p>
+              Komora silnika wymaga innego podejścia niż lakier. Znajdują się tam elementy metalowe,
+              gumowe i plastikowe, które pracują w podwyższonej temperaturze i są narażone na zabrudzenia.
+              Odpowiednia pielęgnacja pomaga utrzymać estetykę oraz ograniczyć wpływ wilgoci.
+            </p>
+            <ul class="feature-list">
+              <li>uporządkowany, czysty wygląd komory silnika,</li>
+              <li>ochrona wybranych powierzchni przed wilgocią i osadem,</li>
+              <li>pielęgnacja tworzyw, gumy oraz elementów metalowych.</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="tapicerka" class="bg-gray">
-        <div class="container">
-            <div class="split-row">
-                <div class="split-col-text reveal">
-                    <h2>Zabezpieczenie tapicerki</h2>
-                    <h3 class="red-subtitle">Niewidzialna ochrona wnętrza</h3>
-                    <p>Zaawansowane rozwiązania <strong>Waxoyl Upholstery Protector</strong> oraz <strong>Leather Care</strong> zapewniają długotrwałą ochronę wnętrza pojazdu przed plamami, brudem i promieniowaniem UV.</p>
-                    <ul class="features-list">
-                        <li>Hydrofobowa ochrona tkanin przed zalaniem i plamami (efekt lotosu)</li>
-                        <li>Głębokie odżywienie skóry zapobiegające pękaniu i starzeniu</li>
-                        <li>Zachowanie naturalnej miękkości i pełnej oddychalności materiałów</li>
-                    </ul>
-
-                    <div class="tech-accordion">
-                        <div class="tech-item">
-                            <button class="tech-trigger tap-effect" onclick="toggleAccordion(this)"> Specyfikacja techniczna <span class="tech-icon">▼</span> </button>
-                            <div class="tech-content">
-                                <div class="tech-content-inner"> Technologia oparta na polimerach fluorowych (dla tkanin) oraz naturalnych woskach i odżywkach (dla skóry). Zapewnia ochronę do 24 miesięcy. Formuła hipoalergiczna, całkowicie bezwonna po wyschnięciu. </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="btn-group">
-                        <a href="#home" class="btn btn-primary tap-effect">POWRÓT NA GÓRĘ</a>
-                    </div>
-                </div>
-                <div class="split-col-media reveal delay-1">
-                    <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%;">
-                        <img src="img/KS_Waxoyl_16102025_24stron_PRINT_calosc11.jpg" alt="Zabezpieczenie tapicerki Waxoyl" class="zoomable-img tap-effect" loading="lazy">
-                    </div>
-                </div>
-            </div>
+    <section class="soft" id="wnetrze">
+      <div class="container">
+        <div class="service reverse">
+          <div class="service-media reveal">
+            <img class="zoomable" src="img/tapicerka.png" alt="Ochrona tapicerki i wnętrza pojazdu" />
+          </div>
+          <div class="service-copy reveal">
+            <span class="label">Wnętrze</span>
+            <h2>Ochrona tapicerki i powierzchni wewnętrznych</h2>
+            <p>
+              Wnętrze samochodu codziennie styka się z kurzem, wilgocią, napojami, promieniami słonecznymi
+              i intensywnym użytkowaniem. Impregnacja oraz pielęgnacja powierzchni wewnętrznych pomagają
+              zachować ich wygląd i ułatwiają późniejsze czyszczenie.
+            </p>
+            <ul class="feature-list">
+              <li>ochrona tapicerki materiałowej i wybranych powierzchni skórzanych,</li>
+              <li>mniejsze wchłanianie płynów i łatwiejsze usuwanie zabrudzeń,</li>
+              <li>estetyczne wykończenie elementów wnętrza.</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 WAXOYL. Wszelkie prawa zastrzeżone.</p>
-    </footer>
+    <section>
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="label">Zakres ochrony</span>
+          <h2>Jak rozumieć technologie Waxoyl?</h2>
+          <p>
+            Poszczególne rozwiązania można traktować jako osobne obszary ochrony albo jako kompletny system
+            dla samochodu, który ma być lepiej przygotowany na codzienną eksploatację.
+          </p>
+        </div>
 
-    <div id="customImageModal" class="image-modal">
-        <span class="image-modal-close tap-effect">&times;</span>
-        <img class="image-modal-content" id="modalTargetImg" alt="Powiększony widok">
-        <div class="modal-tip">Przesuń w górę lub w dół, aby zamknąć</div>
-    </div>
+        <div class="info-grid">
+          <article class="info-card reveal">
+            <span>01</span>
+            <h3>Powierzchnie widoczne</h3>
+            <p>Lakier, elementy zewnętrzne i detale, które najbardziej wpływają na pierwsze wrażenie wizualne.</p>
+          </article>
+          <article class="info-card reveal">
+            <span>02</span>
+            <h3>Elementy narażone</h3>
+            <p>Podwozie, nadkola i profile zamknięte, czyli miejsca pracujące w najtrudniejszych warunkach.</p>
+          </article>
+          <article class="info-card reveal">
+            <span>03</span>
+            <h3>Codzienne użytkowanie</h3>
+            <p>Wnętrze oraz komora silnika, gdzie liczy się czystość, estetyka i łatwiejsza późniejsza pielęgnacja.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // HAPTIC FEEDBACK (Тактильная отдача)
-        function triggerHaptic() {
-            if (navigator.vibrate) {
-                navigator.vibrate(15); // Короткая, приятная вибрация (15 мс)
-            }
+    <section class="summary">
+      <h2>Waxoyl jako prezentacja możliwości</h2>
+      <p>
+        Strona ma charakter informacyjny i pokazuje, jakie typy ochrony pojazdu mogą być realizowane
+        z wykorzystaniem technologii Waxoyl: lakier, podwozie, silnik oraz wnętrze.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 WAXOYL. Materiał informacyjny o technologiach ochrony pojazdów.
+  </footer>
+
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Zamknij podgląd">×</button>
+    <img id="modalImage" src="" alt="" />
+  </div>
+
+  <script>
+    const progress = document.getElementById("scrollProgress");
+    const menuButton = document.getElementById("menuButton");
+    const mobilePanel = document.getElementById("mobilePanel");
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalClose = document.getElementById("modalClose");
+
+    function updateProgress() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const value = total > 0 ? (window.scrollY / total) * 100 : 0;
+      progress.style.width = `${value}%`;
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobilePanel.classList.toggle("open");
+      menuButton.classList.toggle("open", isOpen);
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobilePanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobilePanel.classList.remove("open");
+        menuButton.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
-        document.querySelectorAll('.tap-effect').forEach(el => {
-            el.addEventListener('pointerdown', triggerHaptic);
-        });
+      });
+    }, { threshold: 0.14 });
 
-        // DYNAMIC HEADER ON SCROLL
-        const header = document.getElementById('mainHeader');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-        // REVEAL ON SCROLL (Анимация появления)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Анимируем только один раз
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+    document.querySelectorAll(".zoomable").forEach((image) => {
+      image.addEventListener("click", () => {
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
 
-        // iOS BOTTOM SHEET MENU
-        const hamburgerBtn = document.getElementById("hamburgerBtn");
-        const mobileOverlay = document.getElementById("mobileOverlay");
-        const menuBackdrop = document.getElementById("menuBackdrop");
-        const mobileLinks = document.querySelectorAll(".mobile-nav a");
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImage.src = "";
+      document.body.style.overflow = "";
+    }
 
-        function toggleMobileMenu() {
-            const isActive = mobileOverlay.classList.contains("active");
-            hamburgerBtn.classList.toggle("open");
-            
-            if (!isActive) {
-                mobileOverlay.classList.add("active");
-                menuBackdrop.classList.add("active");
-                document.body.style.overflow = "hidden"; // Блокируем скролл сайта
-            } else {
-                mobileOverlay.classList.remove("active");
-                menuBackdrop.classList.remove("active");
-                document.body.style.overflow = "";
-            }
-        }
+    modalClose.addEventListener("click", closeModal);
 
-        hamburgerBtn.addEventListener("click", toggleMobileMenu);
-        menuBackdrop.addEventListener("click", toggleMobileMenu); // Закрытие по клику на фон
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
 
-        mobileLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                if(mobileOverlay.classList.contains("active")) {
-                    toggleMobileMenu();
-                }
-            });
-        });
-
-        // ACCORDION
-        function toggleAccordion(button) {
-            button.parentElement.classList.toggle('active');
-        }
-
-        // BENEFITS SLIDER DOTS TRACKING
-        const slider = document.getElementById('benefitsSlider');
-        const dots = document.querySelectorAll('#sliderDots span');
-        if(slider && dots.length > 0) {
-            slider.addEventListener('scroll', () => {
-                const scrollLeft = slider.scrollLeft;
-                const maxScroll = slider.scrollWidth - slider.clientWidth;
-                if(maxScroll > 0) {
-                    const index = scrollLeft > maxScroll / 2 ? 1 : 0;
-                    dots.forEach((dot, i) => {
-                        if(i === index) dot.classList.add('active');
-                        else dot.classList.remove('active');
-                    });
-                }
-            });
-        }
-
-        // UPGRADED MODAL LIGHTBOX WITH SWIPE-TO-CLOSE
-        const modal = document.getElementById("customImageModal");
-        const modalImg = document.getElementById("modalTargetImg");
-        const closeBtn = document.querySelector(".image-modal-close");
-        
-        let startY = 0;
-        let currentY = 0;
-        let isDragging = false;
-
-        document.querySelectorAll('.zoomable-img').forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                modalImg.style.transform = "translate(-50%, -50%) scale(1)";
-                document.body.style.overflow = "hidden";
-            });
-        });
-
-        function closeModal() {
-            modal.style.display = "none";
-            document.body.style.overflow = "";
-            modalImg.style.transform = "translate(-50%, -50%)";
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function(e) {
-            if(e.target === modal || e.target === modalImg) closeModal();
-        });
-
-        modalImg.addEventListener('touchstart', (e) => {
-            startY = e.touches[0].clientY;
-            isDragging = true;
-        }, {passive: true});
-
-        modalImg.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            currentY = e.touches[0].clientY;
-            const diffY = currentY - startY;
-            if (Math.abs(diffY) > 0) {
-                modalImg.style.transform = `translate(-50%, calc(-50% + ${diffY}px)) scale(${Math.max(0.85, 1 - Math.abs(diffY)/1000)})`;
-            }
-        }, {passive: true});
-
-        modalImg.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            const diffY = currentY - startY;
-            if (Math.abs(diffY) > 120) {
-                closeModal();
-            } else {
-                modalImg.style.transform = "translate(-50%, -50%) scale(1)";
-            }
-            startY = 0;
-            currentY = 0;
-        });
-
-        // SCROLL PROGRESS LINE
-        window.addEventListener('scroll', () => {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scrollProgress").style.width = scrolled + "%";
-        });
-    </script>
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+  </script>
 </body>
 </html>
